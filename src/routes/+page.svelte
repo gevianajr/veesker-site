@@ -8,6 +8,7 @@
 
 <section class="hero">
   <div class="container hero-inner">
+    <img src="/veesker-logo.png" alt="Veesker" class="hero-logo" width="96" height="96" />
     <div class="badge">Open source · Pre-release</div>
     <h1>The Oracle 23ai studio for<br/>SQL, AI, vectors, and APIs.</h1>
     <p class="lead">
@@ -39,7 +40,7 @@
         <p>PL/SQL-aware splitter, per-statement results, query cancellation, virtualized grids for million-row datasets.</p>
       </div>
       <div class="feat">
-        <div class="ico">🐑</div>
+        <div class="ico"><img src="/veesker-logo.png" alt="" width="36" height="36" /></div>
         <h3>Sheep AI</h3>
         <p>An assistant that runs live SELECT queries against your schema to answer questions. Not autocomplete — actual database access.</p>
       </div>
@@ -84,9 +85,17 @@
 
 <style>
   .hero {
-    padding: 120px 0 60px;
+    padding: 100px 0 60px;
     text-align: center;
     background: radial-gradient(ellipse at top, rgba(179,62,31,0.12), transparent 60%);
+  }
+  .hero-logo {
+    width: 96px;
+    height: 96px;
+    object-fit: contain;
+    margin: 0 auto 28px;
+    display: block;
+    filter: drop-shadow(0 12px 32px rgba(179,62,31,0.25));
   }
   .badge {
     display: inline-block;
@@ -145,6 +154,14 @@
   .feat .ico {
     font-size: 28px;
     margin-bottom: 14px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+  }
+  .feat .ico img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
   }
   .feat h3 {
     font-size: 17px;

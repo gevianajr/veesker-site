@@ -8,7 +8,7 @@
 <header class="site-header">
   <div class="container nav">
     <a href="/" class="brand">
-      <span class="brand-mark">▲</span>
+      <img src="/veesker-logo.png" alt="" class="brand-logo" width="28" height="28" />
       <span class="brand-name">veesker</span>
     </a>
     <nav>
@@ -82,7 +82,13 @@
     color: var(--text);
     text-decoration: none;
   }
-  .brand-mark { color: var(--accent-text); font-size: 22px; }
+  .brand-logo {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    object-fit: contain;
+    display: block;
+  }
   .brand:hover { text-decoration: none; }
 
   nav {
