@@ -1,5 +1,6 @@
 <script lang="ts">
   import { browser } from "$app/environment";
+  import Seo from "$lib/seo.svelte";
 
   let subject = $state("Inquiry");
 
@@ -13,7 +14,11 @@
   const mailto = $derived(`mailto:geefatec@gmail.com?subject=${encodeURIComponent("[Veesker] " + subject)}`);
 </script>
 
-<svelte:head><title>Contact — Veesker</title></svelte:head>
+<Seo
+  title="Contact"
+  description="Contact Veesker — sales, support, partnerships, OSS license requests. Email response within 2 business days. Business and Enterprise customers per SLA."
+  path="/contact"
+/>
 
 <section class="hero">
   <div class="container">

@@ -1,8 +1,12 @@
 <script lang="ts">
-  // Features showcase
+  import Seo from "$lib/seo.svelte";
 </script>
 
-<svelte:head><title>Features — Veesker</title></svelte:head>
+<Seo
+  title="Features"
+  description="Everything Veesker does: multi-statement SQL editor, PL/SQL debugger, Sheep AI database assistant, vector search studio, REST API builder (VRAS), schema explorer, ER diagrams, audit log."
+  path="/features"
+/>
 
 <section class="hero">
   <div class="container">

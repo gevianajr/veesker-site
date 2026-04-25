@@ -1,10 +1,12 @@
 <script lang="ts">
-  // Home page
+  import Seo from "$lib/seo.svelte";
 </script>
 
-<svelte:head>
-  <title>Veesker — The Oracle 23ai studio</title>
-</svelte:head>
+<Seo
+  title="Veesker"
+  description="Open-source desktop IDE for Oracle 23ai. Multi-statement SQL editor with virtualized grids, PL/SQL debugger, AI assistant with database access, vector search studio, and a no-code REST API builder — all in one app, Apache 2.0."
+  path="/"
+/>
 
 <section class="hero">
   <div class="container hero-inner">

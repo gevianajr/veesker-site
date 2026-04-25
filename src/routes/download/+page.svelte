@@ -1,9 +1,14 @@
 <script lang="ts">
+  import Seo from "$lib/seo.svelte";
   const RELEASE = "0.2.0";
   const RELEASE_URL = `https://github.com/geeviana/veesker/releases/tag/v${RELEASE}`;
 </script>
 
-<svelte:head><title>Download Veesker</title></svelte:head>
+<Seo
+  title="Download"
+  description="Download Veesker for Windows, macOS, and Linux. Free, open source under Apache 2.0. No account required, no telemetry, no Oracle Instant Client needed."
+  path="/download"
+/>
 
 <section class="hero">
   <div class="container">

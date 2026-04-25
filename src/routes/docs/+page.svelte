@@ -1,4 +1,12 @@
-<svelte:head><title>Docs — Veesker</title></svelte:head>
+<script lang="ts">
+  import Seo from "$lib/seo.svelte";
+</script>
+
+<Seo
+  title="Docs"
+  description="Veesker documentation — getting started, SQL editor, PL/SQL debugger, AI assistant, vector search, REST API builder. Hosted on GitHub alongside the source code."
+  path="/docs"
+/>
 
 <section class="hero">
   <div class="container">

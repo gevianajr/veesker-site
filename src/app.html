@@ -2,21 +2,48 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="%sveltekit.assets%/favicon.svg" />
-    <link rel="alternate icon" type="image/png" href="%sveltekit.assets%/favicon.png" />
-    <link rel="apple-touch-icon" href="%sveltekit.assets%/app-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Veesker — Oracle 23ai studio for SQL, AI, vectors, and APIs. Native desktop, open source." />
-    <meta property="og:title" content="Veesker" />
-    <meta property="og:description" content="The Oracle 23ai studio built for SQL, AI, vectors, and APIs." />
-    <meta property="og:image" content="https://veesker.cloud/og.png" />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0e0c0a" />
+    <meta name="color-scheme" content="dark" />
+
+    <link rel="icon" type="image/svg+xml" href="%sveltekit.assets%/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="128x128" href="%sveltekit.assets%/favicon.png" />
+    <link rel="apple-touch-icon" sizes="512x512" href="%sveltekit.assets%/app-icon.png" />
+    <link rel="mask-icon" href="%sveltekit.assets%/favicon.svg" color="#e8643a" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Veesker",
+        "description": "Open-source desktop IDE for Oracle 23ai with PL/SQL debugger, AI assistant, vector search and a no-code REST API builder.",
+        "url": "https://veesker.cloud",
+        "applicationCategory": "DeveloperApplication",
+        "applicationSubCategory": "Database IDE",
+        "operatingSystem": "Windows, macOS, Linux",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "softwareVersion": "0.2.0",
+        "license": "https://www.apache.org/licenses/LICENSE-2.0",
+        "author": {
+          "@type": "Person",
+          "name": "Geraldo F. Viana Junior"
+        },
+        "downloadUrl": "https://veesker.cloud/download",
+        "screenshot": "https://veesker.cloud/og-image.png"
+      }
+    </script>
+
     %sveltekit.head%
   </head>
   <body data-sveltekit-preload-data="hover">

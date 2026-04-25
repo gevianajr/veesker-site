@@ -87,11 +87,15 @@
     { name: "Azure OpenAI / AWS Bedrock", description: "Use your cloud subscription for Sheep AI", price: "R$ 500 / month / company" },
     { name: "On-prem LLM gateway", description: "Connect Sheep to local Llama / Mistral via Ollama", price: "R$ 1.000 / month / company" },
   ];
+
+  import Seo from "$lib/seo.svelte";
 </script>
 
-<svelte:head>
-  <title>Pricing — Veesker</title>
-</svelte:head>
+<Seo
+  title="Pricing"
+  description="Veesker pricing — Free Personal tier with all features, Pro for individual professionals, Business for teams, Enterprise with SSO and audit. Same code, same features. Add-ons for SAML, on-prem LLM, audit shipper."
+  path="/pricing"
+/>
 
 <section class="hero">
   <div class="container">
