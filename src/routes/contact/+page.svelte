@@ -1,6 +1,15 @@
 <script lang="ts">
-  import { page } from "$app/state";
-  const subject = $derived(page.url.searchParams.get("subject") ?? "Inquiry");
+  import { browser } from "$app/environment";
+
+  let subject = $state("Inquiry");
+
+  $effect(() => {
+    if (browser) {
+      const fromQuery = new URL(window.location.href).searchParams.get("subject");
+      if (fromQuery) subject = fromQuery;
+    }
+  });
+
   const mailto = $derived(`mailto:geefatec@gmail.com?subject=${encodeURIComponent("[Veesker] " + subject)}`);
 </script>
 
