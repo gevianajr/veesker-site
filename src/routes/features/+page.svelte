@@ -48,7 +48,7 @@
     </div>
 
     <div class="feat-block">
-      <h2>AI Sheep 🐑</h2>
+      <h2>Veesker AI — Sheep 🐑</h2>
       <ul>
         <li><strong>Live database access</strong> — Sheep runs SELECT queries against your real schema to answer questions.</li>
         <li><strong>Context-aware</strong> — knows the current schema, currently selected object, live connection.</li>
@@ -65,7 +65,7 @@
         <li><strong>Embedding providers</strong> — Ollama (local), OpenAI, Voyage, custom OpenAI-compatible endpoints.</li>
         <li><strong>HNSW & IVF indexes</strong> — create, drop, parameterize accuracy/distance metric.</li>
         <li><strong>Similarity search UI</strong> — text input → embeddings → live similarity results.</li>
-        <li><strong>2D PCA scatter plot</strong> — color-coded by cluster, click points to see source rows.</li>
+        <li><strong>2D PCA scatter plot</strong> — color-coded by similarity score, hover to inspect source rows.</li>
         <li><strong>Embed batch operations</strong> — bulk-embed pending rows with progress tracking.</li>
       </ul>
     </div>
@@ -88,7 +88,7 @@
         <li><strong>Auto-CRUD</strong> — 1-click ORDS.ENABLE_OBJECT for tables/views.</li>
         <li><strong>Custom SQL endpoints</strong> — write parameterized SQL, define route + method, deploy.</li>
         <li><strong>Procedure endpoints</strong> — pick any procedure/function, params auto-introspected, JSON via APEX_JSON.</li>
-        <li><strong>Sheep AI integration</strong> — describe endpoint in natural language, AI fills the form.</li>
+        <li><strong>Veesker AI integration</strong> — describe endpoint in natural language, AI fills the form.</li>
         <li><strong>OAuth 2.0 client management</strong> — create clients, role assignment, secret-once display.</li>
         <li><strong>Inline HTTP test panel</strong> — auto-injected Bearer tokens, JSON pretty-print.</li>
         <li><strong>Module browser</strong> — read existing ORDS modules, view source code.</li>

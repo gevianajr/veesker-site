@@ -16,7 +16,7 @@
       <a href="/pricing">Pricing</a>
       <a href="/docs">Docs</a>
       <a href="/contact">Contact</a>
-      <a href="https://github.com/geeviana/veesker" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="https://github.com/gevianajr/veesker" target="_blank" rel="noopener">GitHub ↗</a>
       <a href="/download" class="btn primary">Download</a>
     </nav>
   </div>
@@ -42,19 +42,19 @@
       <div>
         <h4>Resources</h4>
         <a href="/docs">Documentation</a>
-        <a href="https://github.com/geeviana/veesker" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://github.com/geeviana/veesker/issues" target="_blank" rel="noopener">Issues</a>
+        <a href="https://github.com/gevianajr/veesker" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/gevianajr/veesker/issues" target="_blank" rel="noopener">Issues</a>
       </div>
       <div>
         <h4>Legal</h4>
-        <a href="https://github.com/geeviana/veesker/blob/main/LICENSE" target="_blank" rel="noopener">License (Apache 2.0)</a>
-        <a href="https://github.com/geeviana/veesker/blob/main/COMMERCIAL_USE.md" target="_blank" rel="noopener">Commercial Use</a>
-        <a href="https://github.com/geeviana/veesker/blob/main/TERMS_OF_USE.md" target="_blank" rel="noopener">Terms of Use</a>
-        <a href="https://github.com/geeviana/veesker/blob/main/SECURITY.md" target="_blank" rel="noopener">Security</a>
+        <a href="https://github.com/gevianajr/veesker/blob/main/LICENSE" target="_blank" rel="noopener">License (Apache 2.0)</a>
+        <a href="https://github.com/gevianajr/veesker/blob/main/COMMERCIAL_USE.md" target="_blank" rel="noopener">Commercial Use</a>
+        <a href="https://github.com/gevianajr/veesker/blob/main/TERMS_OF_USE.md" target="_blank" rel="noopener">Terms of Use</a>
+        <a href="https://github.com/gevianajr/veesker/blob/main/SECURITY.md" target="_blank" rel="noopener">Security</a>
       </div>
     </div>
     <div class="foot-bottom muted">
-      © 2026 Geraldo F. Viana Júnior · São Paulo, Brazil · Made with care
+      Built by <a href="https://github.com/gevianajr" target="_blank" rel="noopener">Geraldo Viana Jr</a> · Brazil · <a href="https://www.linkedin.com/in/geraldovianajr/" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </div>
 </footer>

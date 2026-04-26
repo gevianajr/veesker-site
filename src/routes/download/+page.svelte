@@ -1,7 +1,7 @@
 <script lang="ts">
   import Seo from "$lib/seo.svelte";
   const RELEASE = "0.2.0";
-  const RELEASE_URL = `https://github.com/geeviana/veesker/releases/tag/v${RELEASE}`;
+  const RELEASE_URL = `https://github.com/gevianajr/veesker/releases/tag/v${RELEASE}`;
 </script>
 
 <Seo
@@ -38,7 +38,7 @@
         <div class="dl-os">🐧 Linux</div>
         <h3>Build from source</h3>
         <p class="muted">No packaged Linux release yet</p>
-        <a href="https://github.com/geeviana/veesker#build-from-source" class="btn" target="_blank" rel="noopener">Build instructions ↗</a>
+        <a href="https://github.com/gevianajr/veesker#build-from-source" class="btn" target="_blank" rel="noopener">Build instructions ↗</a>
       </div>
     </div>
 

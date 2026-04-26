@@ -20,7 +20,7 @@
     </p>
     <div class="cta">
       <a href="/download" class="btn primary">Download for Windows</a>
-      <a href="https://github.com/geeviana/veesker" class="btn" target="_blank" rel="noopener">View on GitHub</a>
+      <a href="https://github.com/gevianajr/veesker" class="btn" target="_blank" rel="noopener">View on GitHub</a>
     </div>
     <div class="trust">
       <span>Apache 2.0</span>
@@ -43,13 +43,13 @@
       </div>
       <div class="feat">
         <div class="ico"><img src="/veesker-logo.png" alt="" width="36" height="36" /></div>
-        <h3>Sheep AI</h3>
+        <h3>Veesker AI</h3>
         <p>An assistant that runs live SELECT queries against your schema to answer questions. Not autocomplete — actual database access.</p>
       </div>
       <div class="feat">
         <div class="ico">🔍</div>
         <h3>Vector search studio</h3>
-        <p>Embeddings via Ollama / OpenAI / Voyage, HNSW & IVF indexes, 2D PCA scatter for cluster inspection.</p>
+        <p>Embeddings via Ollama / OpenAI / Voyage, HNSW & IVF indexes, 2D PCA scatter with similarity coloring.</p>
       </div>
       <div class="feat">
         <div class="ico">🐞</div>
@@ -80,7 +80,7 @@
     </p>
     <div class="cta">
       <a href="/pricing" class="btn primary">See pricing</a>
-      <a href="https://github.com/geeviana/veesker/blob/main/COMMERCIAL_USE.md" class="btn" target="_blank" rel="noopener">Read commercial-use policy</a>
+      <a href="https://github.com/gevianajr/veesker/blob/main/COMMERCIAL_USE.md" class="btn" target="_blank" rel="noopener">Read commercial-use policy</a>
     </div>
   </div>
 </section>
