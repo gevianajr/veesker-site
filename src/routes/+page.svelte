@@ -11,7 +11,7 @@
 <section class="hero">
   <div class="container hero-inner">
     <img src="/veesker-logo.png" alt="Veesker" class="hero-logo" width="96" height="96" />
-    <div class="badge">Open source · Pre-release</div>
+    <div class="badge">Open source · Apache 2.0</div>
     <h1>The Oracle 23ai studio for<br/>SQL, AI, vectors, and APIs.</h1>
     <p class="lead">
       A native desktop IDE for Oracle 23ai. Multi-statement SQL editor with virtualized grids,

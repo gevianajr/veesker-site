@@ -14,7 +14,7 @@
   <div class="container">
     <h1>Download Veesker</h1>
     <p class="lead">
-      Latest pre-release: <strong>v{RELEASE}</strong>.
+      Latest release: <strong>v{RELEASE}</strong>.
       Free for personal use and small organizations.
       <a href="/pricing">Pricing →</a>
     </p>
