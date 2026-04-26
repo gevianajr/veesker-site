@@ -29,7 +29,7 @@
     },
     {
       name: "Pro",
-      price: "R$ 49",
+      price: "$9.90",
       pricePeriod: "/ user / month",
       description: "Individual freelancers and consultants who use Veesker on commercial work.",
       features: [
@@ -43,7 +43,7 @@
     },
     {
       name: "Business",
-      price: "R$ 199",
+      price: "$39",
       pricePeriod: "/ seat / month",
       description: "Companies of any size that need team features and faster support.",
       features: [
@@ -80,12 +80,12 @@
   type AddOn = { name: string; description: string; price: string };
 
   const addons: AddOn[] = [
-    { name: "Oracle EBS Pack", description: "Wizards, GL/AP integration templates, Forms converter", price: "R$ 4.000 / year / company" },
-    { name: "Audit Log Shipper", description: "Splunk HEC, Datadog Logs, S3, generic webhook destinations", price: "R$ 1.500 / year / seat" },
-    { name: "AWR Analyzer", description: "AWR/Statspack visualization, performance regression detection", price: "R$ 1.500 / year / seat" },
-    { name: "Compliance Pack BR", description: "LGPD audit reports, BACEN-ready logs, ANPD breach response template", price: "R$ 2.000 / year / company" },
-    { name: "Azure OpenAI / AWS Bedrock", description: "Use your cloud subscription for Sheep AI", price: "R$ 500 / month / company" },
-    { name: "On-prem LLM gateway", description: "Connect Sheep to local Llama / Mistral via Ollama", price: "R$ 1.000 / month / company" },
+    { name: "Oracle EBS Pack", description: "Wizards, GL/AP integration templates, Forms converter", price: "$799 / year / company" },
+    { name: "Audit Log Shipper", description: "Splunk HEC, Datadog Logs, S3, generic webhook destinations", price: "$299 / year / seat" },
+    { name: "AWR Analyzer", description: "AWR/Statspack visualization, performance regression detection", price: "$299 / year / seat" },
+    { name: "Compliance Pack BR", description: "LGPD audit reports, BACEN-ready logs, ANPD breach response template", price: "$399 / year / company" },
+    { name: "Azure OpenAI / AWS Bedrock", description: "Use your cloud subscription for Veesker AI", price: "$99 / month / company" },
+    { name: "On-prem LLM gateway", description: "Connect Veesker AI to local Llama / Mistral via Ollama", price: "$199 / month / company" },
   ];
 
   import Seo from "$lib/seo.svelte";
