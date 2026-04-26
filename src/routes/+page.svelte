@@ -70,6 +70,18 @@
   </div>
 </section>
 
+<section class="overview">
+  <div class="container">
+    <h2>Everything in one workspace.</h2>
+    <p class="lead">Schema browser, DataFlow graph, AI assistant, SQL editor, query history, and results grid — all visible at once.</p>
+    <img
+      src="/workspace-overview.png"
+      alt="Veesker workspace — schema tree, DataFlow graph, Veesker AI, SQL editor with results"
+      class="overview-img"
+    />
+  </div>
+</section>
+
 <section class="proof">
   <div class="container proof-inner">
     <h2>Open source. No vendor lock-in.</h2>
@@ -174,6 +186,27 @@
     font-size: 13.5px;
     line-height: 1.55;
     margin: 0;
+  }
+
+  .overview {
+    padding: 60px 0 80px;
+    text-align: center;
+  }
+  .overview h2 {
+    font-size: 32px;
+    margin-bottom: 12px;
+  }
+  .overview .lead {
+    margin-bottom: 36px;
+  }
+  .overview-img {
+    width: 100%;
+    max-width: 1100px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    box-shadow: 0 24px 80px rgba(0,0,0,0.45);
+    display: block;
+    margin: 0 auto;
   }
 
   .proof {
