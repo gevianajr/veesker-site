@@ -1,99 +1,10 @@
 <script lang="ts">
-  type Tier = {
-    name: string;
-    price: string;
-    pricePeriod: string;
-    description: string;
-    features: string[];
-    cta: { label: string; href: string };
-    highlight?: boolean;
-  };
-
-  const tiers: Tier[] = [
-    {
-      name: "Personal",
-      price: "Free",
-      pricePeriod: "forever",
-      description: "For individuals, OSS contributors, and small organizations (≤50 employees AND ≤US$ 5M revenue).",
-      features: [
-        "Veesker IDE — full feature set",
-        "All open-source features",
-        "AI Sheep (BYO API key)",
-        "Vector search studio",
-        "PL/SQL Debugger",
-        "VRAS REST API Studio",
-        "Auto-update & local audit log",
-        "Best-effort support via GitHub issues",
-      ],
-      cta: { label: "Download free", href: "/download" },
-    },
-    {
-      name: "Pro",
-      price: "$9.90",
-      pricePeriod: "/ user / month",
-      description: "Individual freelancers and consultants who use Veesker on commercial work.",
-      features: [
-        "Everything in Personal",
-        "Commercial use right",
-        "Email support · 5-business-day SLA",
-        "Optional add-ons (à la carte)",
-        "Priority bug-fix triage",
-      ],
-      cta: { label: "Subscribe", href: "/contact?subject=Pro" },
-    },
-    {
-      name: "Business",
-      price: "$39",
-      pricePeriod: "/ seat / month",
-      description: "Companies of any size that need team features and faster support.",
-      features: [
-        "Everything in Pro",
-        "Veesker Cloud (when available) — team workspace, audit central, query approval",
-        "1-business-day support SLA",
-        "Private Slack/Teams channel",
-        "Multi-environment promote (VRAS)",
-        "EBS Pack & on-prem AI add-ons available",
-      ],
-      cta: { label: "Start trial", href: "/contact?subject=Business" },
-      highlight: true,
-    },
-    {
-      name: "Enterprise",
-      price: "Custom",
-      pricePeriod: "annual contract",
-      description: "Regulated industries, large enterprises, and government.",
-      features: [
-        "Everything in Business",
-        "4-hour support SLA",
-        "Dedicated customer success engineer",
-        "On-prem AI gateway included",
-        "SSO / SAML / Active Directory",
-        "Audit log shipping (Splunk / Datadog / S3)",
-        "Indemnification clause available",
-        "White-label / OEM build available",
-        "Onboarding & training included",
-      ],
-      cta: { label: "Talk to sales", href: "/contact?subject=Enterprise" },
-    },
-  ];
-
-  type AddOn = { name: string; description: string; price: string };
-
-  const addons: AddOn[] = [
-    { name: "Oracle EBS Pack", description: "Wizards, GL/AP integration templates, Forms converter", price: "$799 / year / company" },
-    { name: "Audit Log Shipper", description: "Splunk HEC, Datadog Logs, S3, generic webhook destinations", price: "$299 / year / seat" },
-    { name: "AWR Analyzer", description: "AWR/Statspack visualization, performance regression detection", price: "$299 / year / seat" },
-    { name: "Compliance Pack BR", description: "LGPD audit reports, BACEN-ready logs, ANPD breach response template", price: "$399 / year / company" },
-    { name: "Azure OpenAI / AWS Bedrock", description: "Use your cloud subscription for Veesker AI", price: "$99 / month / company" },
-    { name: "On-prem LLM gateway", description: "Connect Veesker AI to local Llama / Mistral via Ollama", price: "$199 / month / company" },
-  ];
-
   import Seo from "$lib/seo.svelte";
 </script>
 
 <Seo
   title="Pricing"
-  description="Veesker pricing — Free Personal tier with all features, Pro for individual professionals, Business for teams, Enterprise with SSO and audit. Same code, same features. Add-ons for SAML, on-prem LLM, audit shipper."
+  description="Veesker is free for all uses during early access. Commercial subscriptions coming — same code, same features, no kill-switch. Contact for early access."
   path="/pricing"
 />
 
@@ -101,50 +12,110 @@
   <div class="container">
     <h1>Pricing</h1>
     <p class="lead">
-      The Veesker source code is fully open under Apache 2.0 — for everyone, forever.
-      Larger organizations support continued development through a subscription, in the spirit of Docker Desktop.
+      The Veesker source code is fully open under Apache 2.0 — for everyone, forever, with no feature gating.
     </p>
   </div>
 </section>
 
-<section class="tiers-wrap">
+<section class="early-access">
   <div class="container">
-    <div class="tiers">
-      {#each tiers as t}
-        <div class="tier" class:highlight={t.highlight}>
-          {#if t.highlight}<div class="ribbon">Recommended</div>{/if}
-          <h2>{t.name}</h2>
-          <div class="price">
-            <span class="amt">{t.price}</span>
-            <span class="period">{t.pricePeriod}</span>
-          </div>
-          <p class="desc">{t.description}</p>
-          <ul>
-            {#each t.features as f}<li>{f}</li>{/each}
-          </ul>
-          <a href={t.cta.href} class="btn primary cta">{t.cta.label}</a>
-        </div>
-      {/each}
+    <div class="ea-card">
+      <div class="ea-badge">Early access</div>
+      <h2>Currently: free for all uses</h2>
+      <p>
+        Veesker is in early access. Until commercial subscriptions launch, the packaged app is
+        free for all uses — personal, open source, education, and commercial.
+      </p>
+      <a href="/download" class="btn primary">Download free →</a>
     </div>
+  </div>
+</section>
+
+<section class="coming-soon">
+  <div class="container">
+    <h2>Coming soon: commercial subscriptions</h2>
+    <p class="lead">
+      In the spirit of Docker Desktop, larger organizations will support continued development
+      through a paid subscription for the packaged app + commercial-grade support.
+    </p>
+
+    <div class="tiers">
+      <div class="tier">
+        <h3>Personal</h3>
+        <div class="tier-tag">Free forever</div>
+        <p>For individuals, OSS contributors, and small organizations (≤50 employees AND ≤US$ 5M revenue).</p>
+      </div>
+      <div class="tier">
+        <h3>Pro</h3>
+        <div class="tier-tag">For individual professionals</div>
+        <p>Commercial use right + email support for freelancers and consultants.</p>
+      </div>
+      <div class="tier highlight">
+        <h3>Business</h3>
+        <div class="tier-tag">For teams</div>
+        <p>Veesker Cloud (when available), faster support, team features.</p>
+      </div>
+      <div class="tier">
+        <h3>Enterprise</h3>
+        <div class="tier-tag">For regulated industries</div>
+        <p>SSO, indemnification, dedicated support, on-prem options.</p>
+      </div>
+    </div>
+    <p class="note">Pricing will be in USD. Billing is not yet active.</p>
+  </div>
+</section>
+
+<section class="early-customers">
+  <div class="container narrow">
+    <h2>Want early access to commercial support?</h2>
+    <p>
+      If your organization wants to support development now or be among the first commercial
+      customers, reach out directly.
+    </p>
+    <p>We are particularly interested in hearing from:</p>
+    <ul>
+      <li>Companies running Oracle 23ai with vector search needs</li>
+      <li>Active open-source maintainers (free Pro license available once subscriptions launch)</li>
+      <li>Public sector and education (discount on commercial tiers when launched)</li>
+    </ul>
+    <a href="/contact" class="btn primary">Contact us →</a>
   </div>
 </section>
 
 <section class="addons">
   <div class="container">
-    <h2>Add-ons</h2>
+    <h2>Add-ons (planned)</h2>
     <p class="lead">
-      Niche-deep paid plugins for specific use cases. Available à la carte for Pro/Business
-      or included with Enterprise.
+      Niche-deep paid plugins for specific use cases, available à la carte once commercial
+      billing launches.
     </p>
     <div class="addon-grid">
-      {#each addons as a}
-        <div class="addon">
-          <h3>{a.name}</h3>
-          <p>{a.description}</p>
-          <div class="price-line">{a.price}</div>
-        </div>
-      {/each}
+      <div class="addon">
+        <h3>Oracle EBS Pack</h3>
+        <p>GL/AP integration templates, Forms converter</p>
+      </div>
+      <div class="addon">
+        <h3>AWR Analyzer</h3>
+        <p>Performance regression detection from AWR/Statspack data</p>
+      </div>
+      <div class="addon">
+        <h3>Compliance Pack BR</h3>
+        <p>LGPD / BACEN-ready audit reports</p>
+      </div>
+      <div class="addon">
+        <h3>Azure OpenAI / AWS Bedrock</h3>
+        <p>Bring your own cloud LLM for Veesker AI</p>
+      </div>
+      <div class="addon">
+        <h3>On-prem LLM gateway</h3>
+        <p>Llama / Mistral via Ollama, fully local</p>
+      </div>
+      <div class="addon">
+        <h3>Audit Log Shipper</h3>
+        <p>Splunk / Datadog / S3 destinations</p>
+      </div>
     </div>
+    <p class="note"><a href="/contact?subject=Add-ons">Express interest →</a></p>
   </div>
 </section>
 
@@ -156,42 +127,44 @@
         <h3>Are paid features hidden in the source?</h3>
         <p>
           No. Every feature lives in the open-source repo, and every tier uses the exact same
-          codebase. Subscription gives you the right to use the packaged app commercially +
-          support + (in higher tiers) access to Veesker Cloud.
+          codebase. A subscription, when available, gives you the right to use the packaged app
+          commercially + support + (in higher tiers) Veesker Cloud — never extra source-level features.
         </p>
       </div>
       <div>
-        <h3>What happens if I miss compliance?</h3>
+        <h3>Will Veesker have a kill-switch?</h3>
         <p>
-          Veesker has no kill-switch. The app keeps working. Compliance is contractual / honor-based,
-          like Docker Desktop. We trust our users to do the right thing.
+          No. The app keeps working regardless. Compliance, when commercial plans launch, will be
+          contractual and honor-based — same model as Docker Desktop.
         </p>
       </div>
       <div>
         <h3>Can I self-host Veesker Cloud?</h3>
         <p>
-          Enterprise tier supports self-hosted deployment. Business uses our managed cloud only.
-        </p>
-      </div>
-      <div>
-        <h3>Is there a free trial?</h3>
-        <p>
-          30-day free trial available for Business and Enterprise on request.
-          <a href="/contact">Contact us</a>.
+          When Veesker Cloud launches, the Enterprise tier will support self-hosted deployment.
+          Business will use the managed cloud only.
         </p>
       </div>
       <div>
         <h3>Are open-source maintainers eligible for free Pro?</h3>
         <p>
           Yes. If you maintain a public OSS project (≥6 months active, ≥50 stars or equivalent),
-          you qualify for a free Pro license. <a href="/contact?subject=OSS license">Apply here</a>.
+          you will qualify for a free Pro license once subscriptions launch.
+          <a href="/contact?subject=OSS license">Apply here</a>.
         </p>
       </div>
       <div>
         <h3>Government / education discount?</h3>
         <p>
-          50% off Business and Enterprise tiers for public sector, federal/state universities,
-          and registered NGOs.
+          Discounted Business and Enterprise tiers are planned for public sector,
+          federal/state universities, and registered NGOs.
+        </p>
+      </div>
+      <div>
+        <h3>We are a 30-person company. Do we need to pay?</h3>
+        <p>
+          No. Personal tier covers up to 50 employees AND less than US$ 5M revenue. And during
+          early access, everyone can use Veesker free regardless of size.
         </p>
       </div>
     </div>
@@ -209,81 +182,111 @@
     margin: 0 auto;
   }
 
-  .tiers-wrap { padding: 30px 0 60px; }
+  /* Early access card */
+  .early-access { padding: 20px 0 60px; }
+  .ea-card {
+    background: linear-gradient(135deg, rgba(179,62,31,0.12), rgba(179,62,31,0.04));
+    border: 1px solid rgba(179,62,31,0.4);
+    border-radius: 14px;
+    padding: 40px 48px;
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .ea-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 100px;
+    margin-bottom: 18px;
+  }
+  .ea-card h2 { font-size: 28px; margin: 0 0 14px; }
+  .ea-card p { color: var(--text-muted); font-size: 15px; line-height: 1.65; margin: 0 0 24px; }
+
+  /* Coming soon tiers */
+  .coming-soon { padding: 0 0 60px; }
+  .coming-soon h2 { font-size: 32px; text-align: center; margin-bottom: 14px; }
+  .coming-soon > .container > .lead { text-align: center; margin-bottom: 36px; }
   .tiers {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    gap: 16px;
+    margin-bottom: 18px;
   }
   .tier {
-    position: relative;
     background: var(--bg-soft);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 28px 22px;
-    display: flex;
-    flex-direction: column;
+    padding: 24px 20px;
   }
   .tier.highlight {
-    border-color: rgba(179,62,31,0.5);
+    border-color: rgba(179,62,31,0.4);
     background: linear-gradient(180deg, rgba(179,62,31,0.08), var(--bg-soft));
   }
-  .ribbon {
-    position: absolute; top: -12px; right: 16px;
-    background: var(--accent); color: #fff;
-    padding: 4px 10px; border-radius: 100px;
-    font-size: 10.5px; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 0.08em;
+  .tier h3 { font-size: 18px; margin: 0 0 8px; }
+  .tier-tag {
+    font-size: 11px;
+    color: var(--accent-text);
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
   }
-  .tier h2 { font-size: 22px; margin: 0 0 12px; }
-  .price {
-    display: flex; align-items: baseline; gap: 6px;
-    margin-bottom: 14px;
-  }
-  .amt { font-size: 32px; font-weight: 700; font-family: "Space Grotesk", sans-serif; }
-  .period { color: var(--text-muted); font-size: 13px; }
-  .desc {
-    color: var(--text-muted); font-size: 13px; line-height: 1.55;
-    margin: 0 0 18px; min-height: 60px;
-  }
-  ul {
-    list-style: none; padding: 0; margin: 0 0 22px;
-    flex: 1;
-  }
-  li {
-    padding: 6px 0;
+  .tier p { color: var(--text-muted); font-size: 13px; line-height: 1.55; margin: 0; }
+  .note {
+    text-align: center;
+    color: var(--text-muted);
     font-size: 13px;
-    color: var(--text);
+    margin-top: 10px;
+  }
+  .note a { color: var(--accent-text); }
+
+  /* Early customers */
+  .early-customers { padding: 20px 0 60px; }
+  .narrow { max-width: 680px; }
+  .early-customers h2 { font-size: 28px; margin-bottom: 14px; }
+  .early-customers p { color: var(--text-muted); font-size: 14.5px; line-height: 1.65; margin: 0 0 14px; }
+  .early-customers ul {
+    list-style: none; padding: 0; margin: 0 0 24px;
+  }
+  .early-customers li {
+    padding: 6px 0;
+    font-size: 14px;
+    color: var(--text-muted);
     border-top: 1px dashed var(--border);
   }
-  li:first-child { border-top: none; }
-  li::before { content: "✓"; color: var(--accent-text); margin-right: 8px; font-weight: 700; }
-  .cta { width: 100%; justify-content: center; }
+  .early-customers li:first-child { border-top: none; }
+  .early-customers li::before { content: "→"; color: var(--accent-text); margin-right: 8px; }
 
-  .addons { padding: 80px 0 40px; }
-  .addons h2 { text-align: center; font-size: 32px; margin-bottom: 14px; }
+  /* Add-ons */
+  .addons { padding: 0 0 80px; }
+  .addons h2 { font-size: 32px; text-align: center; margin-bottom: 14px; }
   .addons .lead { text-align: center; margin-bottom: 36px; }
   .addon-grid {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+    margin-bottom: 18px;
   }
   .addon {
     background: var(--bg-soft); border: 1px solid var(--border);
     border-radius: 10px; padding: 20px;
   }
   .addon h3 { font-size: 15px; margin: 0 0 8px; }
-  .addon p { color: var(--text-muted); font-size: 13px; margin: 0 0 12px; line-height: 1.5; }
-  .price-line {
-    font-family: "Space Grotesk", sans-serif; font-weight: 600;
-    color: var(--accent-text); font-size: 13px;
-  }
+  .addon p { color: var(--text-muted); font-size: 13px; margin: 0; line-height: 1.5; }
 
-  .faq { padding: 80px 0; }
+  /* FAQ */
+  .faq { padding: 0 0 80px; }
   .faq h2 { font-size: 32px; margin-bottom: 30px; text-align: center; }
   .faq-grid {
     display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
   }
   .faq h3 { font-size: 16px; margin: 0 0 8px; }
   .faq p { color: var(--text-muted); font-size: 13.5px; line-height: 1.6; margin: 0; }
+  .faq a { color: var(--accent-text); }
 
   @media (max-width: 980px) {
     .tiers { grid-template-columns: 1fr 1fr; }
@@ -293,5 +296,6 @@
   @media (max-width: 600px) {
     .tiers, .addon-grid { grid-template-columns: 1fr; }
     h1 { font-size: 36px; }
+    .ea-card { padding: 28px 22px; }
   }
 </style>
