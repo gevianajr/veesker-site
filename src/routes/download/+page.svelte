@@ -39,15 +39,15 @@
         <div class="dl-os">🍎 macOS · Intel</div>
         <h3>Veesker_{RELEASE}_x64.dmg</h3>
         <p class="muted">DMG · Intel Core i5 / i7 / i9</p>
-        <a href="{BASE}/Veesker_{RELEASE}_x64.dmg" class="btn primary" target="_blank" rel="noopener">Download for macOS (Intel) ↗</a>
-        <p class="hint">Right-click → Open on first launch if Gatekeeper blocks.</p>
+        <a href="{RELEASE_URL}" class="btn primary" target="_blank" rel="noopener">Get from GitHub Release ↗</a>
+        <p class="hint">Download <code>Veesker_{RELEASE}_x64.dmg</code> from the release page. Right-click → Open on first launch.</p>
       </div>
       <div class="dl">
         <div class="dl-os">🐧 Linux · x64</div>
         <h3>Veesker_{RELEASE}_amd64.AppImage</h3>
-        <p class="muted">AppImage · no install required</p>
-        <a href="{BASE}/Veesker_{RELEASE}_amd64.AppImage" class="btn primary" target="_blank" rel="noopener">Download for Linux ↗</a>
-        <p class="hint">chmod +x the file before running. Also available as .deb via <a href="{RELEASE_URL}" target="_blank" rel="noopener">GitHub Release</a>.</p>
+        <p class="muted">AppImage or .deb</p>
+        <a href="{RELEASE_URL}" class="btn primary" target="_blank" rel="noopener">Get from GitHub Release ↗</a>
+        <p class="hint">Download <code>.AppImage</code> or <code>.deb</code> from the release page. Run <code>chmod +x</code> before launching the AppImage.</p>
       </div>
     </div>
 
