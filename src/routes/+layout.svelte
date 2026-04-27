@@ -15,6 +15,7 @@
       <a href="/features">Features</a>
       <a href="/pricing">Pricing</a>
       <a href="/docs">Docs</a>
+      <a href="/about">About</a>
       <a href="/contact">Contact</a>
       <a href="https://github.com/gevianajr/veesker" target="_blank" rel="noopener">GitHub ↗</a>
       <a href="/download" class="btn primary">Download</a>
@@ -42,6 +43,7 @@
       <div>
         <h4>Resources</h4>
         <a href="/docs">Documentation</a>
+        <a href="/about">About</a>
         <a href="https://github.com/gevianajr/veesker" target="_blank" rel="noopener">GitHub</a>
         <a href="https://github.com/gevianajr/veesker/issues" target="_blank" rel="noopener">Issues</a>
       </div>
@@ -54,7 +56,8 @@
       </div>
     </div>
     <div class="foot-bottom muted">
-      Built by <a href="https://github.com/gevianajr" target="_blank" rel="noopener">Geraldo Viana Jr</a> · Brazil · <a href="https://www.linkedin.com/in/geraldovianajr/" target="_blank" rel="noopener">LinkedIn</a>
+      Created by <a href="https://github.com/gevianajr" target="_blank" rel="noopener">Geraldo Ferreira Viana Júnior</a> · Designed 2022 · Shipped 2026 · São Paulo, Brazil ·
+      <a href="https://www.linkedin.com/in/geraldovianajr/" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </div>
 </footer>
