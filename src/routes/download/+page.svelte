@@ -1,6 +1,7 @@
 <script lang="ts">
   import Seo from "$lib/seo.svelte";
-  const RELEASE = "0.2.0";
+  const RELEASE = "0.2.3";
+  const BASE = `https://github.com/gevianajr/veesker/releases/download/v${RELEASE}`;
   const RELEASE_URL = `https://github.com/gevianajr/veesker/releases/tag/v${RELEASE}`;
 </script>
 
@@ -24,28 +25,40 @@
         <div class="dl-os">🪟 Windows 10/11 · x64</div>
         <h3>Veesker_{RELEASE}_x64-setup.exe</h3>
         <p class="muted">NSIS installer · ~34 MB</p>
-        <a href="{RELEASE_URL}" class="btn primary" target="_blank" rel="noopener">Get from GitHub Release ↗</a>
-        <p class="hint">SmartScreen will warn — code signing in progress. Click "More info" → "Run anyway".</p>
+        <a href="{BASE}/Veesker_{RELEASE}_x64-setup.exe" class="btn primary" target="_blank" rel="noopener">Download for Windows ↗</a>
+        <p class="hint">SmartScreen may warn on first run — click "More info" → "Run anyway".</p>
       </div>
       <div class="dl">
-        <div class="dl-os">🍎 macOS · Apple Silicon + Intel</div>
-        <h3>Veesker_{RELEASE}_universal.dmg</h3>
-        <p class="muted">DMG · coming soon (Apple Silicon needs separate build)</p>
-        <a href="{RELEASE_URL}" class="btn" target="_blank" rel="noopener">Build from source ↗</a>
-        <p class="hint">macOS releases will be published once the build pipeline lands.</p>
+        <div class="dl-os">🍎 macOS · Apple Silicon</div>
+        <h3>Veesker_{RELEASE}_aarch64.dmg</h3>
+        <p class="muted">DMG · M1 / M2 / M3 / M4</p>
+        <a href="{BASE}/Veesker_{RELEASE}_aarch64.dmg" class="btn primary" target="_blank" rel="noopener">Download for macOS (ARM) ↗</a>
+        <p class="hint">Right-click → Open on first launch if Gatekeeper blocks.</p>
       </div>
       <div class="dl">
-        <div class="dl-os">🐧 Linux</div>
-        <h3>Build from source</h3>
-        <p class="muted">No packaged Linux release yet</p>
-        <a href="https://github.com/gevianajr/veesker#build-from-source" class="btn" target="_blank" rel="noopener">Build instructions ↗</a>
+        <div class="dl-os">🍎 macOS · Intel</div>
+        <h3>Veesker_{RELEASE}_x64.dmg</h3>
+        <p class="muted">DMG · Intel Core i5 / i7 / i9</p>
+        <a href="{BASE}/Veesker_{RELEASE}_x64.dmg" class="btn primary" target="_blank" rel="noopener">Download for macOS (Intel) ↗</a>
+        <p class="hint">Right-click → Open on first launch if Gatekeeper blocks.</p>
+      </div>
+      <div class="dl">
+        <div class="dl-os">🐧 Linux · x64</div>
+        <h3>Veesker_{RELEASE}_amd64.AppImage</h3>
+        <p class="muted">AppImage · no install required</p>
+        <a href="{BASE}/Veesker_{RELEASE}_amd64.AppImage" class="btn primary" target="_blank" rel="noopener">Download for Linux ↗</a>
+        <p class="hint">chmod +x the file before running. Also available as .deb via <a href="{RELEASE_URL}" target="_blank" rel="noopener">GitHub Release</a>.</p>
       </div>
     </div>
 
     <div class="checksums">
       <h3>Verify your download (optional but recommended)</h3>
       <p class="muted">SHA-256 checksums and Ed25519 signatures are published with each GitHub release.</p>
-      <pre class="cmd">Get-FileHash -Algorithm SHA256 .\Veesker_{RELEASE}_x64-setup.exe</pre>
+      <pre class="cmd"># Windows (PowerShell)
+Get-FileHash -Algorithm SHA256 .\Veesker_{RELEASE}_x64-setup.exe
+
+# macOS / Linux
+shasum -a 256 Veesker_{RELEASE}_aarch64.dmg</pre>
     </div>
 
     <div class="auto-update">
@@ -63,7 +76,7 @@
   h1 { font-size: 44px; margin-bottom: 16px; }
   .lead { color: var(--text-muted); font-size: 16px; margin-bottom: 36px; }
   .downloads {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
     margin-bottom: 50px;
   }
   .dl {
@@ -95,7 +108,10 @@
     color: var(--text); margin: 0; overflow-x: auto;
   }
 
-  @media (max-width: 880px) {
+  @media (max-width: 1100px) {
+    .downloads { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
     .downloads { grid-template-columns: 1fr; }
   }
 </style>
