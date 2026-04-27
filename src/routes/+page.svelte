@@ -4,7 +4,7 @@
 
 <Seo
   title="Veesker"
-  description="Open-source desktop IDE for Oracle 23ai. Multi-statement SQL editor with virtualized grids, PL/SQL debugger, AI assistant with database access, vector search studio, and a no-code REST API builder — all in one app, Apache 2.0."
+  description="Open-source desktop IDE for Oracle 9i through 26ai — including full 23ai vector search. Multi-statement SQL editor, PL/SQL debugger, AI assistant with live database access, vector search studio, and a no-code REST API builder. No Oracle client required. Apache 2.0."
   path="/"
 />
 
@@ -12,10 +12,10 @@
   <div class="container hero-inner">
     <img src="/veesker-logo.png" alt="Veesker" class="hero-logo" width="96" height="96" />
     <div class="badge">Open source · Apache 2.0</div>
-    <h1>The Oracle 23ai studio for<br/>SQL, AI, vectors, and APIs.</h1>
+    <h1>The Oracle studio for<br/>SQL, AI, vectors, and APIs.</h1>
     <p class="lead">
-      A native desktop IDE for Oracle 23ai. Multi-statement SQL editor with virtualized grids,
-      a PL/SQL debugger, an AI assistant with live database access, a vector search studio,
+      Works with Oracle 9i through 26ai — including full 23ai vector search and ORDS support.
+      Multi-statement SQL editor, PL/SQL debugger, AI assistant with live database access,
       and a no-code REST API builder — all in one app, no Oracle client required.
     </p>
     <div class="cta">
