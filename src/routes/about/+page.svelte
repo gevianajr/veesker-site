@@ -1,4 +1,4 @@
-<script lang="ts">
+﻿<script lang="ts">
   import Seo from "$lib/seo.svelte";
 </script>
 
@@ -26,7 +26,7 @@
         <div class="links">
           <a href="https://github.com/gevianajr" target="_blank" rel="noopener">GitHub @gevianajr</a>
           <a href="https://www.linkedin.com/in/geraldovianajr/" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="mailto:geraldo@veesker.cloud">geraldo@veesker.cloud</a>
+          <a href="mailto:geraldovianajr@veesker.cloud">geraldovianajr@veesker.cloud</a>
         </div>
       </div>
     </div>
@@ -60,7 +60,7 @@
     <ul class="connect-list">
       <li><span class="lbl">GitHub</span> <a href="https://github.com/gevianajr" target="_blank" rel="noopener">@gevianajr</a></li>
       <li><span class="lbl">LinkedIn</span> <a href="https://www.linkedin.com/in/geraldovianajr/" target="_blank" rel="noopener">Geraldo Viana Jr</a></li>
-      <li><span class="lbl">Email</span> <a href="mailto:geraldo@veesker.cloud">geraldo@veesker.cloud</a></li>
+      <li><span class="lbl">Email</span> <a href="mailto:geraldovianajr@veesker.cloud">geraldovianajr@veesker.cloud</a></li>
       <li><span class="lbl">Repo</span> <a href="https://github.com/gevianajr/veesker" target="_blank" rel="noopener">github.com/gevianajr/veesker</a></li>
     </ul>
 
@@ -74,7 +74,7 @@
     </p>
     <p>
       For permission to use the Veesker name or mascot in any commercial or promotional context, contact
-      <a href="mailto:geefatec@gmail.com">geefatec@gmail.com</a>.
+      <a href="mailto:geraldovianajr@veesker.cloud">geraldovianajr@veesker.cloud</a>.
     </p>
 
   </div>

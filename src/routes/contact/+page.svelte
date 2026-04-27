@@ -1,4 +1,4 @@
-<script lang="ts">
+﻿<script lang="ts">
   import { browser } from "$app/environment";
   import Seo from "$lib/seo.svelte";
 
@@ -11,7 +11,7 @@
     }
   });
 
-  const mailto = $derived(`mailto:geefatec@gmail.com?subject=${encodeURIComponent("[Veesker] " + subject)}`);
+  const mailto = $derived(`mailto:geraldovianajr@veesker.cloud?subject=${encodeURIComponent("[Veesker] " + subject)}`);
 </script>
 
 <Seo
@@ -33,7 +33,7 @@
       </div>
       <div class="row">
         <span class="lbl">Email:</span>
-        <a href={mailto} class="val email">geefatec@gmail.com</a>
+        <a href={mailto} class="val email">geraldovianajr@veesker.cloud</a>
       </div>
       <div class="row">
         <span class="lbl">Response time:</span>
