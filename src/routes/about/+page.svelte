@@ -19,7 +19,7 @@
   <div class="container narrow">
 
     <div class="creator-card">
-      <!-- TODO: add /about/profile.jpg -->
+      <img src="/geraldo-viana.jpg" alt="Geraldo Ferreira Viana Júnior" class="profile-photo" />
       <div class="creator-info">
         <h2>Geraldo Ferreira Viana Júnior</h2>
         <p class="role">Senior Oracle Engineer · Creator of Veesker</p>
@@ -112,6 +112,16 @@
     border-radius: 12px;
     padding: 28px;
     margin-bottom: 48px;
+  }
+
+  .profile-photo {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    flex-shrink: 0;
+    border: 2px solid var(--border);
   }
 
   .creator-info h2 {
