@@ -1,6 +1,6 @@
 <script lang="ts">
   import Seo from "$lib/seo.svelte";
-  const RELEASE = "0.2.3";
+  const RELEASE = "0.2.4";
   const BASE = `https://github.com/gevianajr/veesker/releases/download/v${RELEASE}`;
   const RELEASE_URL = `https://github.com/gevianajr/veesker/releases/tag/v${RELEASE}`;
 </script>
