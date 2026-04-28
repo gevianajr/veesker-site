@@ -3,31 +3,32 @@
 </script>
 
 <Seo
-  title="Veesker"
-  description="Open-source desktop IDE for Oracle 9i through 26ai — including full 23ai vector search. Multi-statement SQL editor, PL/SQL debugger, AI assistant with live database access, vector search studio, and a no-code REST API builder. No Oracle client required. Apache 2.0."
+  title="Veesker Community Edition"
+  description="The Oracle desktop IDE — free forever under Apache 2.0. Full SQL/PL/SQL IDE, PL/SQL debugger, BYOK AI, vector search, ORDS studio. Works with Oracle 9i through 26ai. No Oracle client required."
   path="/"
 />
 
 <section class="hero">
   <div class="container hero-inner">
-    <img src="/veesker-logo.png" alt="Veesker" class="hero-logo" width="96" height="96" />
-    <div class="badge">Open source · Apache 2.0</div>
-    <h1>The Oracle studio for<br/>SQL, AI, vectors, and APIs.</h1>
+    <img src="/ce-logo.png" alt="Veesker Community Edition" class="hero-logo" width="96" height="96" />
+    <div class="badge">Community Edition · Free Forever</div>
+    <h1>The Oracle IDE,<br/>free forever.</h1>
     <p class="lead">
-      Works with Oracle 9i through 26ai — including full 23ai vector search and ORDS support.
-      Multi-statement SQL editor, PL/SQL debugger, AI assistant with live database access,
-      and a no-code REST API builder — all in one app, no Oracle client required.
+      Full SQL/PL/SQL IDE, debugger, BYOK AI, vector search, and ORDS studio in one app.
+      Works with Oracle 9i through 26ai. No Oracle client required. Apache 2.0.
     </p>
     <div class="cta">
-      <a href="/download" class="btn primary">Download for Windows</a>
+      <a href="/download" class="btn primary">Download free</a>
       <a href="https://github.com/gevianajr/veesker" class="btn" target="_blank" rel="noopener">View on GitHub</a>
     </div>
     <div class="trust">
       <span>Apache 2.0</span>
       <span>·</span>
-      <span>Tauri 2 + Svelte 5 + Bun</span>
+      <span>Community Edition</span>
       <span>·</span>
       <span>No telemetry</span>
+      <span>·</span>
+      <span>Tauri 2 + Svelte 5 + Bun</span>
     </div>
   </div>
 </section>
@@ -42,9 +43,9 @@
         <p>PL/SQL-aware splitter, per-statement results, query cancellation, virtualized grids for million-row datasets.</p>
       </div>
       <div class="feat">
-        <div class="ico"><img src="/veesker-logo.png" alt="" width="36" height="36" /></div>
-        <h3>Veesker AI</h3>
-        <p>An assistant that runs live SELECT queries against your schema to answer questions. Not autocomplete — actual database access.</p>
+        <div class="ico">🐑</div>
+        <h3>AI — BYOK</h3>
+        <p>Bring your own Anthropic key. Explain any SQL and generate SQL from a plain-text description. No usage caps beyond your own plan.</p>
       </div>
       <div class="feat">
         <div class="ico">🔍</div>
@@ -59,7 +60,7 @@
       <div class="feat">
         <div class="ico">🚀</div>
         <h3>VRAS — REST API Studio</h3>
-        <p>Auto-CRUD on tables, custom SQL endpoints, procedure-to-REST mapping, OAuth client management. All via Oracle ORDS.</p>
+        <p>Auto-CRUD on tables, custom SQL endpoints, procedure-to-REST mapping, OAuth client management via Oracle ORDS.</p>
       </div>
       <div class="feat">
         <div class="ico">🛡️</div>
@@ -70,17 +71,64 @@
   </div>
 </section>
 
+<section class="tiers">
+  <div class="container">
+    <h2>Community Edition vs Veesker Cloud</h2>
+    <p class="tiers-lead">The IDE is free forever. Cloud adds managed AI with deep schema context — no API key needed, runs live queries against your database.</p>
+    <div class="tier-grid">
+      <div class="tier-card ce">
+        <div class="tier-header">
+          <img src="/ce-logo.png" alt="" width="28" height="28" class="tier-logo" />
+          <div>
+            <span class="tier-name">Community Edition</span>
+            <span class="tier-price">Free forever · Apache 2.0</span>
+          </div>
+        </div>
+        <ul>
+          <li>Full SQL / PL/SQL IDE</li>
+          <li>PL/SQL debugger</li>
+          <li>Schema browser + DataFlow graph</li>
+          <li>ORDS / REST API Studio</li>
+          <li>Vector search studio</li>
+          <li>Terminal (PTY)</li>
+          <li>BYOK AI — explain &amp; generate SQL</li>
+          <li>Apache 2.0 — fork and self-host freely</li>
+        </ul>
+        <a href="/download" class="btn primary">Download free</a>
+      </div>
+      <div class="tier-card cloud">
+        <div class="tier-header">
+          <span class="tier-icon">☁</span>
+          <div>
+            <span class="tier-name">Veesker Cloud</span>
+            <span class="tier-price">Coming soon</span>
+          </div>
+        </div>
+        <ul>
+          <li>Everything in CE, plus:</li>
+          <li>Schema-aware AI — knows your tables</li>
+          <li>AI runs live queries for context</li>
+          <li>Query optimization + performance AI</li>
+          <li>No API key required</li>
+          <li>Team features + shared queries</li>
+          <li>Usage dashboard + billing</li>
+        </ul>
+        <a href="/pricing" class="btn">See plans →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="proof">
   <div class="container proof-inner">
     <h2>Open source. No vendor lock-in.</h2>
     <p class="lead">
-      The entire codebase is on GitHub under Apache License 2.0. No feature gating, no telemetry,
-      no license server check. Larger organizations support development through a paid subscription —
-      same model as Docker Desktop.
+      The entire IDE is on GitHub under Apache 2.0. No feature gating, no telemetry,
+      no license server. Cloud is an optional premium layer — the CE IDE is complete on its own.
     </p>
     <div class="cta">
-      <a href="/pricing" class="btn primary">See pricing</a>
-      <a href="https://github.com/gevianajr/veesker/blob/main/COMMERCIAL_USE.md" class="btn" target="_blank" rel="noopener">Read commercial-use policy</a>
+      <a href="/pricing" class="btn primary">See Cloud plans</a>
+      <a href="https://github.com/gevianajr/veesker/blob/main/COMMERCIAL_USE.md" class="btn" target="_blank" rel="noopener">Commercial-use policy</a>
     </div>
   </div>
 </section>
@@ -164,11 +212,6 @@
     display: flex;
     align-items: center;
   }
-  .feat .ico img {
-    width: 36px;
-    height: 36px;
-    object-fit: contain;
-  }
   .feat h3 {
     font-size: 17px;
     margin: 0 0 10px;
@@ -179,6 +222,89 @@
     line-height: 1.55;
     margin: 0;
   }
+
+  /* CE vs Cloud tiers */
+  .tiers {
+    padding: 0 0 80px;
+  }
+  .tiers h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 14px;
+  }
+  .tiers-lead {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 15px;
+    line-height: 1.6;
+    max-width: 660px;
+    margin: 0 auto 36px;
+  }
+  .tier-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  .tier-card {
+    border-radius: 12px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .tier-card.ce {
+    background: linear-gradient(160deg, rgba(126,201,106,0.07), rgba(126,201,106,0.02));
+    border: 1px solid rgba(126,201,106,0.3);
+  }
+  .tier-card.cloud {
+    background: linear-gradient(160deg, rgba(106,160,245,0.07), rgba(106,160,245,0.02));
+    border: 1px solid rgba(106,160,245,0.3);
+  }
+  .tier-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .tier-logo {
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+  .tier-icon {
+    font-size: 24px;
+    width: 28px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .tier-name {
+    display: block;
+    font-weight: 700;
+    font-size: 15px;
+  }
+  .tier-card.ce .tier-name { color: #7ec96a; }
+  .tier-card.cloud .tier-name { color: #6aa0f5; }
+  .tier-price {
+    display: block;
+    font-size: 11.5px;
+    color: var(--text-muted);
+    margin-top: 1px;
+  }
+  .tier-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+  }
+  .tier-card li {
+    padding: 6px 0;
+    font-size: 13.5px;
+    color: var(--text-muted);
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .tier-card li:first-child { border-top: none; }
+  .tier-card li::before { content: "✓ "; color: var(--accent-text); }
+  .tier-card.cloud li:first-child::before { content: ""; }
 
   .proof {
     padding: 80px 0;
@@ -195,5 +321,6 @@
   @media (max-width: 880px) {
     h1 { font-size: 40px; }
     .feat-grid { grid-template-columns: 1fr; }
+    .tier-grid { grid-template-columns: 1fr; }
   }
 </style>

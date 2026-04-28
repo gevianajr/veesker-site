@@ -7,17 +7,16 @@
 
 <Seo
   title="Download"
-  description="Download Veesker for Windows, macOS, and Linux. Free, open source under Apache 2.0. No account required, no telemetry, no Oracle Instant Client needed."
+  description="Download Veesker Community Edition for Windows, macOS, and Linux. Free forever under Apache 2.0. No account required, no telemetry, no Oracle Instant Client needed."
   path="/download"
 />
 
 <section class="hero">
   <div class="container">
-    <h1>Download Veesker</h1>
+    <h1>Download Veesker CE</h1>
     <p class="lead">
-      Latest release: <strong>v{RELEASE}</strong>.
-      Free for personal use and small organizations.
-      <a href="/pricing">Pricing →</a>
+      Community Edition · v{RELEASE} · Free forever under Apache 2.0.
+      <a href="/pricing">CE vs Cloud →</a>
     </p>
 
     <div class="downloads">

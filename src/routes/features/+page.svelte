@@ -4,14 +4,14 @@
 
 <Seo
   title="Features"
-  description="Everything Veesker does: multi-statement SQL editor, PL/SQL debugger, Sheep AI database assistant, vector search studio, REST API builder (VRAS), schema explorer, ER diagrams, audit log."
+  description="Everything Veesker Community Edition does: multi-statement SQL editor, PL/SQL debugger, BYOK AI, vector search studio, ORDS REST API builder, schema explorer, audit log. All free under Apache 2.0."
   path="/features"
 />
 
 <section class="hero">
   <div class="container">
     <h1>Features</h1>
-    <p class="lead">Everything Veesker does today. All free under Apache 2.0, all available in every tier.</p>
+    <p class="lead">Everything in Veesker Community Edition — all free under Apache 2.0. <a href="/pricing">Veesker Cloud</a> adds schema-aware AI with live database access.</p>
   </div>
 </section>
 
@@ -48,14 +48,24 @@
     </div>
 
     <div class="feat-block">
-      <h2>Veesker AI — Sheep 🐑</h2>
+      <h2>AI — BYOK 🐑 <span class="edition-tag ce-tag">CE · free</span></h2>
       <ul>
-        <li><strong>Live database access</strong> — Sheep runs SELECT queries against your real schema to answer questions.</li>
-        <li><strong>Context-aware</strong> — knows the current schema, currently selected object, live connection.</li>
-        <li><strong>Explain & analyze</strong> — highlight any SQL → "Explain with AI" → line-by-line walkthrough.</li>
-        <li><strong>Generate SQL</strong> — describe what you want, get a SQL draft to review and run.</li>
-        <li><strong>Markdown rendering</strong> — code blocks, inline code, syntax-highlighted.</li>
-        <li><strong>API key in OS keychain</strong> — Anthropic key stored locally, fallback to env var.</li>
+        <li><strong>Explain SQL</strong> — highlight any SQL → "Explain with AI" → line-by-line walkthrough in plain language.</li>
+        <li><strong>Generate SQL</strong> — describe what you need, get a SQL draft to review and run.</li>
+        <li><strong>Bring your own key</strong> — Anthropic API key stored in OS keychain; no key sent to any Veesker server.</li>
+        <li><strong>Markdown rendering</strong> — code blocks, inline code, syntax-highlighted output.</li>
+        <li><strong>Text-only</strong> — CE AI does not access your database. Schema-aware AI that runs live queries is a Veesker Cloud feature.</li>
+      </ul>
+    </div>
+
+    <div class="feat-block cloud-block">
+      <h2>AI — Schema-aware <span class="edition-tag cloud-tag">Cloud</span></h2>
+      <ul>
+        <li><strong>Live database access</strong> — AI runs SELECT queries against your real schema to answer questions with full context.</li>
+        <li><strong>Schema-aware context</strong> — knows your tables, columns, PKs, FKs, indexes, and currently selected object.</li>
+        <li><strong>Query optimization</strong> — AI analyzes query plans and suggests index or rewrite improvements.</li>
+        <li><strong>Procedure generation + debugging</strong> — context-aware PL/SQL generation grounded in your actual data model.</li>
+        <li><strong>No API key required</strong> — managed inference, no user key needed.</li>
       </ul>
     </div>
 
@@ -141,4 +151,17 @@
   }
   .feat-block li:first-child { border-top: none; }
   .feat-block li strong { color: var(--text); }
+  .edition-tag {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 2px 8px;
+    border-radius: 100px;
+    vertical-align: middle;
+    margin-left: 6px;
+  }
+  .ce-tag { background: rgba(126,201,106,0.15); color: #7ec96a; }
+  .cloud-tag { background: rgba(106,160,245,0.15); color: #6aa0f5; }
+  .cloud-block h2 { color: #6aa0f5; }
 </style>
