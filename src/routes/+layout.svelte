@@ -17,7 +17,7 @@
       <a href="/docs">Docs</a>
       <a href="/about">About</a>
       <a href="/contact">Contact</a>
-      <a href="https://github.com/gevianajr/veesker" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="https://github.com/Veesker-Cloud/veesker" target="_blank" rel="noopener">GitHub ↗</a>
       <a href="/download" class="btn primary">Download</a>
     </nav>
   </div>
@@ -44,15 +44,15 @@
         <h4>Resources</h4>
         <a href="/docs">Documentation</a>
         <a href="/about">About</a>
-        <a href="https://github.com/gevianajr/veesker" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://github.com/gevianajr/veesker/issues" target="_blank" rel="noopener">Issues</a>
+        <a href="https://github.com/Veesker-Cloud/veesker" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/Veesker-Cloud/veesker/issues" target="_blank" rel="noopener">Issues</a>
       </div>
       <div>
         <h4>Legal</h4>
-        <a href="https://github.com/gevianajr/veesker/blob/main/LICENSE" target="_blank" rel="noopener">License (Apache 2.0)</a>
-        <a href="https://github.com/gevianajr/veesker/blob/main/COMMERCIAL_USE.md" target="_blank" rel="noopener">Commercial Use</a>
-        <a href="https://github.com/gevianajr/veesker/blob/main/TERMS_OF_USE.md" target="_blank" rel="noopener">Terms of Use</a>
-        <a href="https://github.com/gevianajr/veesker/blob/main/SECURITY.md" target="_blank" rel="noopener">Security</a>
+        <a href="https://github.com/Veesker-Cloud/veesker/blob/main/LICENSE" target="_blank" rel="noopener">License (Apache 2.0)</a>
+        <a href="https://github.com/Veesker-Cloud/veesker/blob/main/COMMERCIAL_USE.md" target="_blank" rel="noopener">Commercial Use</a>
+        <a href="https://github.com/Veesker-Cloud/veesker/blob/main/TERMS_OF_USE.md" target="_blank" rel="noopener">Terms of Use</a>
+        <a href="https://github.com/Veesker-Cloud/veesker/blob/main/SECURITY.md" target="_blank" rel="noopener">Security</a>
       </div>
     </div>
     <div class="foot-bottom muted">

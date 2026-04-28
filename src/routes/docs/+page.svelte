@@ -14,39 +14,39 @@
     <p class="lead">All docs live in the public GitHub repository alongside the code.</p>
 
     <div class="docs">
-      <a class="doc" href="https://github.com/gevianajr/veesker/blob/main/README.md" target="_blank" rel="noopener">
+      <a class="doc" href="https://github.com/Veesker-Cloud/veesker/blob/main/README.md" target="_blank" rel="noopener">
         <h3>README →</h3>
         <p>Project overview, features, install, build instructions.</p>
       </a>
-      <a class="doc" href="https://github.com/gevianajr/veesker/blob/main/CLAUDE.md" target="_blank" rel="noopener">
+      <a class="doc" href="https://github.com/Veesker-Cloud/veesker/blob/main/CLAUDE.md" target="_blank" rel="noopener">
         <h3>Development setup →</h3>
         <p>Windows + macOS prerequisites, build commands, troubleshooting.</p>
       </a>
-      <a class="doc" href="https://github.com/gevianajr/veesker/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">
+      <a class="doc" href="https://github.com/Veesker-Cloud/veesker/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">
         <h3>Contributing →</h3>
         <p>How to set up dev env, code conventions, PR workflow.</p>
       </a>
-      <a class="doc" href="https://github.com/gevianajr/veesker/blob/main/COMMERCIAL_USE.md" target="_blank" rel="noopener">
+      <a class="doc" href="https://github.com/Veesker-Cloud/veesker/blob/main/COMMERCIAL_USE.md" target="_blank" rel="noopener">
         <h3>Commercial use →</h3>
         <p>Eligibility for free use, when subscription is required.</p>
       </a>
-      <a class="doc" href="https://github.com/gevianajr/veesker/blob/main/TERMS_OF_USE.md" target="_blank" rel="noopener">
+      <a class="doc" href="https://github.com/Veesker-Cloud/veesker/blob/main/TERMS_OF_USE.md" target="_blank" rel="noopener">
         <h3>Terms of use →</h3>
         <p>Warranty disclaimer, liability limitation, user responsibilities.</p>
       </a>
-      <a class="doc" href="https://github.com/gevianajr/veesker/blob/main/SECURITY.md" target="_blank" rel="noopener">
+      <a class="doc" href="https://github.com/Veesker-Cloud/veesker/blob/main/SECURITY.md" target="_blank" rel="noopener">
         <h3>Security →</h3>
         <p>Vulnerability reporting policy, scope, supported versions.</p>
       </a>
-      <a class="doc" href="https://github.com/gevianajr/veesker/blob/main/CODE_OF_CONDUCT.md" target="_blank" rel="noopener">
+      <a class="doc" href="https://github.com/Veesker-Cloud/veesker/blob/main/CODE_OF_CONDUCT.md" target="_blank" rel="noopener">
         <h3>Code of Conduct →</h3>
         <p>Contributor Covenant 2.1.</p>
       </a>
-      <a class="doc" href="https://github.com/gevianajr/veesker/blob/main/docs/AUTO_UPDATE.md" target="_blank" rel="noopener">
+      <a class="doc" href="https://github.com/Veesker-Cloud/veesker/blob/main/docs/AUTO_UPDATE.md" target="_blank" rel="noopener">
         <h3>Auto-update →</h3>
         <p>How the Tauri updater works + release process.</p>
       </a>
-      <a class="doc" href="https://github.com/gevianajr/veesker/blob/main/docs/ENTERPRISE.md" target="_blank" rel="noopener">
+      <a class="doc" href="https://github.com/Veesker-Cloud/veesker/blob/main/docs/ENTERPRISE.md" target="_blank" rel="noopener">
         <h3>Enterprise strategy →</h3>
         <p>Open core boundary, SaaS architecture, paid add-on roadmap.</p>
       </a>
