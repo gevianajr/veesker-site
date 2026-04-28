@@ -19,7 +19,7 @@
     </p>
     <div class="cta">
       <a href="/download" class="btn primary">Download free</a>
-      <a href="https://github.com/gevianajr/veesker" class="btn" target="_blank" rel="noopener">View on GitHub</a>
+      <a href="https://github.com/Veesker-Cloud/veesker" class="btn" target="_blank" rel="noopener">View on GitHub</a>
     </div>
     <div class="trust">
       <span>Apache 2.0</span>
@@ -109,6 +109,8 @@
           <li>Schema-aware AI — knows your tables</li>
           <li>AI runs live queries for context</li>
           <li>Query optimization + performance AI</li>
+          <li>AI-generated charts via natural language</li>
+          <li>Debugger AI — runtime analysis + suggestions</li>
           <li>No API key required</li>
           <li>Team features + shared queries</li>
           <li>Usage dashboard + billing</li>
@@ -128,7 +130,7 @@
     </p>
     <div class="cta">
       <a href="/pricing" class="btn primary">See Cloud plans</a>
-      <a href="https://github.com/gevianajr/veesker/blob/main/COMMERCIAL_USE.md" class="btn" target="_blank" rel="noopener">Commercial-use policy</a>
+      <a href="https://github.com/Veesker-Cloud/veesker/blob/main/COMMERCIAL_USE.md" class="btn" target="_blank" rel="noopener">Commercial-use policy</a>
     </div>
   </div>
 </section>

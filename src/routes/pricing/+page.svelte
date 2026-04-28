@@ -47,7 +47,7 @@
         </ul>
         <p class="plan-fine">
           Free for individuals, OSS contributors, students, and organizations with fewer than 50 employees and under US$ 5M revenue.
-          See <a href="https://github.com/gevianajr/veesker/blob/main/COMMERCIAL_USE.md" target="_blank" rel="noopener">COMMERCIAL_USE.md</a> for larger organizations.
+          See <a href="https://github.com/Veesker-Cloud/veesker/blob/main/COMMERCIAL_USE.md" target="_blank" rel="noopener">COMMERCIAL_USE.md</a> for larger organizations.
         </p>
       </div>
 
@@ -67,6 +67,8 @@
           <li>Schema-aware AI — AI knows your tables, columns, PKs, FKs</li>
           <li>AI runs live SELECT queries for context</li>
           <li>Query optimization + performance analysis</li>
+          <li>AI-generated charts via natural language</li>
+          <li>Debugger AI — runtime analysis + compile error suggestions</li>
           <li>Procedure generation + debugging AI</li>
           <li>No API key required</li>
           <li>Team features + shared queries</li>

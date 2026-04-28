@@ -65,6 +65,8 @@
         <li><strong>Schema-aware context</strong> — knows your tables, columns, PKs, FKs, indexes, and currently selected object.</li>
         <li><strong>Query optimization</strong> — AI analyzes query plans and suggests index or rewrite improvements.</li>
         <li><strong>Procedure generation + debugging</strong> — context-aware PL/SQL generation grounded in your actual data model.</li>
+        <li><strong>Charts via natural language</strong> — describe a chart in natural language, AI generates and pins it to your dashboard.</li>
+        <li><strong>Debugger AI</strong> — runtime execution analysis, call stack insights, and compile error suggestions.</li>
         <li><strong>No API key required</strong> — managed inference, no user key needed.</li>
       </ul>
     </div>
