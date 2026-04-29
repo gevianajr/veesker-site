@@ -61,16 +61,16 @@
       <li><span class="lbl">GitHub</span> <a href="https://github.com/gevianajr" target="_blank" rel="noopener">@gevianajr</a></li>
       <li><span class="lbl">LinkedIn</span> <a href="https://www.linkedin.com/in/geraldovianajr/" target="_blank" rel="noopener">Geraldo Viana Jr</a></li>
       <li><span class="lbl">Email</span> <a href="mailto:geraldovianajr@veesker.cloud">geraldovianajr@veesker.cloud</a></li>
-      <li><span class="lbl">Repo</span> <a href="https://github.com/gevianajr/veesker" target="_blank" rel="noopener">github.com/gevianajr/veesker</a></li>
+      <li><span class="lbl">Repo</span> <a href="https://github.com/veesker-cloud/veesker-community-edition" target="_blank" rel="noopener">github.com/veesker-cloud/veesker-community-edition</a></li>
     </ul>
 
     <h2>Trademark and licensing</h2>
     <p>
       "Veesker" and the Veesker sheep mascot are trademarks of Geraldo Ferreira Viana Júnior. The source code
-      is open under <a href="https://github.com/gevianajr/veesker/blob/main/LICENSE" target="_blank" rel="noopener">Apache 2.0</a>,
+      is open under <a href="https://github.com/veesker-cloud/veesker-community-edition/blob/main/LICENSE" target="_blank" rel="noopener">Apache 2.0</a>,
       but the name and logo are not. See the
-      <a href="https://github.com/gevianajr/veesker/blob/main/README.md#trademark-policy" target="_blank" rel="noopener">trademark policy</a>
-      and <a href="https://github.com/gevianajr/veesker/blob/main/NOTICE" target="_blank" rel="noopener">NOTICE file</a> for details.
+      <a href="https://github.com/veesker-cloud/veesker-community-edition/blob/main/README.md#trademark-policy" target="_blank" rel="noopener">trademark policy</a>
+      and <a href="https://github.com/veesker-cloud/veesker-community-edition/blob/main/NOTICE" target="_blank" rel="noopener">NOTICE file</a> for details.
     </p>
     <p>
       For permission to use the Veesker name or mascot in any commercial or promotional context, contact

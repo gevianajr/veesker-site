@@ -270,7 +270,7 @@
     <div class="cta">
       <a href="/download" class="btn primary">Download Community</a>
       <a href="/pricing#cloud" class="btn cloud soon" aria-disabled="true">Coming Soon</a>
-      <a href="https://github.com/gevianajr/veesker" class="btn" target="_blank" rel="noopener">View Source</a>
+      <a href="https://github.com/veesker-cloud/veesker-community-edition" class="btn" target="_blank" rel="noopener">View Source</a>
     </div>
   </div>
 </section>

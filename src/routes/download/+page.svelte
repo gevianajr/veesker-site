@@ -2,8 +2,8 @@
   import Seo from "$lib/seo.svelte";
 
   const RELEASE = "0.2.4";
-  const BASE = `https://github.com/gevianajr/veesker/releases/download/v${RELEASE}`;
-  const RELEASE_URL = `https://github.com/gevianajr/veesker/releases/tag/v${RELEASE}`;
+  const BASE = `https://github.com/veesker-cloud/veesker-community-edition/releases/download/v${RELEASE}`;
+  const RELEASE_URL = `https://github.com/veesker-cloud/veesker-community-edition/releases/tag/v${RELEASE}`;
 </script>
 
 <Seo

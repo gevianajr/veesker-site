@@ -22,7 +22,7 @@
       <a href="/#cloud">Cloud</a>
       <a href="/pricing">Pricing</a>
       <a href="/docs">Docs</a>
-      <a href="https://github.com/gevianajr/veesker" target="_blank" rel="noopener" class="nav-gh">
+      <a href="https://github.com/veesker-cloud/veesker-community-edition" target="_blank" rel="noopener" class="nav-gh">
         <svg class="gh-icon" viewBox="0 0 24 24" aria-hidden="true">
           <path
             d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.43 7.86 10.96.58.11.79-.25.79-.56v-1.99c-3.2.69-3.88-1.36-3.88-1.36-.52-1.32-1.28-1.67-1.28-1.67-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.72-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.14 1.17a10.9 10.9 0 0 1 5.72 0c2.18-1.48 3.14-1.17 3.14-1.17.62 1.58.23 2.75.11 3.04.73.8 1.18 1.82 1.18 3.07 0 4.42-2.7 5.39-5.27 5.67.41.35.78 1.05.78 2.11v3.13c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"
@@ -64,15 +64,15 @@
         <a href="/docs">Documentation</a>
         <a href="/about">About</a>
         <a href="/contact">Contact</a>
-        <a href="https://github.com/gevianajr/veesker" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://github.com/gevianajr/veesker/issues" target="_blank" rel="noopener">Issues</a>
+        <a href="https://github.com/veesker-cloud/veesker-community-edition" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/veesker-cloud/veesker-community-edition/issues" target="_blank" rel="noopener">Issues</a>
       </div>
       <div>
         <h4>Legal</h4>
-        <a href="https://github.com/gevianajr/veesker/blob/main/LICENSE" target="_blank" rel="noopener">License (Apache 2.0)</a>
-        <a href="https://github.com/gevianajr/veesker/blob/main/COMMERCIAL_USE.md" target="_blank" rel="noopener">Commercial Use</a>
-        <a href="https://github.com/gevianajr/veesker/blob/main/TERMS_OF_USE.md" target="_blank" rel="noopener">Terms of Use</a>
-        <a href="https://github.com/gevianajr/veesker/blob/main/SECURITY.md" target="_blank" rel="noopener">Security</a>
+        <a href="https://github.com/veesker-cloud/veesker-community-edition/blob/main/LICENSE" target="_blank" rel="noopener">License (Apache 2.0)</a>
+        <a href="https://github.com/veesker-cloud/veesker-community-edition/blob/main/COMMERCIAL_USE.md" target="_blank" rel="noopener">Commercial Use</a>
+        <a href="https://github.com/veesker-cloud/veesker-community-edition/blob/main/TERMS_OF_USE.md" target="_blank" rel="noopener">Terms of Use</a>
+        <a href="https://github.com/veesker-cloud/veesker-community-edition/blob/main/SECURITY.md" target="_blank" rel="noopener">Security</a>
       </div>
     </div>
     <div class="foot-bottom muted">
