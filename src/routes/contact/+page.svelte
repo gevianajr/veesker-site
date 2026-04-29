@@ -45,9 +45,9 @@
     <div class="links">
       <h3>Other channels</h3>
       <ul>
-        <li><a href="https://github.com/Veesker-Cloud/veesker/issues" target="_blank" rel="noopener">GitHub Issues</a> — bugs and feature requests</li>
-        <li><a href="https://github.com/Veesker-Cloud/veesker/discussions" target="_blank" rel="noopener">GitHub Discussions</a> — community Q&A</li>
-        <li><a href="https://github.com/Veesker-Cloud/veesker/blob/main/SECURITY.md" target="_blank" rel="noopener">Security disclosure</a> — responsible disclosure policy</li>
+        <li><a href="https://github.com/gevianajr/veesker/issues" target="_blank" rel="noopener">GitHub Issues</a> — bugs and feature requests</li>
+        <li><a href="https://github.com/gevianajr/veesker/discussions" target="_blank" rel="noopener">GitHub Discussions</a> — community Q&A</li>
+        <li><a href="https://github.com/gevianajr/veesker/blob/main/SECURITY.md" target="_blank" rel="noopener">Security disclosure</a> — responsible disclosure policy</li>
       </ul>
     </div>
   </div>

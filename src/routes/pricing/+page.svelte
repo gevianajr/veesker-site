@@ -4,7 +4,7 @@
 
 <Seo
   title="Pricing"
-  description="Community Edition is free and open source under Apache 2.0. Veesker Cloud Beta adds optional managed intelligence for schema-aware AI, team workflows, and usage-based operations."
+  description="Community Edition is free and open source under Apache 2.0. Veesker Cloud is coming soon as an optional managed intelligence layer for schema-aware AI, team workflows, and usage-based operations."
   path="/pricing"
 />
 
@@ -12,7 +12,7 @@
   <div class="container">
     <h1>Pricing</h1>
     <p class="lead">
-      Community is free forever and fully open source. Cloud is an optional managed intelligence layer.
+      Community is free forever and fully open source. Cloud is an optional managed intelligence layer, coming soon.
     </p>
   </div>
 </section>
@@ -51,7 +51,7 @@
           <img src="/veesker-cloud-logo.png" alt="Veesker Cloud" width="1536" height="1024" class="plan-logo cloud-logo" loading="lazy" />
           <div>
             <span class="plan-name">Veesker Cloud</span>
-            <span class="plan-badge cloud-badge">Beta</span>
+            <span class="plan-badge cloud-badge">Coming Soon</span>
           </div>
         </div>
 
@@ -60,7 +60,7 @@
           Optional managed AI layer for Oracle teams that want deeper intelligence, automation, and collaboration.
         </p>
 
-        <a href="/contact?subject=Cloud%20Beta%20Access" class="btn cloud plan-btn">Join Cloud Beta</a>
+        <a href="/contact?subject=Cloud%20Waitlist" class="btn cloud soon plan-btn" aria-disabled="true">Coming Soon</a>
 
         <ul class="plan-features">
           <li>Schema-aware AI context</li>
@@ -96,14 +96,14 @@
       <div>
         <h3>Can we adopt in phases?</h3>
         <p>
-          Yes. Start with Community, then enable Cloud Beta for selected teams or projects when needed.
+          Yes. Start with Community, then enable Cloud when it is released for your selected teams or projects.
         </p>
       </div>
       <div>
-        <h3>How do we join the beta?</h3>
+        <h3>How do we follow Cloud availability?</h3>
         <p>
-          Use <a href="/contact?subject=Cloud%20Beta%20Access">Join Cloud Beta</a> and share your use case.
-          We are onboarding teams in controlled waves.
+          Cloud is currently marked as coming soon.
+          Use <a href="/contact?subject=Cloud%20Waitlist">join the waitlist</a> and share your use case.
         </p>
       </div>
     </div>

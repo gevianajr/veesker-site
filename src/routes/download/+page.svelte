@@ -2,13 +2,13 @@
   import Seo from "$lib/seo.svelte";
 
   const RELEASE = "0.2.4";
-  const BASE = `https://github.com/Veesker-Cloud/veesker/releases/download/v${RELEASE}`;
-  const RELEASE_URL = `https://github.com/Veesker-Cloud/veesker/releases/tag/v${RELEASE}`;
+  const BASE = `https://github.com/gevianajr/veesker/releases/download/v${RELEASE}`;
+  const RELEASE_URL = `https://github.com/gevianajr/veesker/releases/tag/v${RELEASE}`;
 </script>
 
 <Seo
   title="Download"
-  description="Download Veesker Community Edition for Windows, macOS, and Linux. Free and open source under Apache 2.0, with optional Veesker Cloud Beta for managed intelligence."
+  description="Download Veesker Community Edition for Windows, macOS, and Linux. Free and open source under Apache 2.0, with optional Veesker Cloud coming soon for managed intelligence."
   path="/download"
 />
 
@@ -17,7 +17,7 @@
     <h1>Download Veesker Community Edition</h1>
     <p class="lead">
       Community Edition - v{RELEASE} - free forever under Apache 2.0.
-      <a href="/pricing#cloud">Explore Cloud Beta</a>
+      Cloud is coming soon.
     </p>
 
     <div class="downloads">

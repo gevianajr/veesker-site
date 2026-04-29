@@ -4,7 +4,7 @@
 
 <Seo
   title="Features"
-  description="Community Edition covers full local-first Oracle workflows. Veesker Cloud Beta adds optional managed intelligence for schema-aware AI and team operations."
+  description="Community Edition covers full local-first Oracle workflows. Veesker Cloud is coming soon as an optional managed intelligence layer for schema-aware AI and team operations."
   path="/features"
 />
 
@@ -12,7 +12,7 @@
   <div class="container">
     <h1>Features</h1>
     <p class="lead">
-      Community Edition remains free under Apache 2.0. <a href="/pricing#cloud">Veesker Cloud Beta</a>
+      Community Edition remains free under Apache 2.0. <a href="/pricing#cloud">Veesker Cloud (Coming Soon)</a>
       is the optional managed intelligence layer for deeper AI workflows.
     </p>
   </div>
@@ -43,7 +43,7 @@
     </div>
 
     <div class="feat-block cloud-block" id="cloud">
-      <h2>Cloud Beta intelligence layer</h2>
+      <h2>Cloud intelligence layer (Coming Soon)</h2>
       <ul>
         <li><strong>Schema-aware AI</strong> grounded in your Oracle structures and operational context.</li>
         <li><strong>Managed AI</strong> with no API key handling inside developer workflows.</li>

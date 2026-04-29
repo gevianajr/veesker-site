@@ -20,7 +20,7 @@
 
 <Seo
   title="Veesker Platform"
-  description="Veesker is the Oracle platform with a free open-source Community IDE and an optional Cloud intelligence layer. Keep database access local and add schema-aware managed AI when you need it."
+  description="Veesker is the Oracle platform with a free open-source Community IDE and an optional Cloud intelligence layer coming soon. Keep database access local and add schema-aware managed AI when you need it."
   path="/"
 />
 
@@ -42,7 +42,7 @@
     <div class="badge">Veesker Platform - Community + Cloud</div>
     <h1>The Oracle IDE,<br />free forever.</h1>
     <p class="lead">
-      Free local-first Oracle IDE now. Optional Veesker Cloud Beta when your team needs managed intelligence.
+      Free local-first Oracle IDE now. Optional Veesker Cloud (Coming Soon) when your team needs managed intelligence.
     </p>
 
     <div class="hero-chips" aria-label="Primary value claims">
@@ -52,15 +52,25 @@
     </div>
 
     <div class="cta">
-      <a href="/download" class="btn primary">Download Community</a>
-      <a href="/pricing#cloud" class="btn cloud">Explore Cloud</a>
+      <a href="/download" class="btn primary cta-btn">
+        <span class="cta-icon-wrap">
+          <img src="/veesker-community-logo.png" alt="" aria-hidden="true" class="cta-icon ce-icon" width="1024" height="1024" />
+        </span>
+        <span>Download Community</span>
+      </a>
+      <a href="/pricing#cloud" class="btn cloud soon cta-btn" aria-disabled="true">
+        <span class="cta-icon-wrap cloud">
+          <img src="/veesker-cloud-logo.png" alt="" aria-hidden="true" class="cta-icon cloud-icon" width="1536" height="1024" />
+        </span>
+        <span>Coming Soon</span>
+      </a>
     </div>
 
     <div class="signals" aria-label="Trust and product signals">
       <div class="signal">Apache 2.0</div>
       <div class="signal">No forced subscription</div>
       <div class="signal">Open-source on GitHub</div>
-      <div class="signal">Cloud Beta active</div>
+      <div class="signal">Cloud coming soon</div>
     </div>
   </div>
 </section>
@@ -194,7 +204,7 @@
           <div>
             <h3>Veesker Cloud</h3>
             <p>AI intelligence layer for Oracle teams</p>
-            <span class="status">Beta</span>
+            <span class="status">Coming Soon</span>
             <span class="best-for">Best for: managed AI, automation, and multi-dev workflows</span>
           </div>
         </div>
@@ -206,7 +216,7 @@
           <li>Intelligent automation</li>
           <li>Team workflows with usage and billing</li>
         </ul>
-        <a href="/pricing#cloud" class="btn cloud layer-btn">Join Cloud Beta</a>
+        <a href="/pricing#cloud" class="btn cloud soon layer-btn" aria-disabled="true">Coming Soon</a>
       </article>
     </div>
   </div>
@@ -259,8 +269,8 @@
     </p>
     <div class="cta">
       <a href="/download" class="btn primary">Download Community</a>
-      <a href="/pricing#cloud" class="btn cloud">See Cloud Beta</a>
-      <a href="https://github.com/Veesker-Cloud/veesker" class="btn" target="_blank" rel="noopener">View Source</a>
+      <a href="/pricing#cloud" class="btn cloud soon" aria-disabled="true">Coming Soon</a>
+      <a href="https://github.com/gevianajr/veesker" class="btn" target="_blank" rel="noopener">View Source</a>
     </div>
   </div>
 </section>
@@ -281,35 +291,35 @@
     width: min(300px, 72vw);
     height: auto;
     object-fit: cover;
-    margin: 0 auto 20px;
+    margin: 0 auto -18px;
     display: block;
     filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.42));
   }
   .badge {
     display: inline-block;
-    padding: 5px 14px;
+    padding: 6px 15px;
     border-radius: 100px;
-    background: linear-gradient(120deg, rgba(179, 62, 31, 0.24), rgba(43, 180, 238, 0.2));
+    background: rgba(14, 13, 12, 0.8);
     border: 1px solid rgba(245, 241, 232, 0.18);
-    color: #f7d7cb;
-    font-size: 11.5px;
+    color: rgba(245, 241, 232, 0.86);
+    font-size: 11px;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.09em;
-    margin-bottom: 20px;
+    letter-spacing: 0.12em;
+    margin-bottom: 14px;
   }
   h1 {
     font-size: 56px;
     line-height: 1.05;
     letter-spacing: -0.03em;
-    margin: 0 0 24px;
+    margin: 0 0 18px;
   }
   .lead {
     font-size: 18px;
     line-height: 1.6;
     color: var(--text-muted);
     max-width: 780px;
-    margin: 0 auto 24px;
+    margin: 0 auto 20px;
   }
   .hero-chips {
     display: flex;
@@ -319,13 +329,15 @@
     margin-bottom: 22px;
   }
   .hero-chips span {
-    font-size: 12px;
-    letter-spacing: 0.02em;
-    padding: 6px 12px;
-    border-radius: 100px;
-    border: 1px solid rgba(245, 241, 232, 0.2);
-    background: rgba(16, 15, 13, 0.6);
-    color: #ece4d8;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(245, 241, 232, 0.19);
+    background: rgba(12, 12, 12, 0.8);
+    color: rgba(245, 241, 232, 0.85);
   }
   .cta {
     display: flex;
@@ -333,25 +345,88 @@
     justify-content: center;
     flex-wrap: wrap;
   }
+  .cta-btn {
+    gap: 10px;
+    padding-left: 12px;
+  }
+  .cta-icon-wrap {
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(16, 15, 13, 0.78);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+  }
+  .cta-btn.primary .cta-icon-wrap {
+    border-color: rgba(255, 216, 203, 0.6);
+    background: rgba(123, 44, 24, 0.45);
+  }
+  .cta-btn.cloud .cta-icon-wrap {
+    border-color: rgba(176, 234, 255, 0.62);
+    background: rgba(20, 90, 121, 0.55);
+  }
+  .cta-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .ce-icon {
+    object-position: center 50%;
+  }
+  .cloud-icon {
+    object-position: center 32%;
+  }
   .signals {
-    margin-top: 28px;
+    margin-top: 26px;
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 10px;
     padding: 10px;
-    border-radius: 12px;
-    border: 1px solid rgba(245, 241, 232, 0.18);
-    background: rgba(8, 8, 8, 0.8);
-    backdrop-filter: blur(2px);
+    border-radius: 14px;
+    border: 1px solid rgba(245, 241, 232, 0.14);
+    background: linear-gradient(180deg, rgba(14, 13, 11, 0.86), rgba(10, 10, 10, 0.9));
   }
   .signal {
-    border: 1px solid rgba(245, 241, 232, 0.26);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(245, 241, 232, 0.2);
     border-radius: 10px;
-    padding: 11px 12px;
-    font-size: 13px;
+    padding: 12px;
+    font-size: 11.5px;
     font-weight: 600;
-    color: rgba(245, 241, 232, 0.96);
-    background: rgba(20, 18, 16, 0.76);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+    color: rgba(245, 241, 232, 0.92);
+    background: rgba(17, 16, 14, 0.9);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+  .signal::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(245, 160, 138, 0.85);
+    box-shadow: 0 0 0 3px rgba(245, 160, 138, 0.14);
+  }
+  .signal:nth-child(3)::before,
+  .signal:nth-child(4)::before {
+    background: rgba(138, 216, 251, 0.9);
+    box-shadow: 0 0 0 3px rgba(138, 216, 251, 0.16);
+  }
+  .signal:hover {
+    border-color: rgba(245, 241, 232, 0.3);
+    background: rgba(21, 20, 18, 0.94);
+    transition: border-color 140ms ease, background 140ms ease;
   }
 
   .features {
@@ -683,10 +758,11 @@
     }
     .hero-logo {
       width: min(250px, 78vw);
+      margin-bottom: -10px;
     }
     .hero-chips span,
     .signal {
-      font-size: 11.5px;
+      font-size: 11px;
     }
     .features h2,
     .platform h2,

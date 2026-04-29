@@ -1,14 +1,20 @@
 <script lang="ts">
+  import { browser } from "$app/environment";
   import Seo from "$lib/seo.svelte";
-  import { page } from "$app/stores";
+  import { onMount } from "svelte";
 
   const messages: Record<string, string> = {
     expired: "This sign-in link has expired.",
     invalid: "This sign-in link is invalid or has already been used.",
   };
 
-  let reason = $derived($page.url.searchParams.get("reason") ?? "invalid");
+  let reason = $state("invalid");
   let message = $derived(messages[reason] ?? messages.invalid);
+
+  onMount(() => {
+    if (!browser) return;
+    reason = new URL(window.location.href).searchParams.get("reason") ?? "invalid";
+  });
 </script>
 
 <Seo
