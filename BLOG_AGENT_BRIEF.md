@@ -50,7 +50,7 @@ Strike through used topics by replacing `[ ]` with `[x]` in this file at end of 
 
 ### Deep-dives (Monday)
 
-- [ ] Oracle 9i to 26ai in one binary — Thick mode auto-discovery explained
+- [x] Oracle 9i to 26ai in one binary — Thick mode auto-discovery explained
 - [ ] Schema-aware AI: why generic LLMs fail at PL/SQL (CONNECT BY, MERGE, hints, bind vars)
 - [ ] Sharing production data without leaking it: VeeskerDB Sandbox internals (X25519 + ChaCha20)
 - [ ] Migrating legacy PL/SQL packages to APEX 24.x — a field guide
