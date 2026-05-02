@@ -93,7 +93,7 @@
       <div class="vdb-step">
         <div class="vdb-step-num">02</div>
         <h3>Mask</h3>
-        <p>CPF, CNPJ, email, and phone columns are auto-detected and masked — hash, redact, static, or partial.</p>
+        <p>Emails, phone numbers, and identifier columns are auto-detected and masked — hash, redact, static, or partial.</p>
       </div>
       <div class="vdb-arrow" aria-hidden="true">→</div>
       <div class="vdb-step">
