@@ -14,13 +14,8 @@
 <header class="site-header" class:nav-open={mobileNavOpen}>
   <div class="container nav">
     <a href="/" class="brand" onclick={closeMobileNav}>
-      <span class="brand-mark">
-        <img src="/app-icon.png" alt="Veesker" class="brand-logo" width="36" height="36" />
-      </span>
-      <span class="brand-meta">
-        <span class="brand-name">VEESKER</span>
-        <span class="brand-kicker">Oracle Platform</span>
-      </span>
+      <img src="/veesker-banner.png" alt="Veesker" class="brand-banner" width="2169" height="725" />
+      <span class="brand-kicker">Oracle Platform</span>
     </a>
 
     <button
@@ -71,7 +66,7 @@
   <div class="container foot">
     <div class="foot-cols">
       <div>
-        <strong>Veesker</strong>
+        <img src="/veesker-banner.png" alt="Veesker" class="footer-banner" width="2169" height="725" />
         <p class="muted">Oracle development platform for the AI agent era — local-first, open source, optional managed cloud.</p>
       </div>
       <div>
@@ -126,9 +121,10 @@
   }
   .brand {
     display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 5px 8px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    padding: 4px 8px;
     border-radius: 10px;
     font-family: "Space Grotesk", sans-serif;
     font-weight: 600;
@@ -136,6 +132,17 @@
     text-decoration: none;
     transition: background 0.14s ease;
     flex: 0 0 auto;
+  }
+  .brand-banner {
+    height: 40px;
+    width: auto;
+    display: block;
+  }
+  .footer-banner {
+    height: 56px;
+    width: auto;
+    display: block;
+    margin-bottom: 10px;
   }
   .brand:hover {
     text-decoration: none;
@@ -376,9 +383,11 @@
     .brand-kicker {
       display: none;
     }
-    .brand-name {
-      font-size: 24px;
-      letter-spacing: 0.05em;
+    .brand-banner {
+      height: 32px;
+    }
+    .footer-banner {
+      height: 44px;
     }
     .foot-cols {
       grid-template-columns: 1fr 1fr;
