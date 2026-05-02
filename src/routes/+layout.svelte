@@ -14,14 +14,13 @@
 <header class="site-header" class:nav-open={mobileNavOpen}>
   <div class="container nav">
     <a href="/" class="brand" onclick={closeMobileNav}>
-      <img
-        src="/veesker-wordmark-banner.png"
-        alt="Veesker"
-        class="brand-banner"
-        width="850"
-        height="280"
-        fetchpriority="high"
-      />
+      <span class="brand-mark">
+        <img src="/app-icon.png" alt="Veesker" class="brand-logo" width="36" height="36" />
+      </span>
+      <span class="brand-meta">
+        <span class="brand-name">VEESKER</span>
+        <span class="brand-kicker">Oracle Platform</span>
+      </span>
     </a>
 
     <button
@@ -71,15 +70,8 @@
 <footer class="site-footer">
   <div class="container foot">
     <div class="foot-cols">
-      <div class="foot-brand">
-        <img
-          src="/veesker-wordmark-banner.png"
-          alt="Veesker"
-          class="foot-banner"
-          width="850"
-          height="280"
-          loading="lazy"
-        />
+      <div>
+        <strong>Veesker</strong>
         <p class="muted">Oracle development platform for the AI agent era — local-first, open source, optional managed cloud.</p>
       </div>
       <div>
@@ -132,10 +124,14 @@
     gap: 20px;
   }
   .brand {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    padding: 4px 6px;
+    gap: 10px;
+    padding: 5px 8px;
     border-radius: 10px;
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 600;
+    color: var(--text);
     text-decoration: none;
     transition: background 0.14s ease;
     flex: 0 0 auto;
@@ -144,11 +140,42 @@
     text-decoration: none;
     background: rgba(255, 255, 255, 0.04);
   }
-  .brand-banner {
-    height: 44px;
-    width: auto;
+  .brand-mark {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: linear-gradient(180deg, rgba(21, 19, 17, 0.95), rgba(14, 12, 10, 0.95));
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
+  }
+  .brand-logo {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
     display: block;
-    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.45));
+  }
+  .brand-meta {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+  .brand-name {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #f7f8fb;
+    -webkit-font-smoothing: antialiased;
+  }
+  .brand-kicker {
+    margin-top: 3px;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+    color: rgba(245, 241, 232, 0.56);
   }
 
   nav {
@@ -273,17 +300,6 @@
     gap: 40px;
     padding: 0 24px;
   }
-  .foot-brand {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .foot-banner {
-    height: 56px;
-    width: auto;
-    display: block;
-    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.45));
-  }
   .foot-cols h4 {
     font-size: 12px;
     color: var(--text-muted);
@@ -356,24 +372,19 @@
       justify-content: center;
       margin-top: 10px;
     }
-    .brand-banner {
-      height: 36px;
+    .brand-kicker {
+      display: none;
+    }
+    .brand-name {
+      font-size: 24px;
+      letter-spacing: 0.05em;
     }
     .foot-cols {
       grid-template-columns: 1fr 1fr;
     }
-    .foot-brand {
-      grid-column: 1 / -1;
-    }
-    .foot-banner {
-      height: 48px;
-    }
   }
 
   @media (max-width: 480px) {
-    .brand-banner {
-      height: 32px;
-    }
     .nav {
       padding: 12px 16px;
     }
