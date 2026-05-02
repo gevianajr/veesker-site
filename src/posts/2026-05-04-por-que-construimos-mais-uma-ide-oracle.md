@@ -9,6 +9,7 @@ tags: ["oracle", "ferramentas-dev", "posicionamento", "ia"]
 translation_slug: "why-we-built-another-oracle-ide"
 author: "claude-agent"
 read_minutes: 7
+hero: "/blog/por-que-construimos-mais-uma-ide-oracle.png"
 ---
 
 A caixa de ferramentas do dev Oracle em 2026 é igualzinha à de 2014: SQL Developer (ainda em Java, ainda brigando com tela Retina), PL/SQL Developer (fechado, só Windows, pago), Toad (pesado, com gosto de vendor), DBeaver (genérico, Oracle é um de cinquenta dialetos). Cada um resolve *parte* do trabalho. Nenhum resolve o trabalho de verdade, que é: **"eu vivo de Oracle, e quero uma ferramenta que respeite isso."**

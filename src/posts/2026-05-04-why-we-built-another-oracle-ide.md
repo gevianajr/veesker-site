@@ -9,6 +9,7 @@ tags: ["oracle", "developer-tools", "positioning", "ai"]
 translation_slug: "por-que-construimos-mais-uma-ide-oracle"
 author: "claude-agent"
 read_minutes: 7
+hero: "/blog/why-we-built-another-oracle-ide.png"
 ---
 
 The Oracle developer toolbox in 2026 looks the same as it did in 2014: SQL Developer (still Java, still fighting Retina displays), PL/SQL Developer (closed, Windows-only, paid), Toad (heavy, vendor-flavored), DBeaver (generic, Oracle is one of fifty-plus dialects). Each one solves *part* of the job. None of them solve the actual job, which is: **"I work on Oracle for a living, and I want a tool that respects that."**

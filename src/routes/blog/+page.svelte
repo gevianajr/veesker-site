@@ -5,26 +5,54 @@
   import { onMount } from "svelte";
 
   let lang = $state<PostLang>("en");
+  let activeTag = $state<string | null>(null);
 
   onMount(() => {
     if (!browser) return;
-    const fromQuery = new URL(window.location.href).searchParams.get("lang");
+    const url = new URL(window.location.href);
+    const fromQuery = url.searchParams.get("lang");
     if (fromQuery === "pt" || fromQuery === "en") {
       lang = fromQuery;
     } else if (navigator.language?.startsWith("pt")) {
       lang = "pt";
     }
+    const tagQuery = url.searchParams.get("tag");
+    if (tagQuery) activeTag = tagQuery;
   });
 
-  const filtered = $derived(allPosts.filter((p) => p.lang === lang));
+  const postsForLang = $derived(allPosts.filter((p) => p.lang === lang));
+
+  const allTags = $derived(() => {
+    const counts = new Map<string, number>();
+    for (const p of postsForLang) {
+      for (const t of p.tags) counts.set(t, (counts.get(t) ?? 0) + 1);
+    }
+    return Array.from(counts.entries())
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+  });
+
+  const filtered = $derived(
+    activeTag ? postsForLang.filter((p) => p.tags.includes(activeTag!)) : postsForLang
+  );
 
   function setLang(next: PostLang) {
     lang = next;
-    if (browser) {
-      const url = new URL(window.location.href);
-      url.searchParams.set("lang", next);
-      window.history.replaceState({}, "", url.toString());
-    }
+    activeTag = null;
+    syncUrl();
+  }
+
+  function setTag(tag: string | null) {
+    activeTag = tag;
+    syncUrl();
+  }
+
+  function syncUrl() {
+    if (!browser) return;
+    const url = new URL(window.location.href);
+    url.searchParams.set("lang", lang);
+    if (activeTag) url.searchParams.set("tag", activeTag);
+    else url.searchParams.delete("tag");
+    window.history.replaceState({}, "", url.toString());
   }
 
   function kindLabel(p: PostSummary): string {
@@ -35,20 +63,15 @@
 
 <Seo
   title="Blog"
-  description="Veesker writes about Oracle development, AI for databases, PL/SQL workflows, and the local-first developer toolchain. Two posts per week — a Monday deep-dive and a Thursday opinion."
+  description="Veesker writes about Oracle development, AI for databases, PL/SQL workflows, and the local-first developer toolchain. Two posts per week."
   path="/blog"
   image="/datamap-hero.png"
   imageAlt="Veesker blog — Oracle, AI, and developer tools"
 />
 
-<svelte:head>
-  <link rel="alternate" type="application/rss+xml" title="Veesker Blog (English)" href="https://veesker.cloud/blog/rss.xml" />
-  <link rel="alternate" type="application/rss+xml" title="Veesker Blog (Português)" href="https://veesker.cloud/blog/pt/rss.xml" />
-</svelte:head>
-
 <section class="hero">
   <div class="container">
-    <div class="eyebrow">{lang === "en" ? "Blog" : "Blog"}</div>
+    <div class="eyebrow">Blog</div>
     <h1>
       {#if lang === "en"}
         Notes from the Oracle + AI workshop.
@@ -69,24 +92,46 @@
     <div class="lang-switch" role="group" aria-label="Language">
       <button class:active={lang === "en"} onclick={() => setLang("en")}>English</button>
       <button class:active={lang === "pt"} onclick={() => setLang("pt")}>Português</button>
-      <a class="rss-link" href={lang === "en" ? "/blog/rss.xml" : "/blog/pt/rss.xml"} target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14" aria-hidden="true">
-          <path d="M6.18 15.64a2.18 2.18 0 1 1 0 4.36 2.18 2.18 0 0 1 0-4.36zM4 4.44V8a12 12 0 0 1 12 12h3.56A15.56 15.56 0 0 0 4 4.44zm0 5.66v3.56A6.34 6.34 0 0 1 10.34 20H13.9A9.9 9.9 0 0 0 4 10.1z"/>
-        </svg>
-        RSS
-      </a>
     </div>
   </div>
 </section>
+
+{#if allTags().length > 0}
+  <section class="topics" aria-label="Filter by topic">
+    <div class="container">
+      <div class="topics-row">
+        <span class="topics-label">{lang === "pt" ? "Tópicos:" : "Topics:"}</span>
+        <button
+          class="topic-chip"
+          class:active={activeTag === null}
+          onclick={() => setTag(null)}
+        >
+          {lang === "pt" ? "Todos" : "All"}
+          <span class="chip-count">{postsForLang.length}</span>
+        </button>
+        {#each allTags() as [tag, count] (tag)}
+          <button
+            class="topic-chip"
+            class:active={activeTag === tag}
+            onclick={() => setTag(activeTag === tag ? null : tag)}
+          >
+            #{tag}
+            <span class="chip-count">{count}</span>
+          </button>
+        {/each}
+      </div>
+    </div>
+  </section>
+{/if}
 
 <section class="posts">
   <div class="container">
     {#if filtered.length === 0}
       <div class="empty">
         {#if lang === "en"}
-          No posts yet in English. Check back Monday.
+          No posts in this language yet. Check back Monday.
         {:else}
-          Nenhum post ainda em Português. Volte na segunda.
+          Nenhum post em Português ainda. Volte na segunda.
         {/if}
       </div>
     {:else}
@@ -94,17 +139,24 @@
         {#each filtered as p (p.slug)}
           <li class="post-card">
             <a href="/blog/{p.slug}" class="post-link">
-              <div class="post-meta">
-                <span class="post-date">{p.date}</span>
-                <span class="post-kind kind-{p.kind}">{kindLabel(p)}</span>
-                <span class="post-read">{readMinutes(p.words)} min read</span>
-              </div>
-              <h2>{p.title}</h2>
-              <p class="post-desc">{p.description}</p>
-              <div class="post-tags">
-                {#each p.tags as t}
-                  <span class="tag">#{t}</span>
-                {/each}
+              {#if p.hero}
+                <div class="post-hero-thumb">
+                  <img src={p.hero} alt="" loading="lazy" />
+                </div>
+              {/if}
+              <div class="post-body">
+                <div class="post-meta">
+                  <span class="post-date">{p.date}</span>
+                  <span class="post-kind kind-{p.kind}">{kindLabel(p)}</span>
+                  <span class="post-read">{readMinutes(p.words)} min read</span>
+                </div>
+                <h2>{p.title}</h2>
+                <p class="post-desc">{p.description}</p>
+                <div class="post-tags">
+                  {#each p.tags as t}
+                    <span class="tag" class:active-tag={t === activeTag}>#{t}</span>
+                  {/each}
+                </div>
               </div>
             </a>
           </li>
@@ -116,7 +168,7 @@
 
 <style>
   .hero {
-    padding: 80px 0 30px;
+    padding: 80px 0 24px;
     text-align: center;
   }
   .eyebrow {
@@ -147,7 +199,7 @@
   .lang-switch {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     padding: 4px;
     background: var(--bg-soft);
     border: 1px solid var(--border);
@@ -171,26 +223,63 @@
     background: var(--accent);
     color: #fff;
   }
-  .rss-link {
+
+  .topics {
+    padding: 18px 0 22px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(20, 18, 15, 0.6);
+  }
+  .topics-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .topics-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-right: 4px;
+  }
+  .topic-chip {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    border-radius: 100px;
+    padding: 5px 11px;
+    font-size: 12.5px;
+    cursor: pointer;
     display: inline-flex;
     align-items: center;
-    gap: 5px;
-    color: var(--text-muted);
-    font-size: 11.5px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    padding: 6px 12px;
-    border-left: 1px solid var(--border);
-    margin-left: 4px;
+    gap: 7px;
+    font-family: inherit;
+    transition: border-color 0.14s ease, color 0.14s ease, background 0.14s ease;
   }
-  .rss-link:hover {
-    color: var(--accent-text);
-    text-decoration: none;
+  .topic-chip:hover {
+    color: var(--text);
+    border-color: rgba(245, 160, 138, 0.4);
+  }
+  .topic-chip.active {
+    background: rgba(245, 160, 138, 0.14);
+    border-color: rgba(245, 160, 138, 0.6);
+    color: #f7b49f;
+  }
+  .chip-count {
+    font-size: 10.5px;
+    color: rgba(245, 241, 232, 0.45);
+    font-family: "JetBrains Mono", monospace;
+  }
+  .topic-chip.active .chip-count {
+    color: rgba(247, 180, 159, 0.7);
   }
 
   .posts {
-    padding: 30px 0 80px;
+    padding: 36px 0 80px;
   }
   .empty {
     max-width: 720px;
@@ -205,17 +294,17 @@
   .post-list {
     list-style: none;
     padding: 0;
-    margin: 0;
-    max-width: 880px;
     margin: 0 auto;
+    max-width: 920px;
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 20px;
   }
   .post-card {
     background: var(--bg-soft);
     border: 1px solid var(--border);
     border-radius: 14px;
+    overflow: hidden;
     transition: border-color 0.14s ease, transform 0.14s ease;
   }
   .post-card:hover {
@@ -223,20 +312,35 @@
     transform: translateY(-2px);
   }
   .post-link {
-    display: block;
-    padding: 26px 30px;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 0;
     color: var(--text);
     text-decoration: none;
   }
   .post-link:hover {
     text-decoration: none;
   }
+  .post-hero-thumb {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(170deg, rgba(40, 30, 24, 0.8), rgba(20, 16, 14, 0.9));
+  }
+  .post-hero-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .post-body {
+    padding: 22px 26px;
+  }
   .post-meta {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
     flex-wrap: wrap;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
   .post-date {
     font-family: "JetBrains Mono", monospace;
@@ -267,19 +371,19 @@
     color: var(--text-muted);
   }
   .post-card h2 {
-    font-size: 22px;
+    font-size: 21px;
     line-height: 1.3;
     margin: 0 0 8px;
   }
   .post-desc {
     color: var(--text-muted);
-    font-size: 14px;
+    font-size: 13.5px;
     line-height: 1.6;
-    margin: 0 0 14px;
+    margin: 0 0 12px;
   }
   .post-tags {
     display: flex;
-    gap: 8px;
+    gap: 6px;
     flex-wrap: wrap;
   }
   .tag {
@@ -290,13 +394,20 @@
     padding: 2px 8px;
     border-radius: 4px;
   }
+  .tag.active-tag {
+    background: rgba(245, 160, 138, 0.15);
+    color: #f7b49f;
+  }
 
   @media (max-width: 720px) {
-    h1 {
-      font-size: 32px;
-    }
+    h1 { font-size: 30px; }
     .post-link {
-      padding: 22px;
+      grid-template-columns: 1fr;
     }
+    .post-hero-thumb {
+      aspect-ratio: 1200 / 630;
+    }
+    .post-body { padding: 18px 20px; }
+    .post-card h2 { font-size: 18px; }
   }
 </style>

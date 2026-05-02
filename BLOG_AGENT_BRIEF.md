@@ -1,22 +1,24 @@
 # Veesker Blog — autonomous agent brief
 
-This file is the source of truth for the weekly blog routine. Edit it freely — the routine reads it on every run.
+Source of truth for the weekly blog routine. Edit freely — the routine reads this file on every run.
 
 ## Cadence
 
 - **Monday 09:00 BRT** → deep-dive (1000–1500 words, technical, code samples welcome)
 - **Thursday 09:00 BRT** → manifesto / opinion (300–500 words, sharp take, single argument)
 
-Each post ships in **EN + PT-BR** simultaneously. Two markdown files per run.
+Every post ships in **EN + PT-BR** simultaneously. Two markdown files per run.
 
 ## Hard rules
 
-1. **Never invent technical claims.** If you don't know whether Oracle 23ai supports something, say "in development" or skip it. Don't make up benchmarks, customer counts, or feature dates.
-2. **Stay on-brand:** local-first, open-source core, Apache 2.0, $29 USD/seat/month Cloud (single tier), founder pricing locked for waitlist members, Cloud GA H2 2026.
+1. **Never invent technical claims, benchmarks, customer counts, or feature dates.** If you don't know whether Oracle 23ai supports something, say "in development" or skip it.
+2. **Stay on-brand:** local-first, open-source core (Apache 2.0), $29 USD/seat/month Cloud single tier, founder pricing locked for waitlist members, Cloud GA H2 2026.
 3. **Voice:** confident-but-honest, technical, slightly opinionated. No hype, no breathless adjectives, no "revolutionary".
 4. **Always close with one CTA.** Either `/download`, `/#waitlist`, or `/blog`.
-5. **No emojis in body copy.** Headings allowed only if essential. Frontmatter has none.
-6. **Always sign off** as `— *Geraldo Viana, founder of Veesker*` (or PT equivalent).
+5. **No emojis in body copy.** Frontmatter has none.
+6. **Sign off** every post with `— *Veesker*` (PT version: `— *Veesker*`). **Do not use any personal name in the byline** — every post is an autonomous agent run, attribution should reflect that.
+7. **Coming Soon discipline:** anything Cloud-side (managed AI, auto-tune, auto-document, schema-aware AI, team workflows, VeeskerDB Sandbox publish flow) is Coming Soon (H2 2026). Do not write as if shipped today.
+8. **Don't claim Code Signing is final.** Windows code signing is "in progress, Microsoft Identity Validation pending."
 
 ## Frontmatter schema (mandatory)
 
@@ -24,13 +26,15 @@ Each post ships in **EN + PT-BR** simultaneously. Two markdown files per run.
 ---
 title: "..."
 description: "One sentence ≤200 chars summarizing the takeaway."
-date: "YYYY-MM-DD"  # use today's date in BRT
+date: "YYYY-MM-DD"  # today's BRT date
 slug: "kebab-case-slug"
 lang: "en"          # or "pt"
 kind: "deep-dive"   # or "manifesto"
 tags: ["oracle", "..."]   # 2-5 tags, lowercase, kebab-case
 translation_slug: "matching-slug-in-other-lang"
-read_minutes: 7     # honest estimate (200 words/min)
+read_minutes: 7     # honest estimate (~200 words/min)
+author: "claude-agent"   # always — these posts are auto-published
+hero: "/blog/<slug>.png"  # auto-generated, see step 9 below
 ---
 ```
 
@@ -38,7 +42,7 @@ The `slug` and `translation_slug` cross-reference the EN↔PT pair. Always set b
 
 ## File naming
 
-`src/posts/YYYY-MM-DD-<slug>.md` — date prefix matters (sort).
+`src/posts/YYYY-MM-DD-<slug>.md` — the date prefix matters (sort).
 
 Pair example:
 - `2026-05-11-schema-aware-ai-vs-generic-llm.md` (lang: en)
@@ -46,7 +50,7 @@ Pair example:
 
 ## Topic queue (refill as you write)
 
-Strike through used topics by replacing `[ ]` with `[x]` in this file at end of each run.
+When the queue gets low (≤3 unchecked of either kind), append 2-3 new ideas before exiting.
 
 ### Deep-dives (Monday)
 
@@ -72,36 +76,47 @@ Strike through used topics by replacing `[ ]` with `[x]` in this file at end of 
 - [ ] You don't have a query problem, you have a context problem
 - [ ] What "good" looks like for a database IDE in 2026
 
-## Where to ground
+## Voice reference
 
-Read these before drafting:
-- `CLAUDE.md` (root and per-repo) — voice, conventions
-- `~/.claude/projects/C--Users-geefa-Documents-veesker-project/memory/MEMORY.md` — recent activity, decisions
-- `git log --oneline -30` in `ce/`, `cl/`, `api/` — what shipped lately
-- `https://github.com/veesker-cloud/veesker-community-edition/releases` — public version line
+Read these before drafting — new posts should feel like a continuation:
+- `src/posts/2026-05-04-why-we-built-another-oracle-ide.md`
+- `src/posts/2026-05-02-oracle-9i-to-26ai-thick-mode-auto-discovery.md`
 
 ## Publish checklist (every run)
 
-1. `cd C:\Users\geefa\Documents\veesker-project\site`
-2. Pull latest: `git pull origin main`
-3. Read this file + topic queue. Pick one unchecked topic of the right kind.
-4. Write EN markdown to `src/posts/YYYY-MM-DD-<en-slug>.md`.
-5. Write PT-BR translation to `src/posts/YYYY-MM-DD-<pt-slug>.md`. Match content beat-for-beat — translate, don't paraphrase the *content*; do localize idioms.
-6. Update this file: tick the topic with `[x]`. Optionally add new ideas to the queue.
-7. `bun run build` — must succeed.
-8. Smoke check: post URLs return 200 in `bun run preview`.
-9. `git add -A && git commit -m "post(blog): <title> (EN+PT)"` — single commit, both files.
-10. `git push origin main`.
-11. `npx wrangler deploy` from `site/`.
-12. Verify `https://veesker.cloud/blog/<slug>` returns 200 with the new title.
+The repo is cloned automatically into your working directory. Use **relative paths** — there are no absolute Windows paths. There is **no `wrangler deploy` step** — pushing to main triggers `.github/workflows/deploy.yml` which deploys to Cloudflare Workers automatically.
+
+1. `cd` to the repo root if not already there.
+2. `git remote -v` to confirm the clone.
+3. Read this file (BLOG_AGENT_BRIEF.md) and the voice references in `src/posts/`.
+4. Pick one unchecked topic of the right kind for today's cadence.
+5. Write EN markdown to `src/posts/YYYY-MM-DD-<en-slug>.md` (1000-1500 words for deep-dive, 300-500 for manifesto).
+6. Write PT-BR translation to `src/posts/YYYY-MM-DD-<pt-slug>.md`. Match content beat-for-beat — translate, don't paraphrase; do localize idioms.
+7. Edit BLOG_AGENT_BRIEF.md: tick the topic with `[x]`. If queue ≤3 unchecked, append 2-3 new ideas under the right header.
+8. **Install dependencies first:** `bun install` (the remote env starts without `node_modules`). Fall back to `npm install` if bun is missing.
+9. **Generate hero image** for the post (free, no API key required):
+   ```bash
+   bun run scripts/generate-blog-image.ts "<en-slug>" "<English title>"
+   ```
+   This produces `static/blog/<en-slug>.png` (Pollinations.ai 1200×630 + Veesker logo overlay via Sharp). Both EN and PT posts share the same image — set `hero: "/blog/<en-slug>.png"` in both frontmatters.
+10. `bun run build`. The build MUST pass. If it fails, fix the markdown (likely frontmatter or YAML escaping) and retry up to 2 times. Never commit broken builds.
+11. `git add src/posts/ static/blog/ BLOG_AGENT_BRIEF.md && git commit -m "post(blog): <title> (EN+PT)"` — single commit, all files.
+12. `git push origin main`.
+13. Print final-status line: `TEST RUN OK: <commit-sha-short> <slug>` on success, or `TEST RUN FAILED: <reason>` on failure.
+
+The push automatically triggers `.github/workflows/deploy.yml` (wrangler deploy to Cloudflare Workers). Within ~60s, `https://veesker.cloud/blog/<slug>` is live.
 
 ## Failure handling
 
-- If `bun run build` fails: do NOT commit. Investigate, fix, retry. Never ship broken markdown.
-- If `git push` fails: pull, rebase, retry once. If still failing, abort and surface the error — do not force-push.
-- If `wrangler deploy` fails: the GitHub commit is still useful (revert via `wrangler rollback` is available). Surface the error.
-- If you cannot pick a topic (all checked, no queue refill): write a short retrospective post on the most recent shipped feature instead, and DO refill the queue before exiting.
+- **Image generation fails:** Pollinations.ai rate-limits or returns non-PNG. Retry once with a different seed (`--seed 42`). If still fails, set `hero` to `"/datamap-hero.png"` (existing fallback) — never abort the post over an image.
+- **Build fails:** Do NOT commit. Investigate the error, fix the markdown, retry up to 2 times. After 2 failed retries, abort with reason.
+- **`git push` fails:** `git pull --rebase origin main` once, retry once. If still failing, abort. **Never force-push.**
+- **Topic queue exhausted:** Write a short retrospective on the most recent shipped feature instead. DO refill the queue before exiting.
 
-## Tone reference
+## Reminders that show up in every post
 
-Read `src/posts/2026-05-04-why-we-built-another-oracle-ide.md` for the canonical voice. New posts should sound like a continuation of that one.
+Every post should somewhere reflect (without sounding inserted):
+- Veesker is local-first by design — desktop app does not phone home.
+- Community Edition is Apache 2.0; Cloud is the optional managed layer.
+- Cloud lands H2 2026; founder pricing $29 USD/seat/month locked for waitlist members.
+- Posts are auto-published by a Claude agent (banner already shows that).

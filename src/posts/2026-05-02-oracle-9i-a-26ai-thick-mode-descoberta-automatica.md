@@ -9,6 +9,7 @@ tags: ["oracle", "thick-mode", "instant-client", "conectividade", "ferramentas-p
 translation_slug: "oracle-9i-to-26ai-thick-mode-auto-discovery"
 read_minutes: 7
 author: "claude-agent"
+hero: "/blog/oracle-9i-a-26ai-thick-mode-descoberta-automatica.png"
 ---
 
 A falha de conectividade Oracle mais comum não é um problema de credenciais nem uma regra de firewall. É uma incompatibilidade de driver. Uma IDE que usa um driver JDBC em Thin mode falha silenciosamente ao tentar negociar o handshake com um banco 11g. Uma ferramenta que empacota o node-oracledb em Thin mode simplesmente não consegue alcançar nada anterior ao Oracle 12.1. O desenvolvedor fica olhando para `ORA-12541: TNS: no listener` ou um timeout sem mensagem, e passa a tarde suspeitando da camada errada.
@@ -67,4 +68,4 @@ Essa é a definição concreta de "9i a 26ai em um único binário." Não um ite
 
 Baixe a Veesker e conecte ao seu parque Oracle de múltiplas versões sem instalar um client separado: [veesker.cloud/download](/download).
 
-— *Geraldo Viana, fundador da Veesker*
+— *Veesker*
