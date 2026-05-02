@@ -17,15 +17,38 @@
     return () => window.removeEventListener("hashchange", updateActiveLayerFromHash);
   });
 
+  const API_BASE = "https://api.veesker.cloud";
   let waitlistEmail = $state("");
-  let waitlistUseCase = $state("");
-  const waitlistMailto = $derived(() => {
-    const subject = encodeURIComponent("[Veesker] Cloud waitlist");
-    const body = encodeURIComponent(
-      `Email: ${waitlistEmail}\n\nUse case:\n${waitlistUseCase}\n\n— Sent from veesker.cloud`
-    );
-    return `mailto:geraldovianajr@veesker.cloud?subject=${subject}&body=${body}`;
-  });
+  let waitlistStatus = $state<"idle" | "submitting" | "success" | "rate_limited" | "error">("idle");
+  let waitlistError = $state("");
+
+  async function submitWaitlist(e: Event) {
+    e.preventDefault();
+    if (waitlistStatus === "submitting") return;
+    waitlistStatus = "submitting";
+    waitlistError = "";
+    try {
+      const res = await fetch(`${API_BASE}/v1/cloud-waitlist`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: waitlistEmail, source: "veesker.cloud" }),
+      });
+      if (res.ok) {
+        waitlistStatus = "success";
+        waitlistEmail = "";
+        return;
+      }
+      if (res.status === 429) {
+        waitlistStatus = "rate_limited";
+        return;
+      }
+      waitlistStatus = "error";
+      waitlistError = "Could not submit. Try again in a moment.";
+    } catch (err) {
+      waitlistStatus = "error";
+      waitlistError = "Network error. Check your connection and try again.";
+    }
+  }
 </script>
 
 <Seo
@@ -498,34 +521,38 @@
           Tell us your use case. Early waitlist members shape the feature roadmap and get founder pricing at launch.
         </p>
       </div>
-      <form
-        class="waitlist-form"
-        onsubmit={(e) => {
-          e.preventDefault();
-          if (browser) window.location.href = waitlistMailto();
-        }}
-      >
-        <label class="visually-hidden" for="waitlist-email">Work email</label>
-        <input
-          id="waitlist-email"
-          type="email"
-          required
-          placeholder="you@company.com"
-          bind:value={waitlistEmail}
-          autocomplete="email"
-        />
-        <label class="visually-hidden" for="waitlist-use-case">Use case</label>
-        <textarea
-          id="waitlist-use-case"
-          rows="3"
-          placeholder="What Oracle workflow are you trying to improve? (e.g., legacy EBS, APEX migration, RAG on 23ai)"
-          bind:value={waitlistUseCase}
-        ></textarea>
-        <button type="submit" class="btn primary waitlist-btn">Open mail client to send →</button>
-        <p class="waitlist-fineprint">
-          We use a mailto-style form so nothing is stored on a third-party service. Your email opens with the message pre-filled — review and send.
-        </p>
-      </form>
+      {#if waitlistStatus === "success"}
+        <div class="waitlist-success" role="status">
+          <div class="success-icon" aria-hidden="true">✓</div>
+          <h3>You're on the list.</h3>
+          <p>We'll email you when Veesker Cloud is ready. Founder pricing locked.</p>
+        </div>
+      {:else}
+        <form class="waitlist-form" onsubmit={submitWaitlist}>
+          <label class="visually-hidden" for="waitlist-email">Work email</label>
+          <input
+            id="waitlist-email"
+            type="email"
+            required
+            placeholder="you@company.com"
+            bind:value={waitlistEmail}
+            autocomplete="email"
+            disabled={waitlistStatus === "submitting"}
+          />
+          <button type="submit" class="btn primary waitlist-btn" disabled={waitlistStatus === "submitting"}>
+            {waitlistStatus === "submitting" ? "Joining…" : "Join the waitlist →"}
+          </button>
+          {#if waitlistStatus === "rate_limited"}
+            <p class="waitlist-error" role="alert">Too many requests. Wait a minute and try again.</p>
+          {:else if waitlistStatus === "error"}
+            <p class="waitlist-error" role="alert">{waitlistError}</p>
+          {:else}
+            <p class="waitlist-fineprint">
+              No spam, no third-party tracking. We email once when Cloud goes live.
+            </p>
+          {/if}
+        </form>
+      {/if}
     </div>
   </div>
 </section>
@@ -1236,6 +1263,46 @@
     color: var(--text-muted);
     margin: 4px 0 0;
     line-height: 1.5;
+  }
+  .waitlist-error {
+    font-size: 12.5px;
+    color: #ff9f7a;
+    margin: 4px 0 0;
+    line-height: 1.5;
+  }
+  .waitlist-form input:disabled,
+  .waitlist-form button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  .waitlist-success {
+    text-align: center;
+    padding: 18px 0;
+  }
+  .success-icon {
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 14px;
+    border-radius: 50%;
+    background: rgba(76, 217, 100, 0.16);
+    border: 1px solid rgba(76, 217, 100, 0.4);
+    color: #74e88c;
+    font-size: 26px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .waitlist-success h3 {
+    font-size: 19px;
+    margin: 0 0 8px;
+    color: #cfeeff;
+  }
+  .waitlist-success p {
+    color: var(--text-muted);
+    font-size: 13.5px;
+    line-height: 1.6;
+    margin: 0;
   }
 
   .faq-home {
