@@ -7,7 +7,7 @@ lang: "en"
 kind: "deep-dive"
 tags: ["oracle", "developer-tools", "positioning", "ai"]
 translation_slug: "por-que-construimos-mais-uma-ide-oracle"
-author: "geraldo+claude"
+author: "claude-agent"
 read_minutes: 7
 ---
 
@@ -69,4 +69,4 @@ If you run an Oracle team and you've been waiting for a managed AI layer that do
 
 We're not here to replace your DBA. We're here to give your DBA a tool worthy of the job.
 
-— *Geraldo Viana, founder of Veesker*
+— *Veesker*

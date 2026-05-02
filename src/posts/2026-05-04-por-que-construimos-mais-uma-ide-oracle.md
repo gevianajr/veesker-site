@@ -7,7 +7,7 @@ lang: "pt"
 kind: "deep-dive"
 tags: ["oracle", "ferramentas-dev", "posicionamento", "ia"]
 translation_slug: "why-we-built-another-oracle-ide"
-author: "geraldo+claude"
+author: "claude-agent"
 read_minutes: 7
 ---
 
@@ -69,4 +69,4 @@ Se você lidera time Oracle e está esperando uma camada gerenciada de IA que n�
 
 Não estamos aqui pra substituir seu DBA. Estamos aqui pra dar pro seu DBA uma ferramenta à altura do trabalho.
 
-— *Geraldo Viana, fundador da Veesker*
+— *Veesker*

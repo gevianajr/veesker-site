@@ -5,36 +5,17 @@
   let { data } = $props();
   const Component = $derived(data.Component);
   const md = $derived(data.metadata);
-  const author = $derived(data.metadata.author ?? "claude-agent");
 
-  function authorLabel(a: string, lang: string): string {
-    if (lang === "pt") {
-      if (a === "claude-agent") return "Escrito e publicado por agente Claude";
-      if (a === "geraldo+claude") return "Rascunhado por agente Claude · revisado e assinado por Geraldo Viana";
-      return "Escrito por Geraldo Viana";
-    }
-    if (a === "claude-agent") return "Written and published by a Claude agent";
-    if (a === "geraldo+claude") return "Drafted by a Claude agent · edited and signed off by Geraldo Viana";
-    return "Written by Geraldo Viana";
+  function bannerLabel(lang: string): string {
+    return lang === "pt"
+      ? "Escrito e publicado por um agente Claude"
+      : "Written and published by a Claude agent";
   }
 
-  function authorDetail(a: string, lang: string): string {
-    if (lang === "pt") {
-      if (a === "claude-agent") {
-        return "Este post foi gerado por um agente Claude rodando autonomamente em cron semanal. Sem revisão humana entre o draft e a publicação. Tópicos seguem um briefing editorial fixo no repositório.";
-      }
-      if (a === "geraldo+claude") {
-        return "Este post foi escrito em colaboração com um agente Claude e revisado/assinado pelo fundador antes da publicação.";
-      }
-      return "Este post foi escrito manualmente pelo fundador.";
-    }
-    if (a === "claude-agent") {
-      return "This post was written and published by a Claude agent running on an autonomous weekly cron — no human review between draft and publish. Topics follow a fixed editorial brief in the repository.";
-    }
-    if (a === "geraldo+claude") {
-      return "This post was drafted with a Claude agent and reviewed + signed off by the founder before publication.";
-    }
-    return "This post was written manually by the founder.";
+  function bannerDetail(lang: string): string {
+    return lang === "pt"
+      ? "Posts deste blog são gerados e publicados automaticamente por um agente Claude rodando em cron semanal. Sem revisão humana entre o draft e a publicação. Podem conter erros, imprecisões ou afirmações desatualizadas — não são fonte autoritativa."
+      : "Posts on this blog are written and published automatically by a Claude agent running on a weekly cron. No human review between draft and publish. They may contain errors, inaccuracies, or outdated claims — not an authoritative source.";
   }
 </script>
 
@@ -70,23 +51,16 @@
         {/each}
       </div>
 
-      <aside class="transparency-banner author-{author}" aria-label="Authorship transparency">
+      <aside class="transparency-banner" aria-label="Authorship transparency">
         <div class="banner-icon" aria-hidden="true">
-          {#if author === "geraldo"}
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-              <circle cx="12" cy="7" r="4"/>
-            </svg>
-          {:else}
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="7" width="18" height="13" rx="2"/>
-              <path d="M9 7V4a3 3 0 0 1 6 0v3M8 13h.01M12 13h.01M16 13h.01"/>
-            </svg>
-          {/if}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="7" width="18" height="13" rx="2"/>
+            <path d="M9 7V4a3 3 0 0 1 6 0v3M8 13h.01M12 13h.01M16 13h.01"/>
+          </svg>
         </div>
         <div class="banner-text">
-          <div class="banner-label">{authorLabel(author, md.lang)}</div>
-          <p class="banner-detail">{authorDetail(author, md.lang)}</p>
+          <div class="banner-label">{bannerLabel(md.lang)}</div>
+          <p class="banner-detail">{bannerDetail(md.lang)}</p>
         </div>
       </aside>
     </div>
@@ -220,16 +194,8 @@
     margin-top: 28px;
     padding: 16px 18px;
     border-radius: 10px;
-    border: 1px solid var(--border);
-    background: var(--bg-soft);
-  }
-  .transparency-banner.author-claude-agent {
     background: linear-gradient(165deg, rgba(43, 180, 238, 0.10), rgba(43, 180, 238, 0.03));
-    border-color: rgba(138, 216, 251, 0.35);
-  }
-  .transparency-banner.author-geraldo\+claude {
-    background: linear-gradient(165deg, rgba(247, 180, 159, 0.10), rgba(247, 180, 159, 0.02));
-    border-color: rgba(245, 160, 138, 0.32);
+    border: 1px solid rgba(138, 216, 251, 0.35);
   }
   .banner-icon {
     flex: 0 0 auto;
@@ -239,21 +205,9 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-  }
-  .author-claude-agent .banner-icon {
     color: #9ce2ff;
     background: rgba(43, 180, 238, 0.14);
-    border-color: rgba(138, 216, 251, 0.36);
-  }
-  .author-geraldo\+claude .banner-icon {
-    color: #f7b49f;
-    background: rgba(245, 160, 138, 0.14);
-    border-color: rgba(245, 160, 138, 0.34);
-  }
-  .author-geraldo .banner-icon {
-    color: var(--text-muted);
+    border: 1px solid rgba(138, 216, 251, 0.36);
   }
   .banner-icon svg {
     width: 20px;
@@ -262,11 +216,8 @@
   .banner-label {
     font-size: 13px;
     font-weight: 700;
-    color: var(--text);
     letter-spacing: 0.02em;
     margin-bottom: 4px;
-  }
-  .author-claude-agent .banner-label {
     color: #cfeeff;
   }
   .banner-detail {
