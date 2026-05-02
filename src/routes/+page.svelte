@@ -75,6 +75,50 @@
   </div>
 </section>
 
+<section class="vdb-showcase" aria-labelledby="vdb-title">
+  <div class="container">
+    <div class="vdb-eyebrow">VeeskerDB Sandbox · Cloud feature</div>
+    <h2 id="vdb-title">Production data, safely shared.</h2>
+    <p class="vdb-lead">
+      Send a live slice of your Oracle database to your team — encrypted end-to-end, PII auto-masked, queryable locally as DuckDB.
+    </p>
+
+    <div class="vdb-flow">
+      <div class="vdb-step">
+        <div class="vdb-step-num">01</div>
+        <h3>Slice</h3>
+        <p>Owner picks tables, FK depth, and TTL. Veesker walks the schema graph and stages a coherent extract.</p>
+      </div>
+      <div class="vdb-arrow" aria-hidden="true">→</div>
+      <div class="vdb-step">
+        <div class="vdb-step-num">02</div>
+        <h3>Mask</h3>
+        <p>CPF, CNPJ, email, and phone columns are auto-detected and masked — hash, redact, static, or partial.</p>
+      </div>
+      <div class="vdb-arrow" aria-hidden="true">→</div>
+      <div class="vdb-step">
+        <div class="vdb-step-num">03</div>
+        <h3>Encrypt</h3>
+        <p>Per-recipient X25519 envelopes, ChaCha20-Poly1305 content. Veesker servers never see plaintext.</p>
+      </div>
+      <div class="vdb-arrow" aria-hidden="true">→</div>
+      <div class="vdb-step">
+        <div class="vdb-step-num">04</div>
+        <h3>Open</h3>
+        <p>Member pulls, decrypts locally, and runs full SQL on an in-memory DuckDB. Milliseconds, no network.</p>
+      </div>
+    </div>
+
+    <div class="vdb-meta">
+      <span class="vdb-pill">Available with Veesker Cloud — Coming Soon</span>
+      <span class="vdb-format">
+        Open <code>.vsk</code> format · engine source on
+        <a href="https://github.com/veesker-cloud/veesker-community-edition" target="_blank" rel="noopener">GitHub</a>
+      </span>
+    </div>
+  </div>
+</section>
+
 <section class="features">
   <div class="container">
     <h2>Community Edition is complete, local-first, and built for Oracle developers.</h2>
@@ -719,6 +763,129 @@
     max-width: 760px;
   }
 
+  .vdb-showcase {
+    padding: 72px 0;
+    background:
+      radial-gradient(110% 90% at 80% 0%, rgba(43, 180, 238, 0.18), transparent 56%),
+      linear-gradient(170deg, rgba(20, 27, 34, 0.96), rgba(13, 18, 24, 0.98));
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+  }
+  .vdb-eyebrow {
+    display: inline-block;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #9ce2ff;
+    background: rgba(43, 180, 238, 0.12);
+    border: 1px solid rgba(138, 216, 251, 0.32);
+    border-radius: 100px;
+    padding: 5px 14px;
+    margin-bottom: 18px;
+  }
+  .vdb-showcase h2 {
+    font-size: 38px;
+    letter-spacing: -0.02em;
+    margin: 0 0 14px;
+    background: linear-gradient(110deg, #f5f1e8 0%, #9ce2ff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .vdb-lead {
+    max-width: 780px;
+    margin: 0 auto 44px;
+    color: var(--text-muted);
+    font-size: 17px;
+    line-height: 1.65;
+  }
+  .vdb-flow {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+    gap: 18px;
+    align-items: stretch;
+    max-width: 1100px;
+    margin: 0 auto 36px;
+    text-align: left;
+  }
+  .vdb-step {
+    background: linear-gradient(170deg, rgba(28, 38, 48, 0.94), rgba(18, 26, 34, 0.95));
+    border: 1px solid rgba(138, 216, 251, 0.28);
+    border-radius: 12px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+  .vdb-step-num {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: rgba(156, 226, 255, 0.7);
+    margin-bottom: 4px;
+  }
+  .vdb-step h3 {
+    font-size: 18px;
+    margin: 0;
+    color: #cfeeff;
+  }
+  .vdb-step p {
+    margin: 0;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: rgba(245, 241, 232, 0.78);
+  }
+  .vdb-arrow {
+    align-self: center;
+    font-size: 22px;
+    color: rgba(138, 216, 251, 0.55);
+    font-family: "JetBrains Mono", monospace;
+  }
+  .vdb-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+  .vdb-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #b9ebff;
+    background: rgba(27, 158, 216, 0.18);
+    border: 1px solid rgba(138, 216, 251, 0.4);
+  }
+  .vdb-format {
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+  }
+  .vdb-format code {
+    font-family: "JetBrains Mono", monospace;
+    background: rgba(245, 241, 232, 0.08);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 11.5px;
+    color: rgba(245, 241, 232, 0.92);
+  }
+  .vdb-format a {
+    color: #9ce2ff;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(156, 226, 255, 0.4);
+  }
+  .vdb-format a:hover {
+    border-bottom-color: #9ce2ff;
+  }
+
   @media (max-width: 980px) {
     h1 {
       font-size: 44px;
@@ -743,6 +910,15 @@
     }
     .arrow {
       text-align: center;
+    }
+    .vdb-flow {
+      grid-template-columns: 1fr;
+    }
+    .vdb-arrow {
+      display: none;
+    }
+    .vdb-showcase h2 {
+      font-size: 30px;
     }
   }
 
