@@ -1,0 +1,55 @@
+name: Deploy to Cloudflare Workers
+
+on:
+  push:
+    branches: [main]
+    # NOTE: do NOT use paths-ignore for **.md — blog posts in src/posts/*.md
+    # are part of the build and need to trigger redeploy. Build is fast (~4s)
+    # so over-triggering is cheap.
+  workflow_dispatch:
+
+# Skip the redundant deploy when the previous one is still running.
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build site
+        run: bun run build
+
+      - name: Deploy to Cloudflare Workers
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: 98b951c7e6263940e3cc31d73baf1cd6
+          # wrangler.jsonc lives in the repo root
+          workingDirectory: "."
+
+      - name: Smoke test live URL
+        run: |
+          set -e
+          # Give the edge a moment to propagate.
+          sleep 8
+          for path in / /blog /pricing; do
+            code=$(curl -sS -o /dev/null -w "%{http_code}" "https://veesker.cloud${path}?cb=$(date +%s)")
+            echo "GET https://veesker.cloud${path} -> ${code}"
+            [ "$code" = "200" ] || { echo "::error::Smoke test failed for ${path}"; exit 1; }
+          done
