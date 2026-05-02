@@ -7,6 +7,7 @@ lang: "en"
 kind: "deep-dive"
 tags: ["oracle", "developer-tools", "positioning", "ai"]
 translation_slug: "por-que-construimos-mais-uma-ide-oracle"
+author: "geraldo+claude"
 read_minutes: 7
 ---
 

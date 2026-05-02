@@ -3,6 +3,8 @@ import type { Component } from "svelte";
 export type PostKind = "deep-dive" | "manifesto";
 export type PostLang = "en" | "pt";
 
+export type PostAuthor = "claude-agent" | "geraldo+claude" | "geraldo";
+
 export type PostMetadata = {
   title: string;
   description: string;
@@ -14,6 +16,13 @@ export type PostMetadata = {
   translation_slug?: string;
   hero?: string;
   read_minutes?: number;
+  /**
+   * "claude-agent" — fully written and published by the autonomous agent.
+   * "geraldo+claude" — drafted with AI, edited and signed off by the founder.
+   * "geraldo" — written manually by the founder.
+   * Defaults to "claude-agent" when omitted (most posts will be agent-written).
+   */
+  author?: PostAuthor;
 };
 
 export type PostSummary = PostMetadata & {

@@ -7,6 +7,7 @@ lang: "pt"
 kind: "deep-dive"
 tags: ["oracle", "ferramentas-dev", "posicionamento", "ia"]
 translation_slug: "why-we-built-another-oracle-ide"
+author: "geraldo+claude"
 read_minutes: 7
 ---
 
