@@ -40,8 +40,12 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: 98b951c7e6263940e3cc31d73baf1cd6
+          # wrangler 4.x is required because wrangler.jsonc uses the
+          # assets-only worker format (no `main` entry point).
+          wranglerVersion: "latest"
           # wrangler.jsonc lives in the repo root
           workingDirectory: "."
+          packageManager: bun
 
       - name: Smoke test live URL
         run: |
