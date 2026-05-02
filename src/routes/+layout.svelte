@@ -44,6 +44,7 @@
       <a href="/pricing" onclick={closeMobileNav}>Pricing</a>
       <a href="/security" onclick={closeMobileNav}>Security</a>
       <a href="/changelog" onclick={closeMobileNav}>Changelog</a>
+      <a href="/blog" onclick={closeMobileNav}>Blog</a>
       <a href="/docs" onclick={closeMobileNav}>Docs</a>
       <a href="https://github.com/veesker-cloud/veesker-community-edition" target="_blank" rel="noopener" class="nav-gh" onclick={closeMobileNav}>
         <svg class="gh-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -91,6 +92,7 @@
       </div>
       <div>
         <h4>Resources</h4>
+        <a href="/blog">Blog</a>
         <a href="/docs">Documentation</a>
         <a href="/changelog">Changelog</a>
         <a href="/about">About</a>

@@ -1,8 +1,15 @@
 import adapter from "@sveltejs/adapter-static";
 import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
+import { mdsvex } from "mdsvex";
 
 const config = {
-  preprocess: vitePreprocess(),
+  extensions: [".svelte", ".md"],
+  preprocess: [
+    vitePreprocess(),
+    mdsvex({
+      extensions: [".md"],
+    }),
+  ],
   kit: {
     adapter: adapter({
       pages: "build",
@@ -10,6 +17,12 @@ const config = {
       precompress: false,
       strict: true,
     }),
+    prerender: {
+      handleHttpError: ({ path, message }) => {
+        if (path.startsWith("/auth/")) return;
+        throw new Error(message);
+      },
+    },
   },
 };
 
