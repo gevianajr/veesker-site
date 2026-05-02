@@ -85,7 +85,7 @@
         <ul>
           <li>Every release is signed with Ed25519 before publication.</li>
           <li>The auto-updater verifies signatures on launch — tampered binaries fail closed.</li>
-          <li>Windows installer is code-signed via Azure Trusted Signing.</li>
+          <li>Windows installer code-signing via Azure Trusted Signing — Microsoft Identity Validation in progress (Coming Soon).</li>
           <li>SHA-256 checksums published with each release for manual verification.</li>
         </ul>
       </article>

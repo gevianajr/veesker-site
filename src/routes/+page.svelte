@@ -548,7 +548,8 @@
             <p class="waitlist-error" role="alert">{waitlistError}</p>
           {:else}
             <p class="waitlist-fineprint">
-              No spam, no third-party tracking. We email once when Cloud goes live.
+              No spam, no third-party tracking. We email once when Cloud goes live. By submitting,
+              you agree to our <a href="/privacy">Privacy Policy</a>.
             </p>
           {/if}
         </form>
@@ -1263,6 +1264,9 @@
     color: var(--text-muted);
     margin: 4px 0 0;
     line-height: 1.5;
+  }
+  .waitlist-fineprint a {
+    color: var(--accent-text);
   }
   .waitlist-error {
     font-size: 12.5px;

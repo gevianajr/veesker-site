@@ -94,6 +94,7 @@
       </div>
       <div>
         <h4>Legal</h4>
+        <a href="/privacy">Privacy</a>
         <a href="/security">Security</a>
         <a href="https://github.com/veesker-cloud/veesker-community-edition/blob/main/LICENSE" target="_blank" rel="noopener">License (Apache 2.0)</a>
         <a href="https://github.com/veesker-cloud/veesker-community-edition/blob/main/COMMERCIAL_USE.md" target="_blank" rel="noopener">Commercial Use</a>

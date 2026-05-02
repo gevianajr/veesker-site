@@ -16,7 +16,7 @@
 
 <Seo
   title="Contact"
-  description="Contact Veesker — sales, support, partnerships, OSS license requests. Email response within 2 business days. Business and Enterprise customers per SLA."
+  description="Contact Veesker — sales, support, partnerships, OSS license requests. Email response within 2 business days."
   path="/contact"
 />
 
@@ -38,7 +38,7 @@
       </div>
       <div class="row">
         <span class="lbl">Response time:</span>
-        <span class="val muted">Best effort within 2 business days. Business / Enterprise customers per SLA.</span>
+        <span class="val muted">Best effort within 2 business days. Cloud customers will get faster response per SLA when Cloud reaches GA (Coming Soon — H2 2026).</span>
       </div>
       <a href={mailto} class="btn primary">Open mail client</a>
     </div>

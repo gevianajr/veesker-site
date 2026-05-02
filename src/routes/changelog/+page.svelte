@@ -14,12 +14,12 @@
     {
       version: "v0.2.4",
       date: "2026-05-02",
-      title: "VeeskerDB Sandbox — owner publish wizard + member open flow shipped",
+      title: "Site refresh + Cloud waitlist backend + Sandbox Plan 5b (preview, not yet released)",
       tag: "feature",
       highlights: [
-        "Sandbox Plan 5b shipped: full owner-side publish wizard (Steps 1-5) and member-side open/query/close via local DuckDB.",
-        "Multi-agent security review pass 2 (ultrathink): JWT identity refactored to Rust + sidecar, R2 SHA verification, replay defense, lookup throttling.",
-        "Site refresh: new Cloud waitlist (real backend), competitive comparison, personas section, security page.",
+        "Site refresh: real Cloud waitlist backend (api.veesker.cloud), competitive comparison table, personas section, dedicated /security page, /blog with EN+PT-BR cadence.",
+        "VeeskerDB Sandbox Plan 5b — owner publish wizard (Steps 1-5) + member open/query/close via local DuckDB shipped to the codebase. Preview only — not in the v0.2.4 download yet. Will land in the next public binary release.",
+        "Multi-agent security review pass 2: JWT identity refactored to Rust + sidecar, R2 SHA verification, replay defense, lookup throttling.",
       ],
     },
     {
