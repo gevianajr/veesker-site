@@ -16,21 +16,21 @@
   <div class="container">
     <h1>Download Veesker Community Edition</h1>
     <p class="lead">
-      Community Edition - v{RELEASE} - free forever under Apache 2.0.
-      Cloud is coming soon.
+      Community Edition · v{RELEASE} · free forever under Apache 2.0.
+      Cloud is Coming Soon — H2 2026.
     </p>
 
     <div class="downloads">
       <div class="dl">
-        <div class="dl-os">Windows 10/11 - x64</div>
+        <div class="dl-os">Windows 10/11 · x64</div>
         <h3>Veesker_{RELEASE}_x64-setup.exe</h3>
-        <p class="muted">NSIS installer - around 34 MB</p>
+        <p class="muted">NSIS installer — around 34 MB</p>
         <a href="{BASE}/Veesker_{RELEASE}_x64-setup.exe" class="btn primary" target="_blank" rel="noopener">Download for Windows</a>
-        <p class="hint">SmartScreen may warn on first run. Click "More info" and then "Run anyway".</p>
+        <p class="hint">SmartScreen may warn on first run. Click "More info" then "Run anyway".</p>
       </div>
 
       <div class="dl">
-        <div class="dl-os">macOS - Apple Silicon</div>
+        <div class="dl-os">macOS · Apple Silicon</div>
         <h3>Veesker_{RELEASE}_aarch64.dmg</h3>
         <p class="muted">DMG for M1 / M2 / M3 / M4</p>
         <a href="{BASE}/Veesker_{RELEASE}_aarch64.dmg" class="btn primary" target="_blank" rel="noopener">Download for macOS (ARM)</a>
@@ -38,19 +38,19 @@
       </div>
 
       <div class="dl">
-        <div class="dl-os">macOS - Intel</div>
+        <div class="dl-os">macOS · Intel</div>
         <h3>Veesker_{RELEASE}_x64.dmg</h3>
         <p class="muted">DMG for Intel Macs</p>
-        <a href="{RELEASE_URL}" class="btn primary" target="_blank" rel="noopener">Get from GitHub release</a>
-        <p class="hint">Download <code>Veesker_{RELEASE}_x64.dmg</code> from the release page.</p>
+        <a href="{BASE}/Veesker_{RELEASE}_x64.dmg" class="btn primary" target="_blank" rel="noopener">Download for macOS (Intel)</a>
+        <p class="hint">If Gatekeeper blocks first launch, right-click the app and choose Open.</p>
       </div>
 
       <div class="dl">
-        <div class="dl-os">Linux - x64</div>
+        <div class="dl-os">Linux · x64</div>
         <h3>Veesker_{RELEASE}_amd64.AppImage</h3>
-        <p class="muted">AppImage or .deb</p>
-        <a href="{RELEASE_URL}" class="btn primary" target="_blank" rel="noopener">Get from GitHub release</a>
-        <p class="hint">For AppImage, run <code>chmod +x</code> before launching.</p>
+        <p class="muted">AppImage — also available as .deb</p>
+        <a href="{BASE}/Veesker_{RELEASE}_amd64.AppImage" class="btn primary" target="_blank" rel="noopener">Download AppImage</a>
+        <p class="hint">Run <code>chmod +x</code> before launching. Need .deb? <a href="{RELEASE_URL}" target="_blank" rel="noopener">Get from release page</a>.</p>
       </div>
     </div>
 
@@ -126,6 +126,16 @@ shasum -a 256 Veesker_{RELEASE}_aarch64.dmg</pre>
     font-size: 11.5px;
     margin: 0;
     line-height: 1.5;
+  }
+  .dl .hint a {
+    color: var(--accent-text);
+  }
+  .dl .hint code {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    background: rgba(245, 241, 232, 0.08);
+    padding: 1px 5px;
+    border-radius: 3px;
   }
 
   .checksums,

@@ -49,7 +49,7 @@
     <div class="foot-cols">
       <div>
         <strong>Veesker</strong>
-        <p class="muted">The Oracle platform for local-first development and managed intelligence.</p>
+        <p class="muted">Oracle development platform for the AI agent era — local-first, open source, optional managed cloud.</p>
       </div>
       <div>
         <h4>Product</h4>
@@ -136,14 +136,12 @@
     line-height: 1;
   }
   .brand-name {
-    font-size: 31px;
-    font-weight: 800;
+    font-size: 28px;
+    font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: #f7f8fb;
-    text-shadow:
-      0 0 1px rgba(247, 248, 251, 0.55),
-      0 1px 0 rgba(0, 0, 0, 0.55);
+    -webkit-font-smoothing: antialiased;
   }
   .brand-kicker {
     margin-top: 3px;

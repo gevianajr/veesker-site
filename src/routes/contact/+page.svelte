@@ -1,4 +1,4 @@
-﻿<script lang="ts">
+<script lang="ts">
   import { browser } from "$app/environment";
   import Seo from "$lib/seo.svelte";
 
@@ -24,15 +24,16 @@
   <div class="container">
     <h1>Contact</h1>
     <p class="lead">
-      Sales, support, partnerships, OSS license requests, custom arrangements — same email, fast response.
+      Sales, support, partnerships, OSS license requests — pick a channel below or open a pre-filled email.
     </p>
+
     <div class="card">
       <div class="row">
         <span class="lbl">Subject:</span>
         <span class="val">{subject}</span>
       </div>
       <div class="row">
-        <span class="lbl">Email:</span>
+        <span class="lbl">Direct email:</span>
         <a href={mailto} class="val email">geraldovianajr@veesker.cloud</a>
       </div>
       <div class="row">
@@ -40,6 +41,29 @@
         <span class="val muted">Best effort within 2 business days. Business / Enterprise customers per SLA.</span>
       </div>
       <a href={mailto} class="btn primary">Open mail client</a>
+    </div>
+
+    <div class="role-emails">
+      <h3>By topic</h3>
+      <p class="role-note">All addresses currently route to the founder. Aliases will become role-based once the team grows.</p>
+      <div class="role-grid">
+        <a href="mailto:geraldovianajr@veesker.cloud?subject=%5BVeesker%5D%20Sales" class="role-card">
+          <div class="role-name">Sales</div>
+          <div class="role-desc">Cloud waitlist, Enterprise pricing, on-premise needs</div>
+        </a>
+        <a href="mailto:geraldovianajr@veesker.cloud?subject=%5BVeesker%5D%20Support" class="role-card">
+          <div class="role-name">Support</div>
+          <div class="role-desc">Bug reports, install issues, urgent help</div>
+        </a>
+        <a href="mailto:geraldovianajr@veesker.cloud?subject=%5BVeesker%5D%20Security" class="role-card">
+          <div class="role-name">Security</div>
+          <div class="role-desc">Vulnerability disclosure, security questions</div>
+        </a>
+        <a href="mailto:geraldovianajr@veesker.cloud?subject=%5BVeesker%5D%20Press" class="role-card">
+          <div class="role-name">Press</div>
+          <div class="role-desc">Media inquiries, founder interviews, brand assets</div>
+        </a>
+      </div>
     </div>
 
     <div class="links">
@@ -68,9 +92,50 @@
   .val.email { color: var(--accent-text); font-family: "JetBrains Mono", monospace; }
   .val.muted { color: var(--text-muted); }
   .card .btn { margin-top: 18px; }
+
+  .role-emails { margin-top: 48px; max-width: 640px; }
+  .role-emails h3 { font-size: 18px; margin: 0 0 6px; }
+  .role-note { color: var(--text-muted); font-size: 12.5px; margin: 0 0 16px; }
+  .role-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .role-card {
+    display: block;
+    padding: 16px 18px;
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color 0.14s ease, transform 0.14s ease;
+  }
+  .role-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+  .role-name {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent-text);
+    margin-bottom: 4px;
+  }
+  .role-desc {
+    color: var(--text-muted);
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
   .links { margin-top: 48px; max-width: 640px; }
   .links h3 { font-size: 18px; margin-bottom: 14px; }
   .links ul { list-style: none; padding: 0; margin: 0; }
   .links li { padding: 8px 0; color: var(--text-muted); font-size: 14px; }
   .links a { color: var(--accent-text); }
+
+  @media (max-width: 600px) {
+    .role-grid { grid-template-columns: 1fr; }
+  }
 </style>

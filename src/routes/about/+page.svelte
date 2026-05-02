@@ -22,7 +22,7 @@
       <img src="/geraldo-viana.jpg" alt="Geraldo Ferreira Viana Júnior" class="profile-photo" />
       <div class="creator-info">
         <h2>Geraldo Ferreira Viana Júnior</h2>
-        <p class="role">Senior Oracle Engineer · Creator of Veesker</p>
+        <p class="role">Senior Oracle Engineer — Creator of Veesker</p>
         <div class="links">
           <a href="https://github.com/gevianajr" target="_blank" rel="noopener">GitHub @gevianajr</a>
           <a href="https://www.linkedin.com/in/geraldovianajr/" target="_blank" rel="noopener">LinkedIn</a>
@@ -51,9 +51,10 @@
 
     <h2>What I'm doing now</h2>
     <ul>
-      <li>Building Veesker as the Oracle 23ai studio I always wished existed</li>
-      <li>Open-sourcing the codebase under Apache 2.0</li>
-      <li>Available for senior Oracle / AI engineering roles, technical leadership, and selective consulting on Oracle 23ai + AI implementations</li>
+      <li>Building Veesker as the Oracle 9i→26ai studio I always wished existed</li>
+      <li>Open-sourcing the entire IDE under Apache 2.0</li>
+      <li>Shipping VeeskerDB Sandbox — encrypted production-data sharing for Oracle teams</li>
+      <li>Designing Veesker Cloud — schema-aware managed AI for Oracle workflows</li>
     </ul>
 
     <h2>Connect</h2>

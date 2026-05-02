@@ -3,7 +3,7 @@
   import Seo from "$lib/seo.svelte";
   import { onMount } from "svelte";
 
-  let activeLayer: "community" | "cloud" | null = null;
+  let activeLayer = $state<"community" | "cloud" | null>(null);
 
   function updateActiveLayerFromHash() {
     if (!browser) return;
@@ -16,11 +16,21 @@
     window.addEventListener("hashchange", updateActiveLayerFromHash);
     return () => window.removeEventListener("hashchange", updateActiveLayerFromHash);
   });
+
+  let waitlistEmail = $state("");
+  let waitlistUseCase = $state("");
+  const waitlistMailto = $derived(() => {
+    const subject = encodeURIComponent("[Veesker] Cloud waitlist");
+    const body = encodeURIComponent(
+      `Email: ${waitlistEmail}\n\nUse case:\n${waitlistUseCase}\n\n— Sent from veesker.cloud`
+    );
+    return `mailto:geraldovianajr@veesker.cloud?subject=${subject}&body=${body}`;
+  });
 </script>
 
 <Seo
   title="Veesker Platform"
-  description="Veesker is the Oracle platform with a free open-source Community IDE and an optional Cloud intelligence layer coming soon. Keep database access local and add schema-aware managed AI when you need it."
+  description="Oracle development platform for the AI agent era. Free local-first IDE supporting Oracle 9i through 26ai, plus optional Veesker Cloud for managed intelligence."
   path="/"
 />
 
@@ -39,16 +49,17 @@
       />
       <img src="/veesker-master-logo.png" alt="Veesker Platform" class="hero-logo" width="1536" height="1024" />
     </picture>
-    <div class="badge">Veesker Platform - Community + Cloud</div>
-    <h1>The Oracle IDE,<br />free forever.</h1>
+    <div class="badge">Built for Oracle 9i → 26ai</div>
+    <h1>The Oracle development<br />platform for the AI era.</h1>
     <p class="lead">
-      Free local-first Oracle IDE now. Optional Veesker Cloud (Coming Soon) when your team needs managed intelligence.
+      Free local-first IDE today. Optional Veesker Cloud (Coming Soon — H2 2026) when your team needs managed intelligence.
     </p>
 
-    <div class="hero-chips" aria-label="Primary value claims">
-      <span>Free and open source</span>
-      <span>Database stays local</span>
-      <span>Cloud is optional</span>
+    <div class="hero-signals" aria-label="Primary value claims">
+      <span class="hero-signal">Free and open source</span>
+      <span class="hero-signal">Database stays local</span>
+      <span class="hero-signal">Apache 2.0</span>
+      <span class="hero-signal">Cloud is optional</span>
     </div>
 
     <div class="cta">
@@ -58,20 +69,43 @@
         </span>
         <span>Download Community</span>
       </a>
-      <a href="/pricing#cloud" class="btn cloud soon cta-btn" aria-disabled="true">
+      <a href="/pricing#cloud" class="btn cloud cta-btn">
         <span class="cta-icon-wrap cloud">
           <img src="/veesker-cloud-logo.png" alt="" aria-hidden="true" class="cta-icon cloud-icon" width="1536" height="1024" />
         </span>
-        <span>Coming Soon</span>
+        <span>Learn about Cloud →</span>
       </a>
     </div>
 
-    <div class="signals" aria-label="Trust and product signals">
-      <div class="signal">Apache 2.0</div>
-      <div class="signal">No forced subscription</div>
-      <div class="signal">Open-source on GitHub</div>
-      <div class="signal">Cloud coming soon</div>
+    <div class="social-proof" aria-label="Open-source signals">
+      <a href="https://github.com/veesker-cloud/veesker-community-edition" target="_blank" rel="noopener" class="proof-badge">
+        <img alt="GitHub stars" src="https://img.shields.io/github/stars/veesker-cloud/veesker-community-edition?style=flat-square&color=f7b49f&labelColor=14110e" />
+      </a>
+      <a href="https://github.com/veesker-cloud/veesker-community-edition/releases/latest" target="_blank" rel="noopener" class="proof-badge">
+        <img alt="Latest release" src="https://img.shields.io/github/v/release/veesker-cloud/veesker-community-edition?style=flat-square&color=9ce2ff&labelColor=14110e" />
+      </a>
+      <a href="https://github.com/veesker-cloud/veesker-community-edition/blob/main/LICENSE" target="_blank" rel="noopener" class="proof-badge">
+        <img alt="Apache 2.0" src="https://img.shields.io/badge/license-Apache%202.0-f7b49f?style=flat-square&labelColor=14110e" />
+      </a>
+      <a href="https://github.com/veesker-cloud/veesker-community-edition/security" target="_blank" rel="noopener" class="proof-badge">
+        <img alt="CodeQL + Dependabot" src="https://img.shields.io/badge/security-CodeQL%20%2B%20Dependabot-9ce2ff?style=flat-square&labelColor=14110e" />
+      </a>
     </div>
+  </div>
+</section>
+
+<section class="screenshot-showcase" aria-labelledby="screenshot-title">
+  <div class="container">
+    <h2 id="screenshot-title" class="visually-hidden">Veesker workspace overview</h2>
+    <figure class="screenshot-wrap">
+      <img
+        src="/workspace-overview.png"
+        alt="Veesker Community Edition workspace — SQL editor with PL/SQL highlighting, schema browser on the left, results grid below, and the AI assistant panel on the right"
+        loading="lazy"
+        class="screenshot"
+      />
+      <figcaption>The full Veesker workspace — editor, schema browser, results grid, and AI assistant in a single window.</figcaption>
+    </figure>
   </div>
 </section>
 
@@ -124,7 +158,7 @@
     </div>
 
     <div class="vdb-meta">
-      <span class="vdb-pill">Available with Veesker Cloud — Coming Soon</span>
+      <span class="vdb-pill">Available with Veesker Cloud · Coming Soon — H2 2026</span>
       <span class="vdb-format">
         Open <code>.vsk</code> format · engine source on
         <a href="https://github.com/veesker-cloud/veesker-community-edition" target="_blank" rel="noopener">GitHub</a>
@@ -138,35 +172,97 @@
     <h2>Community Edition is complete, local-first, and built for Oracle developers.</h2>
     <div class="feat-grid">
       <div class="feat">
-        <div class="ico">SQL</div>
+        <div class="feat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <ellipse cx="12" cy="5" rx="8" ry="3"/>
+            <path d="M4 5v6c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/>
+            <path d="M4 11v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/>
+          </svg>
+        </div>
         <h3>Full SQL and PL/SQL IDE</h3>
         <p>Run multi-statement SQL, inspect large result sets, and debug production-grade PL/SQL workflows.</p>
       </div>
       <div class="feat">
-        <div class="ico">DBG</div>
+        <div class="feat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="6" width="18" height="14" rx="2"/>
+            <path d="M8 2v4M16 2v4M3 10h18"/>
+            <circle cx="8" cy="14" r="1.4" fill="currentColor"/>
+          </svg>
+        </div>
         <h3>PL/SQL debugger</h3>
         <p>Breakpoints, step controls, watches, call stack, DBMS_OUTPUT capture, and cursor extraction.</p>
       </div>
       <div class="feat">
-        <div class="ico">SMA</div>
+        <div class="feat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 6h7l2 2h9v11a2 2 0 0 1-2 2H3z"/>
+            <path d="M3 6V4a1 1 0 0 1 1-1h4l2 2"/>
+          </svg>
+        </div>
         <h3>Schema browser</h3>
         <p>Explore object graphs, inspect dependencies, and navigate large Oracle schemas with less friction.</p>
       </div>
       <div class="feat">
-        <div class="ico">API</div>
-        <h3>VRAS basic workflows</h3>
+        <div class="feat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>
+          </svg>
+        </div>
+        <h3>VRAS — Veesker REST API Studio</h3>
         <p>Build ORDS endpoints faster with API studio workflows integrated into your Oracle workspace.</p>
       </div>
       <div class="feat">
-        <div class="ico">VEC</div>
+        <div class="feat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2 4 6v6c0 4.4 3.4 8.5 8 10 4.6-1.5 8-5.6 8-10V6z"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+        </div>
         <h3>Vector tools</h3>
         <p>Create embeddings, tune indexes, and run similarity workflows with local or managed providers.</p>
       </div>
       <div class="feat">
-        <div class="ico">AI</div>
-        <h3>BYOK AI</h3>
-        <p>Bring your own key for explain-and-generate assistance without forcing your workflow into a paywall.</p>
+        <div class="feat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/>
+            <circle cx="12" cy="12" r="3.5"/>
+          </svg>
+        </div>
+        <h3>BYOK AI — Bring Your Own Key</h3>
+        <p>Plug your OpenAI / Anthropic / local key for explain-and-generate without forcing your workflow into a paywall.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="personas" aria-labelledby="personas-title">
+  <div class="container">
+    <h2 id="personas-title">Built for Oracle teams that ship.</h2>
+    <p class="personas-lead">Three patterns we hear weekly from teams adopting Veesker.</p>
+    <div class="persona-grid">
+      <article class="persona">
+        <h3>The financial DBA</h3>
+        <p>
+          Running Oracle 11g/19c on EBS with strict change windows. Wants a modern editor that won't crash on
+          1M-row result grids and won't ship credentials to anyone's cloud.
+        </p>
+      </article>
+      <article class="persona">
+        <h3>The PL/SQL → APEX migrator</h3>
+        <p>
+          Refactoring legacy packages into APEX 24.x apps. Needs schema-aware navigation, a real debugger, and
+          AI that understands Oracle dialects (not generic SQL).
+        </p>
+      </article>
+      <article class="persona">
+        <h3>The data engineer wiring AI</h3>
+        <p>
+          Building vector indexes on Oracle 23ai for RAG pipelines. Needs first-class embedding tools, ORDS
+          endpoint scaffolding, and shareable extracts without exposing prod.
+        </p>
+      </article>
     </div>
   </div>
 </section>
@@ -224,9 +320,9 @@
         <ul>
           <li>Full SQL / PL/SQL IDE</li>
           <li>Schema browser and debugger</li>
-          <li>VRAS basic workflows</li>
+          <li>VRAS — Veesker REST API Studio</li>
           <li>Vector tools</li>
-          <li>BYOK AI</li>
+          <li>BYOK AI (your key, your control)</li>
           <li>Apache 2.0 open source</li>
         </ul>
         <a href="/download" class="btn primary layer-btn">Download Free</a>
@@ -262,20 +358,94 @@
           <div>
             <h3>Veesker Cloud</h3>
             <p>AI intelligence layer for Oracle teams</p>
-            <span class="status">Coming Soon</span>
+            <span class="status">Coming Soon — H2 2026</span>
             <span class="best-for">Best for: managed AI, automation, and multi-dev workflows</span>
           </div>
         </div>
         <ul>
-          <li>Schema-aware AI</li>
-          <li>Managed AI (no API key)</li>
-          <li>AI-assisted execution</li>
-          <li>Optimization engine</li>
-          <li>Intelligent automation</li>
+          <li>Schema-aware AI grounded in your Oracle DDL</li>
+          <li>Managed AI — no API keys to provision per developer</li>
+          <li>Auto-tune queries with EXPLAIN PLAN feedback</li>
+          <li>Auto-document packages and procedures overnight</li>
+          <li>VeeskerDB Sandbox — share masked extracts safely</li>
           <li>Team workflows with usage and billing</li>
         </ul>
-        <a href="/pricing#cloud" class="btn cloud soon layer-btn" aria-disabled="true">Coming Soon</a>
+        <a href="#waitlist" class="btn cloud layer-btn">Join Cloud waitlist →</a>
       </article>
+    </div>
+  </div>
+</section>
+
+<section class="comparison" aria-labelledby="comparison-title">
+  <div class="container">
+    <h2 id="comparison-title">How Veesker compares.</h2>
+    <p class="comparison-lead">
+      Side-by-side with the tools Oracle developers already know.
+    </p>
+    <div class="comparison-table-wrap">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th scope="col">Capability</th>
+            <th scope="col" class="us">Veesker</th>
+            <th scope="col">SQL Developer</th>
+            <th scope="col">PL/SQL Developer</th>
+            <th scope="col">DBeaver</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Cross-platform (Win / macOS / Linux)</th>
+            <td class="us">✓</td>
+            <td>✓</td>
+            <td>—</td>
+            <td>✓</td>
+          </tr>
+          <tr>
+            <th scope="row">Modern UI (built post-2020)</th>
+            <td class="us">✓</td>
+            <td>—</td>
+            <td>—</td>
+            <td>partial</td>
+          </tr>
+          <tr>
+            <th scope="row">Oracle 9i → 26ai support</th>
+            <td class="us">✓</td>
+            <td>partial</td>
+            <td>✓</td>
+            <td>generic</td>
+          </tr>
+          <tr>
+            <th scope="row">PL/SQL debugger</th>
+            <td class="us">✓</td>
+            <td>✓</td>
+            <td>✓</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <th scope="row">Built-in AI (BYOK)</th>
+            <td class="us">✓</td>
+            <td>—</td>
+            <td>—</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <th scope="row">Open source</th>
+            <td class="us">Apache 2.0</td>
+            <td>—</td>
+            <td>—</td>
+            <td>Apache 2.0</td>
+          </tr>
+          <tr>
+            <th scope="row">Free for commercial use</th>
+            <td class="us">✓</td>
+            <td>✓</td>
+            <td>—</td>
+            <td>✓ (CE)</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="comparison-foot">Comparison reflects publicly documented features as of 2026. Accurate at time of publication; we update on release cadence.</p>
     </div>
   </div>
 </section>
@@ -293,7 +463,7 @@
         <h3>Local Zone</h3>
         <div class="architecture-row">
           <div class="node db">Oracle Database</div>
-          <div class="arrow">-&gt;</div>
+          <div class="arrow" aria-hidden="true">→</div>
           <div class="node desktop">Veesker Desktop</div>
         </div>
         <ul class="guarantees">
@@ -306,7 +476,7 @@
         <h3>Optional Cloud Zone</h3>
         <div class="architecture-row">
           <div class="node desktop">Veesker Desktop</div>
-          <div class="arrow optional">-&gt; optional</div>
+          <div class="arrow optional" aria-hidden="true">→ optional</div>
           <div class="node cloud">Veesker Cloud AI</div>
         </div>
         <ul class="guarantees">
@@ -318,22 +488,108 @@
   </div>
 </section>
 
+<section class="waitlist" id="waitlist" aria-labelledby="waitlist-title">
+  <div class="container">
+    <div class="waitlist-card">
+      <div class="waitlist-copy">
+        <span class="waitlist-eyebrow">Veesker Cloud · Coming Soon — H2 2026</span>
+        <h2 id="waitlist-title">Join the Cloud waitlist.</h2>
+        <p>
+          Tell us your use case. Early waitlist members shape the feature roadmap and get founder pricing at launch.
+        </p>
+      </div>
+      <form
+        class="waitlist-form"
+        onsubmit={(e) => {
+          e.preventDefault();
+          if (browser) window.location.href = waitlistMailto();
+        }}
+      >
+        <label class="visually-hidden" for="waitlist-email">Work email</label>
+        <input
+          id="waitlist-email"
+          type="email"
+          required
+          placeholder="you@company.com"
+          bind:value={waitlistEmail}
+          autocomplete="email"
+        />
+        <label class="visually-hidden" for="waitlist-use-case">Use case</label>
+        <textarea
+          id="waitlist-use-case"
+          rows="3"
+          placeholder="What Oracle workflow are you trying to improve? (e.g., legacy EBS, APEX migration, RAG on 23ai)"
+          bind:value={waitlistUseCase}
+        ></textarea>
+        <button type="submit" class="btn primary waitlist-btn">Open mail client to send →</button>
+        <p class="waitlist-fineprint">
+          We use a mailto-style form so nothing is stored on a third-party service. Your email opens with the message pre-filled — review and send.
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="faq-home" aria-labelledby="faq-title">
+  <div class="container">
+    <h2 id="faq-title">Common questions.</h2>
+    <div class="faq-grid">
+      <details>
+        <summary>Will Community ever require a subscription?</summary>
+        <p>No. Community Edition is Apache 2.0 and stays free forever. Cloud is the optional managed layer — it never gates the local IDE.</p>
+      </details>
+      <details>
+        <summary>Does Veesker upload my database to the cloud?</summary>
+        <p>Never. Connections and credentials live in your desktop install. Cloud features only run when you opt in, and Sandbox extracts are encrypted before they leave your machine.</p>
+      </details>
+      <details>
+        <summary>Which Oracle versions are supported?</summary>
+        <p>9i, 10g, 11g, 12c, 18c, 19c, 21c, 23ai, and the latest 26ai — Thick mode auto-discovery + bundled bindings, no per-user setup.</p>
+      </details>
+      <details>
+        <summary>Can I use my own AI provider?</summary>
+        <p>Yes. BYOK ships in Community: bring an OpenAI, Anthropic, or local-model key. Veesker Cloud (Coming Soon) handles the keys for you when you'd rather not manage them.</p>
+      </details>
+      <details>
+        <summary>Is there a comparison vs SQL Developer / DBeaver?</summary>
+        <p>Yes — see the table above. Short version: modern UI, built-in AI (BYOK), Apache 2.0, full Oracle 9i→26ai range. The other tools each miss at least one of those.</p>
+      </details>
+      <details>
+        <summary>How do I get notified when Cloud launches?</summary>
+        <p><a href="#waitlist">Join the waitlist above</a> — early members shape the roadmap and get founder pricing at launch.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
 <section class="proof">
   <div class="container proof-inner">
-    <h2>Open source core. Optional managed intelligence.</h2>
+    <h2>Open-source core. Optional managed intelligence.</h2>
     <p class="lead">
-      The Community IDE is fully open source under Apache 2.0.
+      The Community IDE is fully open-source under Apache 2.0.
       Veesker Cloud is an optional managed intelligence layer for advanced AI and collaborative workflows.
     </p>
     <div class="cta">
       <a href="/download" class="btn primary">Download Community</a>
-      <a href="/pricing#cloud" class="btn cloud soon" aria-disabled="true">Coming Soon</a>
+      <a href="#waitlist" class="btn cloud">Join Cloud waitlist →</a>
       <a href="https://github.com/veesker-cloud/veesker-community-edition" class="btn" target="_blank" rel="noopener">View Source</a>
     </div>
   </div>
 </section>
 
 <style>
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
   .hero {
     padding: 96px 0 64px;
     text-align: center;
@@ -359,10 +615,10 @@
     border-radius: 100px;
     background: rgba(14, 13, 12, 0.8);
     border: 1px solid rgba(245, 241, 232, 0.18);
-    color: rgba(245, 241, 232, 0.86);
+    color: rgba(245, 241, 232, 0.92);
+    font-family: "JetBrains Mono", monospace;
     font-size: 11px;
     font-weight: 600;
-    text-transform: uppercase;
     letter-spacing: 0.12em;
     margin-bottom: 14px;
   }
@@ -377,25 +633,46 @@
     line-height: 1.6;
     color: var(--text-muted);
     max-width: 780px;
-    margin: 0 auto 20px;
+    margin: 0 auto 24px;
   }
-  .hero-chips {
+  .hero-signals {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+    padding: 8px;
+    border-radius: 14px;
+    border: 1px solid rgba(245, 241, 232, 0.14);
+    background: linear-gradient(180deg, rgba(14, 13, 11, 0.86), rgba(10, 10, 10, 0.9));
+    margin: 0 auto 22px;
+    max-width: 720px;
+  }
+  .hero-signal {
     display: flex;
-    gap: 10px;
+    align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 22px;
-  }
-  .hero-chips span {
-    font-size: 11px;
+    gap: 8px;
+    border: 1px solid rgba(245, 241, 232, 0.18);
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 11.5px;
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    padding: 8px 12px;
-    border-radius: 8px;
-    border: 1px solid rgba(245, 241, 232, 0.19);
-    background: rgba(12, 12, 12, 0.8);
-    color: rgba(245, 241, 232, 0.85);
+    color: rgba(245, 241, 232, 0.92);
+    background: rgba(17, 16, 14, 0.9);
+  }
+  .hero-signal::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(245, 160, 138, 0.85);
+    box-shadow: 0 0 0 3px rgba(245, 160, 138, 0.14);
+  }
+  .hero-signal:nth-child(3)::before,
+  .hero-signal:nth-child(4)::before {
+    background: rgba(138, 216, 251, 0.9);
+    box-shadow: 0 0 0 3px rgba(138, 216, 251, 0.16);
   }
   .cta {
     display: flex;
@@ -439,52 +716,55 @@
   .cloud-icon {
     object-position: center 32%;
   }
-  .signals {
-    margin-top: 26px;
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 10px;
-    padding: 10px;
-    border-radius: 14px;
-    border: 1px solid rgba(245, 241, 232, 0.14);
-    background: linear-gradient(180deg, rgba(14, 13, 11, 0.86), rgba(10, 10, 10, 0.9));
-  }
-  .signal {
+
+  .social-proof {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-wrap: wrap;
     gap: 8px;
-    position: relative;
+    justify-content: center;
+    margin-top: 26px;
+  }
+  .proof-badge {
+    display: inline-flex;
+    line-height: 0;
+    border-radius: 6px;
     overflow: hidden;
-    border: 1px solid rgba(245, 241, 232, 0.2);
-    border-radius: 10px;
-    padding: 12px;
-    font-size: 11.5px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    transition: transform 0.14s ease;
+  }
+  .proof-badge:hover {
+    transform: translateY(-1px);
+  }
+  .proof-badge img {
+    height: 22px;
+    display: block;
+  }
+
+  .screenshot-showcase {
+    padding: 60px 0;
+    background: linear-gradient(180deg, rgba(10, 8, 6, 0.95), rgba(14, 12, 10, 0.92));
+  }
+  .screenshot-wrap {
+    margin: 0 auto;
+    max-width: 1180px;
+    padding: 0 8px;
     text-align: center;
-    color: rgba(245, 241, 232, 0.92);
-    background: rgba(17, 16, 14, 0.9);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
   }
-  .signal::before {
-    content: "";
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: rgba(245, 160, 138, 0.85);
-    box-shadow: 0 0 0 3px rgba(245, 160, 138, 0.14);
+  .screenshot {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 14px;
+    border: 1px solid rgba(245, 241, 232, 0.12);
+    box-shadow:
+      0 40px 90px -30px rgba(0, 0, 0, 0.7),
+      0 18px 40px -14px rgba(123, 44, 24, 0.25);
   }
-  .signal:nth-child(3)::before,
-  .signal:nth-child(4)::before {
-    background: rgba(138, 216, 251, 0.9);
-    box-shadow: 0 0 0 3px rgba(138, 216, 251, 0.16);
-  }
-  .signal:hover {
-    border-color: rgba(245, 241, 232, 0.3);
-    background: rgba(21, 20, 18, 0.94);
-    transition: border-color 140ms ease, background 140ms ease;
+  .screenshot-wrap figcaption {
+    margin: 16px auto 0;
+    max-width: 720px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-muted);
   }
 
   .features {
@@ -507,12 +787,21 @@
     border-radius: 12px;
     padding: 24px;
   }
-  .feat .ico {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    color: var(--accent-text);
-    margin-bottom: 12px;
+  .feat-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(245, 160, 138, 0.12);
+    border: 1px solid rgba(245, 160, 138, 0.32);
+    color: #f5b3a0;
+    margin-bottom: 14px;
+  }
+  .feat-icon svg {
+    width: 20px;
+    height: 20px;
   }
   .feat h3 {
     font-size: 18px;
@@ -522,6 +811,44 @@
     color: var(--text-muted);
     font-size: 13.5px;
     line-height: 1.6;
+    margin: 0;
+  }
+
+  .personas {
+    padding: 0 0 80px;
+  }
+  .personas h2 {
+    text-align: center;
+    font-size: 32px;
+    margin: 0 0 10px;
+  }
+  .personas-lead {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 15px;
+    margin: 0 auto 34px;
+    max-width: 600px;
+  }
+  .persona-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  .persona {
+    background: linear-gradient(170deg, rgba(28, 24, 20, 0.92), rgba(20, 18, 15, 0.94));
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .persona h3 {
+    font-size: 17px;
+    margin: 0 0 10px;
+    color: #f7b49f;
+  }
+  .persona p {
+    color: var(--text-muted);
+    font-size: 13.5px;
+    line-height: 1.65;
     margin: 0;
   }
 
@@ -671,6 +998,76 @@
     justify-content: center;
   }
 
+  .comparison {
+    padding: 80px 0;
+    background: linear-gradient(180deg, rgba(14, 12, 10, 0.95), rgba(10, 8, 6, 0.97));
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .comparison h2 {
+    text-align: center;
+    font-size: 32px;
+    margin: 0 0 8px;
+  }
+  .comparison-lead {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 15px;
+    margin: 0 auto 32px;
+    max-width: 640px;
+  }
+  .comparison-table-wrap {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.02);
+  }
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    min-width: 720px;
+  }
+  .comparison-table th,
+  .comparison-table td {
+    padding: 14px 16px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .comparison-table thead th {
+    color: var(--text-muted);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+    background: rgba(0, 0, 0, 0.25);
+  }
+  .comparison-table th[scope="row"] {
+    text-align: left;
+    color: var(--text);
+    font-weight: 500;
+  }
+  .comparison-table .us {
+    background: rgba(245, 160, 138, 0.06);
+    color: #f7b49f;
+    font-weight: 600;
+  }
+  .comparison-table thead .us {
+    color: #f7b49f;
+    background: rgba(245, 160, 138, 0.12);
+  }
+  .comparison-table tbody tr:last-child th,
+  .comparison-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+  .comparison-foot {
+    margin: 14px 0 0;
+    padding: 0 4px;
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+  }
+
   .security {
     padding: 78px 0;
     border-top: 1px solid var(--border);
@@ -744,11 +1141,12 @@
   .arrow {
     color: rgba(245, 241, 232, 0.65);
     font-family: "JetBrains Mono", monospace;
-    font-size: 13px;
+    font-size: 18px;
     white-space: nowrap;
   }
   .arrow.optional {
     color: #9cdfff;
+    font-size: 13px;
   }
   .guarantees {
     list-style: none;
@@ -761,8 +1159,141 @@
     color: rgba(245, 241, 232, 0.82);
   }
   .guarantees li::before {
-    content: "* ";
+    content: "· ";
     color: var(--cloud-text);
+  }
+
+  .waitlist {
+    padding: 80px 0;
+    background: linear-gradient(180deg, rgba(14, 12, 10, 0.95), rgba(20, 27, 34, 0.95));
+  }
+  .waitlist-card {
+    max-width: 880px;
+    margin: 0 auto;
+    background:
+      radial-gradient(120% 100% at 0% 0%, rgba(43, 180, 238, 0.18), transparent 46%),
+      linear-gradient(165deg, rgba(22, 29, 36, 0.96), rgba(16, 22, 29, 0.97));
+    border: 1px solid rgba(138, 216, 251, 0.4);
+    border-radius: 16px;
+    padding: 36px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 32px;
+    align-items: center;
+    box-shadow: 0 14px 38px rgba(11, 76, 104, 0.3);
+  }
+  .waitlist-eyebrow {
+    display: inline-block;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #9ce2ff;
+    margin-bottom: 12px;
+  }
+  .waitlist-copy h2 {
+    font-size: 28px;
+    margin: 0 0 12px;
+    color: #cfeeff;
+  }
+  .waitlist-copy p {
+    color: var(--text-muted);
+    font-size: 14.5px;
+    line-height: 1.6;
+    margin: 0;
+  }
+  .waitlist-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .waitlist-form input,
+  .waitlist-form textarea {
+    background: rgba(10, 14, 18, 0.7);
+    border: 1px solid rgba(138, 216, 251, 0.3);
+    border-radius: 8px;
+    padding: 12px 14px;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 14px;
+    transition: border-color 0.14s ease;
+  }
+  .waitlist-form input:focus,
+  .waitlist-form textarea:focus {
+    outline: none;
+    border-color: rgba(138, 216, 251, 0.7);
+  }
+  .waitlist-form textarea {
+    resize: vertical;
+    min-height: 72px;
+  }
+  .waitlist-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .waitlist-fineprint {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    margin: 4px 0 0;
+    line-height: 1.5;
+  }
+
+  .faq-home {
+    padding: 80px 0;
+  }
+  .faq-home h2 {
+    text-align: center;
+    font-size: 32px;
+    margin: 0 0 32px;
+  }
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+  .faq-grid details {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 22px;
+    transition: border-color 0.14s ease;
+  }
+  .faq-grid details[open] {
+    border-color: rgba(245, 160, 138, 0.4);
+  }
+  .faq-grid summary {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .faq-grid summary::after {
+    content: "+";
+    margin-left: auto;
+    color: var(--accent-text);
+    font-size: 18px;
+    transition: transform 0.14s ease;
+  }
+  .faq-grid details[open] summary::after {
+    content: "−";
+  }
+  .faq-grid summary::-webkit-details-marker {
+    display: none;
+  }
+  .faq-grid p {
+    color: var(--text-muted);
+    font-size: 13.5px;
+    line-height: 1.65;
+    margin: 12px 0 0;
+  }
+  .faq-grid a {
+    color: var(--accent-text);
   }
 
   .proof {
@@ -928,12 +1459,14 @@
     h1 {
       font-size: 44px;
     }
-    .signals {
+    .hero-signals {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
     .feat-grid,
+    .persona-grid,
     .layer-grid,
-    .zones {
+    .zones,
+    .faq-grid {
       grid-template-columns: 1fr;
     }
     .layer-head {
@@ -953,10 +1486,18 @@
       grid-template-columns: 1fr;
     }
     .vdb-arrow {
-      display: none;
+      display: block;
+      text-align: center;
+      transform: rotate(90deg);
+      font-size: 18px;
     }
     .vdb-showcase h2 {
       font-size: 30px;
+    }
+    .waitlist-card {
+      grid-template-columns: 1fr;
+      padding: 28px;
+      gap: 24px;
     }
   }
 
@@ -974,15 +1515,17 @@
       width: min(250px, 78vw);
       margin-bottom: -10px;
     }
-    .hero-chips span,
-    .signal {
+    .hero-signal {
       font-size: 11px;
     }
     .features h2,
     .platform h2,
     .security h2,
-    .proof h2 {
-      font-size: 30px;
+    .proof h2,
+    .comparison h2,
+    .personas h2,
+    .faq-home h2 {
+      font-size: 28px;
     }
   }
 </style>

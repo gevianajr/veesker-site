@@ -12,7 +12,7 @@
   <div class="container">
     <h1>Pricing</h1>
     <p class="lead">
-      Community is free forever and fully open source. Cloud is an optional managed intelligence layer, coming soon.
+      Community is free forever and fully open source. Cloud is an optional managed intelligence layer — Coming Soon (H2 2026).
     </p>
   </div>
 </section>
@@ -40,7 +40,8 @@
           <li>Full SQL and PL/SQL IDE</li>
           <li>Schema browser and dependency workflows</li>
           <li>PL/SQL debugger and execution tooling</li>
-          <li>VRAS and vector tooling</li>
+          <li>VRAS — Veesker REST API Studio</li>
+          <li>Vector tooling for Oracle 23ai+</li>
           <li>BYOK AI for explain and generate SQL</li>
           <li>Apache 2.0 open-source codebase</li>
         </ul>
@@ -51,27 +52,31 @@
           <img src="/veesker-cloud-logo.png" alt="Veesker Cloud" width="1536" height="1024" class="plan-logo cloud-logo" loading="lazy" />
           <div>
             <span class="plan-name">Veesker Cloud</span>
-            <span class="plan-badge cloud-badge">Coming Soon</span>
+            <span class="plan-badge cloud-badge">Coming Soon — H2 2026</span>
           </div>
         </div>
 
-        <div class="plan-price">Usage-based <span class="plan-cycle">/ managed intelligence</span></div>
+        <div class="plan-price">From <span class="price-tbd">~$20</span> <span class="plan-cycle">/ developer · month (target)</span></div>
         <p class="plan-desc">
-          Optional managed AI layer for Oracle teams that want deeper intelligence, automation, and collaboration.
+          Optional managed AI layer for Oracle teams that want schema-aware intelligence, automation, and shared sandboxes. Founder pricing locked for waitlist members.
         </p>
 
-        <a href="/contact?subject=Cloud%20Waitlist" class="btn cloud soon plan-btn" aria-disabled="true">Coming Soon</a>
+        <a href="/#waitlist" class="btn cloud plan-btn">Join Cloud waitlist →</a>
 
         <ul class="plan-features">
-          <li>Schema-aware AI context</li>
-          <li>Managed AI without API key handling</li>
-          <li>AI-assisted execution and optimization workflows</li>
-          <li>Intelligent automation capabilities</li>
-          <li>Team workflows and shared operational context</li>
-          <li>Usage and billing visibility</li>
+          <li>Schema-aware AI grounded in your Oracle DDL</li>
+          <li>Managed AI — no API keys per developer, SSO + central billing</li>
+          <li>Auto-tune queries with EXPLAIN PLAN feedback loops</li>
+          <li>Auto-document packages and procedures overnight</li>
+          <li>VeeskerDB Sandbox — share masked extracts safely</li>
+          <li>Team workflows, audit log, and per-developer billing visibility</li>
         </ul>
       </article>
     </div>
+
+    <p class="pricing-note">
+      Target launch pricing — exact tiers will be finalized at GA. Waitlist members lock founder pricing and shape the feature roadmap.
+    </p>
   </div>
 </section>
 
@@ -80,30 +85,42 @@
     <h2>Frequently asked</h2>
     <div class="faq-grid">
       <div>
-        <h3>Is the Community Edition complete?</h3>
+        <h3>Is Community Edition truly complete?</h3>
         <p>
-          Yes. Community is the full local-first IDE and remains fully usable on its own.
-          Cloud is optional and focused on managed intelligence, not feature removal.
+          Yes. Community is the full local-first IDE and works on its own.
+          Cloud is the optional managed layer — never a paywall on core IDE features.
         </p>
       </div>
       <div>
-        <h3>Does Cloud require direct database exposure?</h3>
+        <h3>Does Cloud need direct database exposure?</h3>
         <p>
-          No. Credentials and database access remain local in your desktop workflow.
-          Cloud powers managed intelligence workflows as an optional layer.
+          No. Credentials and database connections stay local in your desktop install.
+          Cloud powers AI features and shared sandboxes — extracts are encrypted client-side before they leave your machine.
         </p>
       </div>
       <div>
         <h3>Can we adopt in phases?</h3>
         <p>
-          Yes. Start with Community, then enable Cloud when it is released for your selected teams or projects.
+          Yes. Start with Community today. Enable Cloud per team or project once it reaches GA.
         </p>
       </div>
       <div>
-        <h3>How do we follow Cloud availability?</h3>
+        <h3>How do we lock founder pricing?</h3>
         <p>
-          Cloud is currently marked as coming soon.
-          Use <a href="/contact?subject=Cloud%20Waitlist">join the waitlist</a> and share your use case.
+          <a href="/#waitlist">Join the waitlist</a> and share your use case. Waitlist members get founder pricing fixed at launch and influence the feature priorities.
+        </p>
+      </div>
+      <div>
+        <h3>What about Enterprise / on-premise?</h3>
+        <p>
+          A self-hosted Cloud package is on the roadmap for Enterprise customers with strict data-residency needs.
+          <a href="/contact?subject=Enterprise%20inquiry">Contact us</a> if you need it before public availability.
+        </p>
+      </div>
+      <div>
+        <h3>What Oracle versions are supported?</h3>
+        <p>
+          9i, 10g, 11g, 12c, 18c, 19c, 21c, 23ai, and 26ai. Thick mode auto-discovery with bundled bindings — no per-user setup.
         </p>
       </div>
     </div>
@@ -210,6 +227,9 @@
     font-weight: 700;
     line-height: 1.1;
   }
+  .price-tbd {
+    color: var(--cloud-text);
+  }
   .plan-cycle {
     font-size: 13px;
     font-weight: 400;
@@ -247,6 +267,15 @@
   .plan.cloud .plan-features li::before {
     content: "+ ";
     color: var(--cloud-text);
+  }
+
+  .pricing-note {
+    max-width: 720px;
+    margin: 28px auto 0;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
   }
 
   .faq {
