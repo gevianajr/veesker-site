@@ -83,6 +83,20 @@
       Send a live slice of your Oracle database to your team — encrypted end-to-end, PII auto-masked, queryable locally as DuckDB.
     </p>
 
+    <figure class="vdb-diagram-wrap">
+      <img
+        src="/datamap-hero.png"
+        alt="Veesker system datamap — Desktop Client with SQL editor and AI Sheep talking to Veesker Cloud API (Auth, Sandbox, Audit Log) which connects to Oracle Database 9i to 26ai, with Postgres and Cloudflare R2 alongside"
+        width="2752"
+        height="1536"
+        loading="lazy"
+        class="vdb-diagram"
+      />
+      <figcaption class="vdb-diagram-caption">
+        Desktop Client → Veesker Cloud API → Oracle. The Sandbox flow rides this same path — encrypted blobs uploaded to R2, sealed envelopes brokered through the API, never plaintext on our servers.
+      </figcaption>
+    </figure>
+
     <div class="vdb-flow">
       <div class="vdb-step">
         <div class="vdb-step-num">01</div>
@@ -800,6 +814,30 @@
     color: var(--text-muted);
     font-size: 17px;
     line-height: 1.65;
+  }
+  .vdb-diagram-wrap {
+    max-width: 1180px;
+    margin: 0 auto 48px;
+    padding: 0 8px;
+    display: block;
+  }
+  .vdb-diagram {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 16px;
+    border: 1px solid rgba(138, 216, 251, 0.18);
+    box-shadow:
+      0 40px 90px -30px rgba(43, 180, 238, 0.35),
+      0 18px 40px -16px rgba(0, 0, 0, 0.55);
+  }
+  .vdb-diagram-caption {
+    margin: 18px auto 0;
+    max-width: 820px;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: rgba(245, 241, 232, 0.62);
+    text-align: center;
   }
   .vdb-flow {
     display: grid;
