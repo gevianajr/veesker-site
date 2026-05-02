@@ -6,6 +6,8 @@
   title="About"
   description="Veesker is created and maintained by Geraldo Ferreira Viana Júnior — Senior Oracle Engineer with 14 years of experience building mission-critical PL/SQL, ERP, and APEX systems."
   path="/about"
+  image="/geraldo-viana.jpg"
+  imageAlt="Geraldo Ferreira Viana Júnior — creator of Veesker"
 />
 
 <section class="hero">

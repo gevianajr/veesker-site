@@ -6,6 +6,8 @@
   title="Features"
   description="Community Edition covers full local-first Oracle workflows. Veesker Cloud is coming soon as an optional managed intelligence layer for schema-aware AI and team operations."
   path="/features"
+  image="/workspace-overview.png"
+  imageAlt="Veesker workspace — SQL editor, schema browser, results grid, AI assistant"
 />
 
 <section class="hero">

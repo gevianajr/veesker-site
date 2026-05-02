@@ -10,6 +10,8 @@
   title="Download"
   description="Download Veesker Community Edition for Windows, macOS, and Linux. Free and open source under Apache 2.0, with optional Veesker Cloud coming soon for managed intelligence."
   path="/download"
+  image="/workspace-overview.png"
+  imageAlt="Veesker workspace running on Windows, macOS, and Linux"
 />
 
 <section class="hero">

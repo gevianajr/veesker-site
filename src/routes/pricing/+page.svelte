@@ -56,9 +56,9 @@
           </div>
         </div>
 
-        <div class="plan-price">From <span class="price-tbd">~$20</span> <span class="plan-cycle">/ developer · month (target)</span></div>
+        <div class="plan-price"><span class="price-tbd">$29</span> <span class="plan-cycle">USD / seat · month</span></div>
         <p class="plan-desc">
-          Optional managed AI layer for Oracle teams that want schema-aware intelligence, automation, and shared sandboxes. Founder pricing locked for waitlist members.
+          Optional managed AI layer for Oracle teams that want schema-aware intelligence, automation, and shared sandboxes. Single price, all features included. Founder pricing locked for waitlist members.
         </p>
 
         <a href="/#waitlist" class="btn cloud plan-btn">Join Cloud waitlist →</a>
@@ -75,7 +75,7 @@
     </div>
 
     <p class="pricing-note">
-      Target launch pricing — exact tiers will be finalized at GA. Waitlist members lock founder pricing and shape the feature roadmap.
+      Single, simple pricing. No tiers, no per-feature add-ons. Waitlist members lock founder pricing and shape the feature roadmap.
     </p>
   </div>
 </section>

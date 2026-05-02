@@ -3,26 +3,49 @@
   import type { Snippet } from "svelte";
 
   let { children }: { children: Snippet } = $props();
+
+  let mobileNavOpen = $state(false);
+
+  function closeMobileNav() {
+    mobileNavOpen = false;
+  }
 </script>
 
-<header class="site-header">
+<header class="site-header" class:nav-open={mobileNavOpen}>
   <div class="container nav">
-    <a href="/" class="brand">
-      <span class="brand-mark">
-        <img src="/app-icon.png" alt="Veesker" class="brand-logo" width="36" height="36" />
-      </span>
-      <span class="brand-meta">
-        <span class="brand-name">VEESKER</span>
-        <span class="brand-kicker">Oracle Platform</span>
-      </span>
+    <a href="/" class="brand" onclick={closeMobileNav}>
+      <img
+        src="/veesker-wordmark-banner.png"
+        alt="Veesker"
+        class="brand-banner"
+        width="850"
+        height="280"
+        fetchpriority="high"
+      />
     </a>
-    <nav>
-      <a href="/features">Features</a>
-      <a href="/#community">Community</a>
-      <a href="/#cloud">Cloud</a>
-      <a href="/pricing">Pricing</a>
-      <a href="/docs">Docs</a>
-      <a href="https://github.com/veesker-cloud/veesker-community-edition" target="_blank" rel="noopener" class="nav-gh">
+
+    <button
+      class="nav-toggle"
+      type="button"
+      aria-label={mobileNavOpen ? "Close menu" : "Open menu"}
+      aria-expanded={mobileNavOpen}
+      aria-controls="primary-nav"
+      onclick={() => (mobileNavOpen = !mobileNavOpen)}
+    >
+      <span class="nav-toggle-bar" class:open={mobileNavOpen}></span>
+      <span class="nav-toggle-bar" class:open={mobileNavOpen}></span>
+      <span class="nav-toggle-bar" class:open={mobileNavOpen}></span>
+    </button>
+
+    <nav id="primary-nav" class:open={mobileNavOpen}>
+      <a href="/features" onclick={closeMobileNav}>Features</a>
+      <a href="/#community" onclick={closeMobileNav}>Community</a>
+      <a href="/#cloud" onclick={closeMobileNav}>Cloud</a>
+      <a href="/pricing" onclick={closeMobileNav}>Pricing</a>
+      <a href="/security" onclick={closeMobileNav}>Security</a>
+      <a href="/changelog" onclick={closeMobileNav}>Changelog</a>
+      <a href="/docs" onclick={closeMobileNav}>Docs</a>
+      <a href="https://github.com/veesker-cloud/veesker-community-edition" target="_blank" rel="noopener" class="nav-gh" onclick={closeMobileNav}>
         <svg class="gh-icon" viewBox="0 0 24 24" aria-hidden="true">
           <path
             d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.43 7.86 10.96.58.11.79-.25.79-.56v-1.99c-3.2.69-3.88-1.36-3.88-1.36-.52-1.32-1.28-1.67-1.28-1.67-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.72-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.14 1.17a10.9 10.9 0 0 1 5.72 0c2.18-1.48 3.14-1.17 3.14-1.17.62 1.58.23 2.75.11 3.04.73.8 1.18 1.82 1.18 3.07 0 4.42-2.7 5.39-5.27 5.67.41.35.78 1.05.78 2.11v3.13c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"
@@ -30,7 +53,7 @@
         </svg>
         <span>GitHub</span>
       </a>
-      <a href="/download" class="btn primary nav-download">
+      <a href="/download" class="btn primary nav-download" onclick={closeMobileNav}>
         <span class="nav-btn-icon-wrap">
           <img src="/veesker-community-logo.png" alt="" aria-hidden="true" class="nav-btn-icon" width="1024" height="1024" />
         </span>
@@ -40,15 +63,22 @@
   </div>
 </header>
 
-<main>
+<main onclick={closeMobileNav}>
   {@render children()}
 </main>
 
 <footer class="site-footer">
   <div class="container foot">
     <div class="foot-cols">
-      <div>
-        <strong>Veesker</strong>
+      <div class="foot-brand">
+        <img
+          src="/veesker-wordmark-banner.png"
+          alt="Veesker"
+          class="foot-banner"
+          width="850"
+          height="280"
+          loading="lazy"
+        />
         <p class="muted">Oracle development platform for the AI agent era — local-first, open source, optional managed cloud.</p>
       </div>
       <div>
@@ -62,6 +92,7 @@
       <div>
         <h4>Resources</h4>
         <a href="/docs">Documentation</a>
+        <a href="/changelog">Changelog</a>
         <a href="/about">About</a>
         <a href="/contact">Contact</a>
         <a href="https://github.com/veesker-cloud/veesker-community-edition" target="_blank" rel="noopener">GitHub</a>
@@ -69,10 +100,10 @@
       </div>
       <div>
         <h4>Legal</h4>
+        <a href="/security">Security</a>
         <a href="https://github.com/veesker-cloud/veesker-community-edition/blob/main/LICENSE" target="_blank" rel="noopener">License (Apache 2.0)</a>
         <a href="https://github.com/veesker-cloud/veesker-community-edition/blob/main/COMMERCIAL_USE.md" target="_blank" rel="noopener">Commercial Use</a>
         <a href="https://github.com/veesker-cloud/veesker-community-edition/blob/main/TERMS_OF_USE.md" target="_blank" rel="noopener">Terms of Use</a>
-        <a href="https://github.com/veesker-cloud/veesker-community-edition/blob/main/SECURITY.md" target="_blank" rel="noopener">Security</a>
       </div>
     </div>
     <div class="foot-bottom muted">
@@ -96,59 +127,26 @@
     align-items: center;
     justify-content: space-between;
     padding: 14px 24px;
+    gap: 20px;
   }
   .brand {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 10px;
-    padding: 5px 8px;
+    padding: 4px 6px;
     border-radius: 10px;
-    font-family: "Space Grotesk", sans-serif;
-    font-weight: 600;
-    color: var(--text);
     text-decoration: none;
     transition: background 0.14s ease;
+    flex: 0 0 auto;
   }
   .brand:hover {
     text-decoration: none;
     background: rgba(255, 255, 255, 0.04);
   }
-  .brand-mark {
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    background: linear-gradient(180deg, rgba(21, 19, 17, 0.95), rgba(14, 12, 10, 0.95));
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
-  }
-  .brand-logo {
-    width: 32px;
-    height: 32px;
-    object-fit: cover;
+  .brand-banner {
+    height: 44px;
+    width: auto;
     display: block;
-  }
-  .brand-meta {
-    display: flex;
-    flex-direction: column;
-    line-height: 1;
-  }
-  .brand-name {
-    font-size: 28px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: #f7f8fb;
-    -webkit-font-smoothing: antialiased;
-  }
-  .brand-kicker {
-    margin-top: 3px;
-    font-size: 9px;
-    text-transform: uppercase;
-    letter-spacing: 0.13em;
-    color: rgba(245, 241, 232, 0.56);
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.45));
   }
 
   nav {
@@ -217,6 +215,46 @@
     display: block;
   }
 
+  /* Hamburger toggle — hidden on desktop, visible at <860px */
+  .nav-toggle {
+    display: none;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 0;
+    transition: border-color 0.14s ease, background 0.14s ease;
+    flex: 0 0 auto;
+  }
+  .nav-toggle:hover {
+    border-color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .nav-toggle-bar {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: transform 0.18s ease, opacity 0.18s ease;
+    transform-origin: center;
+  }
+  .nav-toggle-bar.open:nth-of-type(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .nav-toggle-bar.open:nth-of-type(2) {
+    opacity: 0;
+  }
+  .nav-toggle-bar.open:nth-of-type(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
   main {
     min-height: calc(100vh - 200px);
   }
@@ -232,6 +270,17 @@
     grid-template-columns: 2fr 1fr 1fr 1fr;
     gap: 40px;
     padding: 0 24px;
+  }
+  .foot-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .foot-banner {
+    height: 56px;
+    width: auto;
+    display: block;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.45));
   }
   .foot-cols h4 {
     font-size: 12px;
@@ -253,8 +302,9 @@
   .foot-cols p.muted {
     color: var(--text-muted);
     font-size: 13px;
-    margin: 8px 0 0;
+    margin: 0;
     line-height: 1.6;
+    max-width: 360px;
   }
   .foot-bottom {
     margin-top: 36px;
@@ -267,24 +317,63 @@
   }
 
   @media (max-width: 860px) {
-    .nav {
-      flex-direction: column;
-      gap: 12px;
+    .nav-toggle {
+      display: inline-flex;
     }
     nav {
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-    }
-    .brand-kicker {
       display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: rgba(14, 12, 10, 0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      flex-direction: column;
+      gap: 0;
+      align-items: stretch;
+      padding: 8px 16px 16px;
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.4);
     }
-    .brand-name {
-      font-size: 24px;
-      letter-spacing: 0.05em;
+    nav.open {
+      display: flex;
+    }
+    nav a {
+      padding: 14px 8px;
+      border-bottom: 1px solid var(--border);
+      font-size: 15px;
+    }
+    nav a:last-child {
+      border-bottom: none;
+      margin-top: 6px;
+    }
+    .nav-gh {
+      justify-content: flex-start;
+    }
+    .nav-download {
+      justify-content: center;
+      margin-top: 10px;
+    }
+    .brand-banner {
+      height: 36px;
     }
     .foot-cols {
       grid-template-columns: 1fr 1fr;
+    }
+    .foot-brand {
+      grid-column: 1 / -1;
+    }
+    .foot-banner {
+      height: 48px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .brand-banner {
+      height: 32px;
+    }
+    .nav {
+      padding: 12px 16px;
     }
   }
 </style>
