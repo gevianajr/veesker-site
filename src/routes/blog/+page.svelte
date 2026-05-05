@@ -3,6 +3,9 @@
   import { allPosts, type PostLang, type PostSummary, readMinutes } from "$lib/blog/posts";
   import { browser } from "$app/environment";
   import { onMount } from "svelte";
+  import TiltCard from "$lib/components/TiltCard.svelte";
+  import ScrollReveal from "$lib/components/ScrollReveal.svelte";
+  import { spotlight } from "$lib/actions/spotlight";
 
   let lang = $state<PostLang>("en");
   let activeTag = $state<string | null>(null);
@@ -69,32 +72,34 @@
   imageAlt="Veesker blog — Oracle, AI, and developer tools"
 />
 
-<section class="hero">
-  <div class="container">
-    <div class="eyebrow">Blog</div>
-    <h1>
-      {#if lang === "en"}
-        Notes from the Oracle + AI workshop.
-      {:else}
-        Notas da oficina Oracle + AI.
-      {/if}
-    </h1>
-    <p class="lead">
-      {#if lang === "en"}
-        Two posts per week. Mondays are deep-dives — code, EXPLAIN PLAN, architectural decisions.
-        Thursdays are short manifestos — opinions, takes, calls to action.
-      {:else}
-        Dois posts por semana. Segundas são aprofundamentos — código, EXPLAIN PLAN, decisões de arquitetura.
-        Quintas são manifestos curtos — opiniões, pontos de vista, provocações.
-      {/if}
-    </p>
+<ScrollReveal>
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow">Blog</div>
+      <h1>
+        {#if lang === "en"}
+          Notes from the Oracle + AI workshop.
+        {:else}
+          Notas da oficina Oracle + AI.
+        {/if}
+      </h1>
+      <p class="lead">
+        {#if lang === "en"}
+          Two posts per week. Mondays are deep-dives — code, EXPLAIN PLAN, architectural decisions.
+          Thursdays are short manifestos — opinions, takes, calls to action.
+        {:else}
+          Dois posts por semana. Segundas são aprofundamentos — código, EXPLAIN PLAN, decisões de arquitetura.
+          Quintas são manifestos curtos — opiniões, pontos de vista, provocações.
+        {/if}
+      </p>
 
-    <div class="lang-switch" role="group" aria-label="Language">
-      <button class:active={lang === "en"} onclick={() => setLang("en")}>English</button>
-      <button class:active={lang === "pt"} onclick={() => setLang("pt")}>Português</button>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button class:active={lang === "en"} onclick={() => setLang("en")}>English</button>
+        <button class:active={lang === "pt"} onclick={() => setLang("pt")}>Português</button>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+</ScrollReveal>
 
 {#if allTags().length > 0}
   <section class="topics" aria-label="Filter by topic">
@@ -135,33 +140,37 @@
         {/if}
       </div>
     {:else}
-      <ol class="post-list">
-        {#each filtered as p (p.slug)}
-          <li class="post-card">
-            <a href="/blog/{p.slug}" class="post-link">
-              {#if p.hero}
-                <div class="post-hero-thumb">
-                  <img src={p.hero} alt="" loading="lazy" />
-                </div>
-              {/if}
-              <div class="post-body">
-                <div class="post-meta">
-                  <span class="post-date">{p.date}</span>
-                  <span class="post-kind kind-{p.kind}">{kindLabel(p)}</span>
-                  <span class="post-read">{readMinutes(p.words)} min read</span>
-                </div>
-                <h2>{p.title}</h2>
-                <p class="post-desc">{p.description}</p>
-                <div class="post-tags">
-                  {#each p.tags as t}
-                    <span class="tag" class:active-tag={t === activeTag}>#{t}</span>
-                  {/each}
-                </div>
-              </div>
-            </a>
-          </li>
-        {/each}
-      </ol>
+      <ScrollReveal stagger={0.08}>
+        <ol class="post-list">
+          {#each filtered as p (p.slug)}
+            <TiltCard maxTilt={4}>
+              <li class="post-card" use:spotlight>
+                <a href="/blog/{p.slug}" class="post-link">
+                  {#if p.hero}
+                    <div class="post-hero-thumb">
+                      <img src={p.hero} alt="" loading="lazy" />
+                    </div>
+                  {/if}
+                  <div class="post-body">
+                    <div class="post-meta">
+                      <span class="post-date">{p.date}</span>
+                      <span class="post-kind kind-{p.kind}">{kindLabel(p)}</span>
+                      <span class="post-read">{readMinutes(p.words)} min read</span>
+                    </div>
+                    <h2>{p.title}</h2>
+                    <p class="post-desc">{p.description}</p>
+                    <div class="post-tags">
+                      {#each p.tags as t}
+                        <span class="tag" class:active-tag={t === activeTag}>#{t}</span>
+                      {/each}
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </TiltCard>
+          {/each}
+        </ol>
+      </ScrollReveal>
     {/if}
   </div>
 </section>

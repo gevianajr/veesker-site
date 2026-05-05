@@ -1,5 +1,7 @@
 <script lang="ts">
   import Seo from "$lib/seo.svelte";
+  import AnimatedBorder from "$lib/components/AnimatedBorder.svelte";
+  import ScrollReveal from "$lib/components/ScrollReveal.svelte";
 
   type Release = {
     version: string;
@@ -84,34 +86,56 @@
   imageAlt="Veesker recent shipped milestones"
 />
 
-<section class="hero">
-  <div class="container">
-    <div class="eyebrow">What shipped recently</div>
-    <h1>Changelog.</h1>
-    <p class="lead">
-      Veesker ships in public. Every release, security fix, and milestone is announced here and on the
-      <a href="https://github.com/veesker-cloud/veesker-community-edition/releases" target="_blank" rel="noopener">GitHub releases page</a>.
-    </p>
-  </div>
-</section>
+<ScrollReveal>
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow">What shipped recently</div>
+      <h1>Changelog.</h1>
+      <p class="lead">
+        Veesker ships in public. Every release, security fix, and milestone is announced here and on the
+        <a href="https://github.com/veesker-cloud/veesker-community-edition/releases" target="_blank" rel="noopener">GitHub releases page</a>.
+      </p>
+    </div>
+  </section>
+</ScrollReveal>
 
 <section class="releases">
   <div class="container">
     <ol class="release-list">
-      {#each releases as r (r.version)}
-        <li class="release {r.tag}">
-          <div class="release-meta">
-            <span class="release-version">{r.version}</span>
-            <span class="release-date">{r.date}</span>
-            <span class="release-tag tag-{r.tag}">{tagLabel(r.tag)}</span>
-          </div>
-          <h2 class="release-title">{r.title}</h2>
-          <ul class="release-highlights">
-            {#each r.highlights as line}
-              <li>{line}</li>
-            {/each}
-          </ul>
-        </li>
+      {#each releases as r, i (r.version)}
+        {#if i === 0}
+          <AnimatedBorder speed="5s" borderRadius="12px" innerBg="var(--bg-soft)">
+            <li class="release {r.tag}">
+              <div class="release-meta">
+                <span class="release-version">{r.version}</span>
+                <span class="release-date">{r.date}</span>
+                <span class="release-tag tag-{r.tag}">{tagLabel(r.tag)}</span>
+              </div>
+              <h2 class="release-title">{r.title}</h2>
+              <ul class="release-highlights">
+                {#each r.highlights as line}
+                  <li>{line}</li>
+                {/each}
+              </ul>
+            </li>
+          </AnimatedBorder>
+        {:else}
+          <ScrollReveal>
+            <li class="release {r.tag}">
+              <div class="release-meta">
+                <span class="release-version">{r.version}</span>
+                <span class="release-date">{r.date}</span>
+                <span class="release-tag tag-{r.tag}">{tagLabel(r.tag)}</span>
+              </div>
+              <h2 class="release-title">{r.title}</h2>
+              <ul class="release-highlights">
+                {#each r.highlights as line}
+                  <li>{line}</li>
+                {/each}
+              </ul>
+            </li>
+          </ScrollReveal>
+        {/if}
       {/each}
     </ol>
 

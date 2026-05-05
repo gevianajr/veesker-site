@@ -1,6 +1,8 @@
 <script lang="ts">
   import Seo from "$lib/seo.svelte";
   import { readMinutes } from "$lib/blog/posts";
+  import ShimmerText from "$lib/components/ShimmerText.svelte";
+  import ScrollReveal from "$lib/components/ScrollReveal.svelte";
 
   let { data } = $props();
   const Component = $derived(data.Component);
@@ -28,43 +30,45 @@
 />
 
 <article class="post">
-  <header class="post-header">
-    <div class="container narrow">
-      <a href="/blog" class="back-link">← Back to blog</a>
-      <div class="post-meta">
-        <span class="post-date">{md.date}</span>
-        <span class="post-kind kind-{md.kind}">
-          {md.lang === "pt" ? (md.kind === "deep-dive" ? "Aprofundamento" : "Manifesto") : (md.kind === "deep-dive" ? "Deep dive" : "Manifesto")}
-        </span>
-        <span class="post-read">{readMinutes(md.words)} min</span>
-        {#if md.translation_slug}
-          <a class="lang-toggle" href="/blog/{md.translation_slug}">
-            {md.lang === "en" ? "Ler em Português →" : "Read in English →"}
-          </a>
-        {/if}
-      </div>
-      <h1>{md.title}</h1>
-      <p class="post-desc">{md.description}</p>
-      <div class="post-tags">
-        {#each md.tags as t}
-          <span class="tag">#{t}</span>
-        {/each}
-      </div>
+  <ScrollReveal>
+    <header class="post-header">
+      <div class="container narrow">
+        <a href="/blog" class="back-link">← Back to blog</a>
+        <div class="post-meta">
+          <span class="post-date">{md.date}</span>
+          <span class="post-kind kind-{md.kind}">
+            {md.lang === "pt" ? (md.kind === "deep-dive" ? "Aprofundamento" : "Manifesto") : (md.kind === "deep-dive" ? "Deep dive" : "Manifesto")}
+          </span>
+          <span class="post-read">{readMinutes(md.words)} min</span>
+          {#if md.translation_slug}
+            <a class="lang-toggle" href="/blog/{md.translation_slug}">
+              {md.lang === "en" ? "Ler em Português →" : "Read in English →"}
+            </a>
+          {/if}
+        </div>
+        <ShimmerText as="h1">{md.title}</ShimmerText>
+        <p class="post-desc">{md.description}</p>
+        <div class="post-tags">
+          {#each md.tags as t}
+            <span class="tag">#{t}</span>
+          {/each}
+        </div>
 
-      <aside class="transparency-banner" aria-label="Authorship transparency">
-        <div class="banner-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="7" width="18" height="13" rx="2"/>
-            <path d="M9 7V4a3 3 0 0 1 6 0v3M8 13h.01M12 13h.01M16 13h.01"/>
-          </svg>
-        </div>
-        <div class="banner-text">
-          <div class="banner-label">{bannerLabel(md.lang)}</div>
-          <p class="banner-detail">{bannerDetail(md.lang)}</p>
-        </div>
-      </aside>
-    </div>
-  </header>
+        <aside class="transparency-banner" aria-label="Authorship transparency">
+          <div class="banner-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="7" width="18" height="13" rx="2"/>
+              <path d="M9 7V4a3 3 0 0 1 6 0v3M8 13h.01M12 13h.01M16 13h.01"/>
+            </svg>
+          </div>
+          <div class="banner-text">
+            <div class="banner-label">{bannerLabel(md.lang)}</div>
+            <p class="banner-detail">{bannerDetail(md.lang)}</p>
+          </div>
+        </aside>
+      </div>
+    </header>
+  </ScrollReveal>
 
   {#if md.hero}
     <figure class="post-hero">
@@ -72,11 +76,13 @@
     </figure>
   {/if}
 
-  <section class="post-body">
-    <div class="container narrow">
-      <Component />
-    </div>
-  </section>
+  <ScrollReveal>
+    <section class="post-body">
+      <div class="container narrow">
+        <Component />
+      </div>
+    </section>
+  </ScrollReveal>
 
   <footer class="post-footer">
     <div class="container narrow">
