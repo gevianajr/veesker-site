@@ -1,5 +1,9 @@
 <script lang="ts">
   import Seo from "$lib/seo.svelte";
+  import AnimatedBorder from "$lib/components/AnimatedBorder.svelte";
+  import TiltCard from "$lib/components/TiltCard.svelte";
+  import ScrollReveal from "$lib/components/ScrollReveal.svelte";
+  import ShimmerText from "$lib/components/ShimmerText.svelte";
 </script>
 
 <Seo
@@ -10,7 +14,7 @@
 
 <section class="hero">
   <div class="container">
-    <h1>Pricing</h1>
+    <ShimmerText as="h1">Pricing</ShimmerText>
     <p class="lead">
       Community is free forever and fully open source. Cloud is an optional managed intelligence layer — Coming Soon (H2 2026).
     </p>
@@ -19,60 +23,68 @@
 
 <section class="plans" aria-label="Community and Cloud plans">
   <div class="container">
-    <div class="plan-grid">
-      <article class="plan ce" id="community">
-        <div class="plan-head">
-          <img src="/veesker-community-logo.png" alt="Veesker Community Edition" width="1024" height="1024" class="plan-logo" loading="lazy" />
-          <div>
-            <span class="plan-name">Community Edition</span>
-            <span class="plan-badge ce-badge">Free forever</span>
-          </div>
-        </div>
+    <ScrollReveal stagger={0.15}>
+      <div class="plan-grid">
+        <TiltCard maxTilt={4}>
+          <article class="plan ce" id="community">
+            <div class="plan-head">
+              <img src="/veesker-community-logo.png" alt="Veesker Community Edition" width="1024" height="1024" class="plan-logo" loading="lazy" />
+              <div>
+                <span class="plan-name">Community Edition</span>
+                <span class="plan-badge ce-badge">Free forever</span>
+              </div>
+            </div>
 
-        <div class="plan-price">$0 <span class="plan-cycle">/ forever</span></div>
-        <p class="plan-desc">
-          Local-first Oracle IDE with no forced subscription and no crippled core workflow.
-        </p>
+            <div class="plan-price">$0 <span class="plan-cycle">/ forever</span></div>
+            <p class="plan-desc">
+              Local-first Oracle IDE with no forced subscription and no crippled core workflow.
+            </p>
 
-        <a href="/download" class="btn primary plan-btn">Download Community</a>
+            <a href="/download" class="btn primary plan-btn">Download Community</a>
 
-        <ul class="plan-features">
-          <li>Full SQL and PL/SQL IDE</li>
-          <li>Schema browser and dependency workflows</li>
-          <li>PL/SQL debugger and execution tooling</li>
-          <li>VRAS — Veesker REST API Studio</li>
-          <li>Vector tooling for Oracle 23ai+</li>
-          <li>BYOK AI for explain and generate SQL</li>
-          <li>Apache 2.0 open-source codebase</li>
-        </ul>
-      </article>
+            <ul class="plan-features">
+              <li>Full SQL and PL/SQL IDE</li>
+              <li>Schema browser and dependency workflows</li>
+              <li>PL/SQL debugger and execution tooling</li>
+              <li>VRAS — Veesker REST API Studio</li>
+              <li>Vector tooling for Oracle 23ai+</li>
+              <li>BYOK AI for explain and generate SQL</li>
+              <li>Apache 2.0 open-source codebase</li>
+            </ul>
+          </article>
+        </TiltCard>
 
-      <article class="plan cloud" id="cloud">
-        <div class="plan-head">
-          <img src="/veesker-cloud-logo.png" alt="Veesker Cloud" width="1536" height="1024" class="plan-logo cloud-logo" loading="lazy" />
-          <div>
-            <span class="plan-name">Veesker Cloud</span>
-            <span class="plan-badge cloud-badge">Coming Soon — H2 2026</span>
-          </div>
-        </div>
+        <AnimatedBorder speed="4s" borderRadius="16px" innerBg="transparent">
+          <TiltCard maxTilt={4}>
+            <article class="plan cloud no-border" id="cloud">
+              <div class="plan-head">
+                <img src="/veesker-cloud-logo.png" alt="Veesker Cloud" width="1536" height="1024" class="plan-logo cloud-logo" loading="lazy" />
+                <div>
+                  <span class="plan-name">Veesker Cloud</span>
+                  <span class="plan-badge cloud-badge">Coming Soon — H2 2026</span>
+                </div>
+              </div>
 
-        <div class="plan-price"><span class="price-tbd">$29</span> <span class="plan-cycle">USD / seat · month</span></div>
-        <p class="plan-desc">
-          Optional managed AI layer for Oracle teams that want schema-aware intelligence, automation, and shared sandboxes. Single price, all features included. Founder pricing locked for waitlist members.
-        </p>
+              <div class="plan-price"><span class="price-tbd">$29</span> <span class="plan-cycle">USD / seat · month</span></div>
+              <p class="plan-desc">
+                Optional managed AI layer for Oracle teams that want schema-aware intelligence, automation, and shared sandboxes. Single price, all features included. Founder pricing locked for waitlist members.
+              </p>
 
-        <a href="/#waitlist" class="btn cloud plan-btn">Join Cloud waitlist →</a>
+              <a href="/#waitlist" class="btn cloud plan-btn">Join Cloud waitlist →</a>
 
-        <ul class="plan-features">
-          <li>Schema-aware AI grounded in your Oracle DDL</li>
-          <li>Managed AI — no API keys per developer, SSO + central billing</li>
-          <li>Auto-tune queries with EXPLAIN PLAN feedback loops</li>
-          <li>Auto-document packages and procedures overnight</li>
-          <li>VeeskerDB Sandbox — share masked extracts safely</li>
-          <li>Team workflows, audit log, and per-developer billing visibility</li>
-        </ul>
-      </article>
-    </div>
+              <ul class="plan-features">
+                <li>Schema-aware AI grounded in your Oracle DDL</li>
+                <li>Managed AI — no API keys per developer, SSO + central billing</li>
+                <li>Auto-tune queries with EXPLAIN PLAN feedback loops</li>
+                <li>Auto-document packages and procedures overnight</li>
+                <li>VeeskerDB Sandbox — share masked extracts safely</li>
+                <li>Team workflows, audit log, and per-developer billing visibility</li>
+              </ul>
+            </article>
+          </TiltCard>
+        </AnimatedBorder>
+      </div>
+    </ScrollReveal>
 
     <p class="pricing-note">
       Single, simple pricing. No tiers, no per-feature add-ons. Waitlist members lock founder pricing and shape the feature roadmap.
@@ -82,6 +94,7 @@
 
 <section class="faq">
   <div class="container">
+    <ScrollReveal>
     <h2>Frequently asked</h2>
     <div class="faq-grid">
       <div>
@@ -124,6 +137,7 @@
         </p>
       </div>
     </div>
+    </ScrollReveal>
   </div>
 </section>
 
@@ -311,6 +325,12 @@
   }
   .faq a {
     color: var(--cloud-text);
+  }
+
+  /* when cloud card is wrapped by AnimatedBorder, remove its own border */
+  .plan.no-border {
+    border: none;
+    box-shadow: none;
   }
 
   @media (max-width: 900px) {

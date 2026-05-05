@@ -1,5 +1,7 @@
 <script lang="ts">
   import Seo from "$lib/seo.svelte";
+  import ShimmerText from "$lib/components/ShimmerText.svelte";
+  import ScrollReveal from "$lib/components/ScrollReveal.svelte";
 
   const RELEASE = "0.2.4";
   const BASE = `https://github.com/veesker-cloud/veesker-community-edition/releases/download/v${RELEASE}`;
@@ -16,63 +18,67 @@
 
 <section class="hero">
   <div class="container">
-    <h1>Download Veesker Community Edition</h1>
+    <ShimmerText as="h1">Download Veesker Community Edition</ShimmerText>
     <p class="lead">
       Community Edition · v{RELEASE} · free forever under Apache 2.0.
       Cloud is Coming Soon — H2 2026.
     </p>
 
-    <div class="downloads">
-      <div class="dl">
-        <div class="dl-os">Windows 10/11 · x64</div>
-        <h3>Veesker_{RELEASE}_x64-setup.exe</h3>
-        <p class="muted">NSIS installer — around 34 MB</p>
-        <a href="{BASE}/Veesker_{RELEASE}_x64-setup.exe" class="btn primary" target="_blank" rel="noopener">Download for Windows</a>
-        <p class="hint">SmartScreen may warn on first run. Click "More info" then "Run anyway".</p>
-      </div>
+    <ScrollReveal>
+      <div class="downloads">
+        <div class="dl">
+          <div class="dl-os">Windows 10/11 · x64</div>
+          <h3>Veesker_{RELEASE}_x64-setup.exe</h3>
+          <p class="muted">NSIS installer — around 34 MB</p>
+          <a href="{BASE}/Veesker_{RELEASE}_x64-setup.exe" class="btn primary" target="_blank" rel="noopener">Download for Windows</a>
+          <p class="hint">SmartScreen may warn on first run. Click "More info" then "Run anyway".</p>
+        </div>
 
-      <div class="dl">
-        <div class="dl-os">macOS · Apple Silicon</div>
-        <h3>Veesker_{RELEASE}_aarch64.dmg</h3>
-        <p class="muted">DMG for M1 / M2 / M3 / M4</p>
-        <a href="{BASE}/Veesker_{RELEASE}_aarch64.dmg" class="btn primary" target="_blank" rel="noopener">Download for macOS (ARM)</a>
-        <p class="hint">If Gatekeeper blocks first launch, right-click the app and choose Open.</p>
-      </div>
+        <div class="dl">
+          <div class="dl-os">macOS · Apple Silicon</div>
+          <h3>Veesker_{RELEASE}_aarch64.dmg</h3>
+          <p class="muted">DMG for M1 / M2 / M3 / M4</p>
+          <a href="{BASE}/Veesker_{RELEASE}_aarch64.dmg" class="btn primary" target="_blank" rel="noopener">Download for macOS (ARM)</a>
+          <p class="hint">If Gatekeeper blocks first launch, right-click the app and choose Open.</p>
+        </div>
 
-      <div class="dl">
-        <div class="dl-os">macOS · Intel</div>
-        <h3>Veesker_{RELEASE}_x64.dmg</h3>
-        <p class="muted">DMG for Intel Macs</p>
-        <a href="{BASE}/Veesker_{RELEASE}_x64.dmg" class="btn primary" target="_blank" rel="noopener">Download for macOS (Intel)</a>
-        <p class="hint">If Gatekeeper blocks first launch, right-click the app and choose Open.</p>
-      </div>
+        <div class="dl">
+          <div class="dl-os">macOS · Intel</div>
+          <h3>Veesker_{RELEASE}_x64.dmg</h3>
+          <p class="muted">DMG for Intel Macs</p>
+          <a href="{BASE}/Veesker_{RELEASE}_x64.dmg" class="btn primary" target="_blank" rel="noopener">Download for macOS (Intel)</a>
+          <p class="hint">If Gatekeeper blocks first launch, right-click the app and choose Open.</p>
+        </div>
 
-      <div class="dl">
-        <div class="dl-os">Linux · x64</div>
-        <h3>Veesker_{RELEASE}_amd64.AppImage</h3>
-        <p class="muted">AppImage — also available as .deb</p>
-        <a href="{BASE}/Veesker_{RELEASE}_amd64.AppImage" class="btn primary" target="_blank" rel="noopener">Download AppImage</a>
-        <p class="hint">Run <code>chmod +x</code> before launching. Need .deb? <a href="{RELEASE_URL}" target="_blank" rel="noopener">Get from release page</a>.</p>
+        <div class="dl">
+          <div class="dl-os">Linux · x64</div>
+          <h3>Veesker_{RELEASE}_amd64.AppImage</h3>
+          <p class="muted">AppImage — also available as .deb</p>
+          <a href="{BASE}/Veesker_{RELEASE}_amd64.AppImage" class="btn primary" target="_blank" rel="noopener">Download AppImage</a>
+          <p class="hint">Run <code>chmod +x</code> before launching. Need .deb? <a href="{RELEASE_URL}" target="_blank" rel="noopener">Get from release page</a>.</p>
+        </div>
       </div>
-    </div>
+    </ScrollReveal>
 
-    <div class="checksums">
-      <h3>Verify your download (optional)</h3>
-      <p class="muted">SHA-256 checksums and Ed25519 signatures are published with each release.</p>
-      <pre class="cmd"># Windows (PowerShell)
+    <ScrollReveal>
+      <div class="checksums">
+        <h3>Verify your download (optional)</h3>
+        <p class="muted">SHA-256 checksums and Ed25519 signatures are published with each release.</p>
+        <pre class="cmd"># Windows (PowerShell)
 Get-FileHash -Algorithm SHA256 .\Veesker_{RELEASE}_x64-setup.exe
 
 # macOS / Linux
 shasum -a 256 Veesker_{RELEASE}_aarch64.dmg</pre>
-    </div>
+      </div>
 
-    <div class="auto-update">
-      <h3>Built-in auto-update</h3>
-      <p>
-        From v{RELEASE} onward, Veesker checks GitHub Releases on launch and offers in-app updates.
-        Every release is signed with Ed25519 before installation.
-      </p>
-    </div>
+      <div class="auto-update">
+        <h3>Built-in auto-update</h3>
+        <p>
+          From v{RELEASE} onward, Veesker checks GitHub Releases on launch and offers in-app updates.
+          Every release is signed with Ed25519 before installation.
+        </p>
+      </div>
+    </ScrollReveal>
   </div>
 </section>
 

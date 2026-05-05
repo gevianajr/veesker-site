@@ -1,5 +1,9 @@
 <script lang="ts">
   import Seo from "$lib/seo.svelte";
+  import ShimmerText from "$lib/components/ShimmerText.svelte";
+  import ScrollReveal from "$lib/components/ScrollReveal.svelte";
+  import TiltCard from "$lib/components/TiltCard.svelte";
+  import { spotlight } from "$lib/actions/spotlight";
 </script>
 
 <Seo
@@ -12,7 +16,7 @@
 
 <section class="hero">
   <div class="container">
-    <h1>Features</h1>
+    <ShimmerText as="h1">Features</ShimmerText>
     <p class="lead">
       Community Edition stays free under Apache 2.0. <a href="/pricing#cloud">Veesker Cloud (Coming Soon — H2 2026)</a>
       is the optional managed intelligence layer for deeper AI workflows.
@@ -22,49 +26,59 @@
 
 <section class="content">
   <div class="container">
-    <div class="feat-block">
-      <h2>Community core workflows</h2>
-      <ul>
-        <li><strong>Full SQL and PL/SQL IDE</strong> — multi-statement execution with per-statement results.</li>
-        <li><strong>Schema browser</strong> — dependency context and fast object navigation across large Oracle schemas.</li>
-        <li><strong>PL/SQL debugger</strong> — breakpoints, watches, call stack, DBMS_OUTPUT capture, and cursor extraction.</li>
-        <li><strong>VRAS — Veesker REST API Studio</strong> — practical ORDS endpoint workflows integrated into the editor.</li>
-        <li><strong>Vector tooling</strong> — embeddings, index tuning, and similarity workflows on Oracle 23ai+.</li>
-        <li><strong>Audit and safety controls</strong> — per-connection read-only / timeout / unsafe-DML guards for production-sensitive environments.</li>
-      </ul>
-    </div>
+    <ScrollReveal stagger={0.12}>
+      <TiltCard>
+        <div class="feat-block" use:spotlight>
+          <h2>Community core workflows</h2>
+          <ul>
+            <li><strong>Full SQL and PL/SQL IDE</strong> — multi-statement execution with per-statement results.</li>
+            <li><strong>Schema browser</strong> — dependency context and fast object navigation across large Oracle schemas.</li>
+            <li><strong>PL/SQL debugger</strong> — breakpoints, watches, call stack, DBMS_OUTPUT capture, and cursor extraction.</li>
+            <li><strong>VRAS — Veesker REST API Studio</strong> — practical ORDS endpoint workflows integrated into the editor.</li>
+            <li><strong>Vector tooling</strong> — embeddings, index tuning, and similarity workflows on Oracle 23ai+.</li>
+            <li><strong>Audit and safety controls</strong> — per-connection read-only / timeout / unsafe-DML guards for production-sensitive environments.</li>
+          </ul>
+        </div>
+      </TiltCard>
 
-    <div class="feat-block">
-      <h2>AI in Community — BYOK (Bring Your Own Key)</h2>
-      <ul>
-        <li><strong>Explain SQL</strong> — plain-language guidance for unfamiliar queries and execution plans.</li>
-        <li><strong>Generate SQL</strong> — turn intent prompts into PL/SQL or DDL, refine inline in the editor.</li>
-        <li><strong>Bring your own key</strong> — OpenAI, Anthropic, or local model. You control billing and provider trust.</li>
-        <li><strong>No forced managed plan</strong> — Community stays complete and usable on its own.</li>
-      </ul>
-    </div>
+      <TiltCard>
+        <div class="feat-block" use:spotlight>
+          <h2>AI in Community — BYOK (Bring Your Own Key)</h2>
+          <ul>
+            <li><strong>Explain SQL</strong> — plain-language guidance for unfamiliar queries and execution plans.</li>
+            <li><strong>Generate SQL</strong> — turn intent prompts into PL/SQL or DDL, refine inline in the editor.</li>
+            <li><strong>Bring your own key</strong> — OpenAI, Anthropic, or local model. You control billing and provider trust.</li>
+            <li><strong>No forced managed plan</strong> — Community stays complete and usable on its own.</li>
+          </ul>
+        </div>
+      </TiltCard>
 
-    <div class="feat-block cloud-block" id="cloud">
-      <h2>Cloud intelligence layer (Coming Soon — H2 2026)</h2>
-      <ul>
-        <li><strong>Schema-aware AI</strong> — grounded in your actual Oracle DDL, not generic SQL training data. Catches dialect quirks (CONNECT BY, MERGE, hints) that other tools miss.</li>
-        <li><strong>Managed AI</strong> — no API keys to provision per developer. SSO + central billing.</li>
-        <li><strong>Auto-tune queries</strong> — feeds EXPLAIN PLAN back to the model and suggests rewrites measured against real cost estimates, not heuristics.</li>
-        <li><strong>Auto-document overnight</strong> — runs across packages and procedures, generates JavaDoc-style headers, flags undocumented parameters.</li>
-        <li><strong>VeeskerDB Sandbox</strong> — share masked production extracts safely with team members. End-to-end encrypted, queryable as DuckDB.</li>
-        <li><strong>Team workflows</strong> — shared snippets, audit log, usage and billing visibility per developer.</li>
-      </ul>
-    </div>
+      <TiltCard>
+        <div class="feat-block cloud-block" id="cloud" use:spotlight>
+          <h2>Cloud intelligence layer (Coming Soon — H2 2026)</h2>
+          <ul>
+            <li><strong>Schema-aware AI</strong> — grounded in your actual Oracle DDL, not generic SQL training data. Catches dialect quirks (CONNECT BY, MERGE, hints) that other tools miss.</li>
+            <li><strong>Managed AI</strong> — no API keys to provision per developer. SSO + central billing.</li>
+            <li><strong>Auto-tune queries</strong> — feeds EXPLAIN PLAN back to the model and suggests rewrites measured against real cost estimates, not heuristics.</li>
+            <li><strong>Auto-document overnight</strong> — runs across packages and procedures, generates JavaDoc-style headers, flags undocumented parameters.</li>
+            <li><strong>VeeskerDB Sandbox</strong> — share masked production extracts safely with team members. End-to-end encrypted, queryable as DuckDB.</li>
+            <li><strong>Team workflows</strong> — shared snippets, audit log, usage and billing visibility per developer.</li>
+          </ul>
+        </div>
+      </TiltCard>
 
-    <div class="feat-block">
-      <h2>Local-first trust model</h2>
-      <ul>
-        <li><strong>Credentials stay local</strong> — keychain integration on macOS, DPAPI on Windows, Secret Service on Linux.</li>
-        <li><strong>Database access remains local</strong> — Oracle connections never leave your desktop.</li>
-        <li><strong>Cloud is optional</strong> — activated only when your team chooses managed intelligence.</li>
-        <li><strong>Open-source core</strong> — Apache 2.0 codebase audited continuously via CodeQL and Dependabot.</li>
-      </ul>
-    </div>
+      <TiltCard>
+        <div class="feat-block" use:spotlight>
+          <h2>Local-first trust model</h2>
+          <ul>
+            <li><strong>Credentials stay local</strong> — keychain integration on macOS, DPAPI on Windows, Secret Service on Linux.</li>
+            <li><strong>Database access remains local</strong> — Oracle connections never leave your desktop.</li>
+            <li><strong>Cloud is optional</strong> — activated only when your team chooses managed intelligence.</li>
+            <li><strong>Open-source core</strong> — Apache 2.0 codebase audited continuously via CodeQL and Dependabot.</li>
+          </ul>
+        </div>
+      </TiltCard>
+    </ScrollReveal>
   </div>
 </section>
 
