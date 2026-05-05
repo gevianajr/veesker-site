@@ -6,10 +6,10 @@
   --border-strong: rgba(255, 255, 255, 0.14);
   --text: #f5f1e8;
   --text-muted: rgba(245, 241, 232, 0.55);
-  --accent: #b33e1f;
-  --accent-strong: #cb4d27;
-  --accent-soft: rgba(179, 62, 31, 0.18);
-  --accent-text: #f5a08a;
+  --accent: #c45c08;
+  --accent-strong: #e06b0e;
+  --accent-soft: rgba(217, 100, 10, 0.18);
+  --accent-text: #fdba74;
   --cloud: #1b9ed8;
   --cloud-strong: #2bb4ee;
   --cloud-soft: rgba(43, 180, 238, 0.18);

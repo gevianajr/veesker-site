@@ -163,8 +163,8 @@
     border: 1px solid var(--border);
   }
   .plan.ce {
-    background: linear-gradient(160deg, rgba(179, 62, 31, 0.11), rgba(179, 62, 31, 0.03));
-    border-color: rgba(245, 160, 138, 0.32);
+    background: linear-gradient(160deg, rgba(196, 92, 8, 0.11), rgba(196, 92, 8, 0.03));
+    border-color: rgba(249, 115, 22, 0.32);
   }
   .plan.cloud {
     background:
@@ -195,7 +195,7 @@
     font-weight: 700;
   }
   .plan.ce .plan-name {
-    color: #f5b3a0;
+    color: #fdba74;
   }
   .plan.cloud .plan-name {
     color: #9adfff;
@@ -212,9 +212,9 @@
     margin-top: 6px;
   }
   .ce-badge {
-    background: rgba(179, 62, 31, 0.22);
-    color: #f7b49f;
-    border: 1px solid rgba(245, 160, 138, 0.4);
+    background: rgba(196, 92, 8, 0.22);
+    color: #fdba74;
+    border: 1px solid rgba(249, 115, 22, 0.4);
   }
   .cloud-badge {
     background: rgba(43, 180, 238, 0.2);

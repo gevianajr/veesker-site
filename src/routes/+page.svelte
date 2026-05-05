@@ -102,13 +102,13 @@
 
     <div class="social-proof" aria-label="Open-source signals">
       <a href="https://github.com/veesker-cloud/veesker-community-edition" target="_blank" rel="noopener" class="proof-badge">
-        <img alt="GitHub stars" src="https://img.shields.io/github/stars/veesker-cloud/veesker-community-edition?style=flat-square&color=f7b49f&labelColor=14110e" />
+        <img alt="GitHub stars" src="https://img.shields.io/github/stars/veesker-cloud/veesker-community-edition?style=flat-square&color=fdba74&labelColor=14110e" />
       </a>
       <a href="https://github.com/veesker-cloud/veesker-community-edition/releases/latest" target="_blank" rel="noopener" class="proof-badge">
         <img alt="Latest release" src="https://img.shields.io/github/v/release/veesker-cloud/veesker-community-edition?style=flat-square&color=9ce2ff&labelColor=14110e" />
       </a>
       <a href="https://github.com/veesker-cloud/veesker-community-edition/blob/main/LICENSE" target="_blank" rel="noopener" class="proof-badge">
-        <img alt="Apache 2.0" src="https://img.shields.io/badge/license-Apache%202.0-f7b49f?style=flat-square&labelColor=14110e" />
+        <img alt="Apache 2.0" src="https://img.shields.io/badge/license-Apache%202.0-fdba74?style=flat-square&labelColor=14110e" />
       </a>
       <a href="https://github.com/veesker-cloud/veesker-community-edition/security" target="_blank" rel="noopener" class="proof-badge">
         <img alt="CodeQL + Dependabot" src="https://img.shields.io/badge/security-CodeQL%20%2B%20Dependabot-9ce2ff?style=flat-square&labelColor=14110e" />
@@ -694,8 +694,8 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: rgba(245, 160, 138, 0.85);
-    box-shadow: 0 0 0 3px rgba(245, 160, 138, 0.14);
+    background: rgba(249, 115, 22, 0.85);
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.14);
   }
   .hero-signal:nth-child(3)::before,
   .hero-signal:nth-child(4)::before {
@@ -725,8 +725,8 @@
     flex: 0 0 auto;
   }
   .cta-btn.primary .cta-icon-wrap {
-    border-color: rgba(255, 216, 203, 0.6);
-    background: rgba(123, 44, 24, 0.45);
+    border-color: rgba(253, 186, 116, 0.6);
+    background: rgba(140, 60, 5, 0.45);
   }
   .cta-btn.cloud .cta-icon-wrap {
     border-color: rgba(176, 234, 255, 0.62);
@@ -785,7 +785,7 @@
     border: 1px solid rgba(245, 241, 232, 0.12);
     box-shadow:
       0 40px 90px -30px rgba(0, 0, 0, 0.7),
-      0 18px 40px -14px rgba(123, 44, 24, 0.25);
+      0 18px 40px -14px rgba(140, 60, 5, 0.25);
   }
   .screenshot-wrap figcaption {
     margin: 16px auto 0;
@@ -822,9 +822,9 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: rgba(245, 160, 138, 0.12);
-    border: 1px solid rgba(245, 160, 138, 0.32);
-    color: #f5b3a0;
+    background: rgba(249, 115, 22, 0.12);
+    border: 1px solid rgba(249, 115, 22, 0.32);
+    color: #fdba74;
     margin-bottom: 14px;
   }
   .feat-icon svg {
@@ -871,7 +871,7 @@
   .persona h3 {
     font-size: 17px;
     margin: 0 0 10px;
-    color: #f7b49f;
+    color: #fdba74;
   }
   .persona p {
     color: var(--text-muted);
@@ -920,8 +920,8 @@
     transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
   }
   .layer-card.community {
-    background: linear-gradient(160deg, rgba(179, 62, 31, 0.12), rgba(179, 62, 31, 0.03));
-    border-color: rgba(245, 160, 138, 0.25);
+    background: linear-gradient(160deg, rgba(196, 92, 8, 0.12), rgba(196, 92, 8, 0.03));
+    border-color: rgba(249, 115, 22, 0.25);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
   }
   .layer-card.cloud {
@@ -935,7 +935,7 @@
     transform: translateY(-4px);
   }
   .layer-card.community.focused {
-    box-shadow: 0 18px 34px rgba(79, 28, 13, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.09);
+    box-shadow: 0 18px 34px rgba(140, 60, 5, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.09);
   }
   .layer-card.cloud.focused {
     box-shadow: 0 18px 38px rgba(11, 76, 104, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.11);
@@ -963,7 +963,7 @@
   }
   .layer-card.community h3 {
     font-size: 24px;
-    color: #f7b49f;
+    color: #fdba74;
     margin-bottom: 3px;
   }
   .layer-card.cloud h3 {
@@ -1076,13 +1076,13 @@
     font-weight: 500;
   }
   .comparison-table .us {
-    background: rgba(245, 160, 138, 0.06);
-    color: #f7b49f;
+    background: rgba(249, 115, 22, 0.06);
+    color: #fdba74;
     font-weight: 600;
   }
   .comparison-table thead .us {
-    color: #f7b49f;
-    background: rgba(245, 160, 138, 0.12);
+    color: #fdba74;
+    background: rgba(249, 115, 22, 0.12);
   }
   .comparison-table tbody tr:last-child th,
   .comparison-table tbody tr:last-child td {
@@ -1154,8 +1154,8 @@
     text-align: center;
   }
   .node.db {
-    background: rgba(245, 160, 138, 0.08);
-    color: #f7bda9;
+    background: rgba(249, 115, 22, 0.08);
+    color: #fdba74;
   }
   .node.desktop {
     background: rgba(245, 241, 232, 0.06);
@@ -1332,7 +1332,7 @@
     transition: border-color 0.14s ease;
   }
   .faq-grid details[open] {
-    border-color: rgba(245, 160, 138, 0.4);
+    border-color: rgba(249, 115, 22, 0.4);
   }
   .faq-grid summary {
     font-size: 15px;

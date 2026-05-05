@@ -141,9 +141,9 @@
     border: 1px solid rgba(138, 216, 251, 0.4);
   }
   .kind-manifesto {
-    background: rgba(247, 180, 159, 0.18);
-    color: #f7b49f;
-    border: 1px solid rgba(245, 160, 138, 0.4);
+    background: rgba(253, 186, 116, 0.18);
+    color: #fdba74;
+    border: 1px solid rgba(249, 115, 22, 0.4);
   }
   .post-read {
     font-size: 11.5px;
@@ -284,7 +284,7 @@
     background: rgba(245, 241, 232, 0.07);
     padding: 2px 6px;
     border-radius: 4px;
-    color: #f5b3a0;
+    color: #fdba74;
   }
   .post-body :global(pre) {
     background: var(--bg-soft);

@@ -177,9 +177,9 @@
     font-size: 11px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #f7b49f;
-    background: rgba(245, 160, 138, 0.12);
-    border: 1px solid rgba(245, 160, 138, 0.32);
+    color: #fdba74;
+    background: rgba(249, 115, 22, 0.12);
+    border: 1px solid rgba(249, 115, 22, 0.32);
     border-radius: 100px;
     padding: 5px 14px;
     margin-bottom: 18px;
@@ -262,12 +262,12 @@
   }
   .topic-chip:hover {
     color: var(--text);
-    border-color: rgba(245, 160, 138, 0.4);
+    border-color: rgba(249, 115, 22, 0.4);
   }
   .topic-chip.active {
-    background: rgba(245, 160, 138, 0.14);
-    border-color: rgba(245, 160, 138, 0.6);
-    color: #f7b49f;
+    background: rgba(249, 115, 22, 0.14);
+    border-color: rgba(249, 115, 22, 0.6);
+    color: #fdba74;
   }
   .chip-count {
     font-size: 10.5px;
@@ -275,7 +275,7 @@
     font-family: "JetBrains Mono", monospace;
   }
   .topic-chip.active .chip-count {
-    color: rgba(247, 180, 159, 0.7);
+    color: rgba(253, 186, 116, 0.7);
   }
 
   .posts {
@@ -308,7 +308,7 @@
     transition: border-color 0.14s ease, transform 0.14s ease;
   }
   .post-card:hover {
-    border-color: rgba(245, 160, 138, 0.4);
+    border-color: rgba(249, 115, 22, 0.4);
     transform: translateY(-2px);
   }
   .post-link {
@@ -362,9 +362,9 @@
     border: 1px solid rgba(138, 216, 251, 0.4);
   }
   .kind-manifesto {
-    background: rgba(247, 180, 159, 0.18);
-    color: #f7b49f;
-    border: 1px solid rgba(245, 160, 138, 0.4);
+    background: rgba(253, 186, 116, 0.18);
+    color: #fdba74;
+    border: 1px solid rgba(249, 115, 22, 0.4);
   }
   .post-read {
     font-size: 11.5px;
@@ -395,8 +395,8 @@
     border-radius: 4px;
   }
   .tag.active-tag {
-    background: rgba(245, 160, 138, 0.15);
-    color: #f7b49f;
+    background: rgba(249, 115, 22, 0.15);
+    color: #fdba74;
   }
 
   @media (max-width: 720px) {
