@@ -1,6 +1,9 @@
 <script lang="ts">
   import "../app.css";
   import type { Snippet } from "svelte";
+  import { onMount } from "svelte";
+  import { initLenis, destroyLenis } from "$lib/animations/lenis";
+  import { initGsap, killGsap } from "$lib/animations/gsap";
 
   let { children }: { children: Snippet } = $props();
 
@@ -9,6 +12,15 @@
   function closeMobileNav() {
     mobileNavOpen = false;
   }
+
+  onMount(() => {
+    const lenis = initLenis();
+    initGsap(lenis);
+    return () => {
+      killGsap(lenis);
+      destroyLenis();
+    };
+  });
 </script>
 
 <header class="site-header" class:nav-open={mobileNavOpen}>
