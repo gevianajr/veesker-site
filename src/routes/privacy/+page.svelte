@@ -1,5 +1,6 @@
 <script lang="ts">
   import Seo from "$lib/seo.svelte";
+  import ScrollReveal from "$lib/components/ScrollReveal.svelte";
 </script>
 
 <Seo
@@ -8,20 +9,23 @@
   path="/privacy"
 />
 
-<section class="hero">
-  <div class="container">
-    <div class="eyebrow">Privacy Policy</div>
-    <h1>Privacy at Veesker.</h1>
-    <p class="lead">
-      Plain language, no dark patterns. This page explains exactly what data we collect,
-      why we collect it, and how to remove it.
-      <strong>Last updated: 2026-05-02.</strong>
-    </p>
-  </div>
-</section>
+<ScrollReveal>
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow">Privacy Policy</div>
+      <h1>Privacy at Veesker.</h1>
+      <p class="lead">
+        Plain language, no dark patterns. This page explains exactly what data we collect,
+        why we collect it, and how to remove it.
+        <strong>Last updated: 2026-05-02.</strong>
+      </p>
+    </div>
+  </section>
+</ScrollReveal>
 
-<section class="content">
-  <div class="container narrow">
+<ScrollReveal>
+  <section class="content">
+    <div class="container narrow">
     <h2>Who is the data controller</h2>
     <p>
       <strong>Geraldo Ferreira Viana Júnior</strong> (sole founder of Veesker), based in São Paulo, Brazil.
@@ -139,8 +143,9 @@
       ·
       <a href="https://www.linkedin.com/in/geraldovianajr/" target="_blank" rel="noopener">LinkedIn</a>
     </p>
-  </div>
-</section>
+    </div>
+  </section>
+</ScrollReveal>
 
 <style>
   .hero {

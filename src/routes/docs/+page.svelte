@@ -1,5 +1,6 @@
 <script lang="ts">
   import Seo from "$lib/seo.svelte";
+  import ScrollReveal from "$lib/components/ScrollReveal.svelte";
 </script>
 
 <Seo
@@ -8,12 +9,13 @@
   path="/docs"
 />
 
-<section class="hero">
-  <div class="container">
-    <h1>Documentation</h1>
-    <p class="lead">All docs live in the public GitHub repository alongside the code.</p>
+<ScrollReveal>
+  <section class="hero">
+    <div class="container">
+      <h1>Documentation</h1>
+      <p class="lead">All docs live in the public GitHub repository alongside the code.</p>
 
-    <div class="docs">
+      <div class="docs">
       <a class="doc" href="https://github.com/veesker-cloud/veesker-community-edition/blob/main/README.md" target="_blank" rel="noopener">
         <h3>README →</h3>
         <p>Project overview, features, install, build instructions.</p>
@@ -50,9 +52,10 @@
         <h3>Enterprise strategy →</h3>
         <p>Open core boundary, SaaS architecture, paid add-on roadmap.</p>
       </a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+</ScrollReveal>
 
 <style>
   .hero { padding: 80px 0; }

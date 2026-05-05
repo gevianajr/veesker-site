@@ -1,5 +1,6 @@
 ﻿<script lang="ts">
   import Seo from "$lib/seo.svelte";
+  import ScrollReveal from "$lib/components/ScrollReveal.svelte";
 </script>
 
 <Seo
@@ -10,15 +11,18 @@
   imageAlt="Geraldo Ferreira Viana Júnior — creator of Veesker"
 />
 
-<section class="hero">
-  <div class="container">
-    <h1>About</h1>
-    <p class="lead">The creator, the origin story, and where to reach me.</p>
-  </div>
-</section>
+<ScrollReveal>
+  <section class="hero">
+    <div class="container">
+      <h1>About</h1>
+      <p class="lead">The creator, the origin story, and where to reach me.</p>
+    </div>
+  </section>
+</ScrollReveal>
 
-<section class="content">
-  <div class="container narrow">
+<ScrollReveal>
+  <section class="content">
+    <div class="container narrow">
 
     <div class="creator-card">
       <img src="/geraldo-viana.jpg" alt="Geraldo Ferreira Viana Júnior" class="profile-photo" />
@@ -80,8 +84,9 @@
       <a href="mailto:geraldovianajr@veesker.cloud">geraldovianajr@veesker.cloud</a>.
     </p>
 
-  </div>
-</section>
+    </div>
+  </section>
+</ScrollReveal>
 
 <style>
   .hero {

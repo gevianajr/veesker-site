@@ -1,6 +1,7 @@
 <script lang="ts">
   import { browser } from "$app/environment";
   import Seo from "$lib/seo.svelte";
+  import ScrollReveal from "$lib/components/ScrollReveal.svelte";
 
   let subject = $state("Inquiry");
 
@@ -20,12 +21,13 @@
   path="/contact"
 />
 
-<section class="hero">
-  <div class="container">
-    <h1>Contact</h1>
-    <p class="lead">
-      Sales, support, partnerships, OSS license requests — pick a channel below or open a pre-filled email.
-    </p>
+<ScrollReveal>
+  <section class="hero">
+    <div class="container">
+      <h1>Contact</h1>
+      <p class="lead">
+        Sales, support, partnerships, OSS license requests — pick a channel below or open a pre-filled email.
+      </p>
 
     <div class="card">
       <div class="row">
@@ -73,9 +75,10 @@
         <li><a href="https://github.com/veesker-cloud/veesker-community-edition/discussions" target="_blank" rel="noopener">GitHub Discussions</a> — community Q&A</li>
         <li><a href="https://github.com/veesker-cloud/veesker-community-edition/blob/main/SECURITY.md" target="_blank" rel="noopener">Security disclosure</a> — responsible disclosure policy</li>
       </ul>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+</ScrollReveal>
 
 <style>
   .hero { padding: 80px 0 60px; }

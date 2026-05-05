@@ -1,5 +1,6 @@
 <script lang="ts">
   import Seo from "$lib/seo.svelte";
+  import ScrollReveal from "$lib/components/ScrollReveal.svelte";
 </script>
 
 <Seo
@@ -10,20 +11,23 @@
   imageAlt="Veesker security architecture — Desktop Client → API → Oracle, with encrypted Sandbox path"
 />
 
-<section class="hero">
-  <div class="container">
-    <div class="eyebrow">Trust model</div>
-    <h1>Security at Veesker.</h1>
-    <p class="lead">
-      Local-first by design. Open-source by default. Continuously audited.
-      Here is exactly how Veesker handles your data, your credentials, and your code.
-    </p>
-  </div>
-</section>
+<ScrollReveal>
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow">Trust model</div>
+      <h1>Security at Veesker.</h1>
+      <p class="lead">
+        Local-first by design. Open-source by default. Continuously audited.
+        Here is exactly how Veesker handles your data, your credentials, and your code.
+      </p>
+    </div>
+  </section>
+</ScrollReveal>
 
-<section class="pillars">
-  <div class="container">
-    <div class="pillar-grid">
+<ScrollReveal>
+  <section class="pillars">
+    <div class="container">
+      <div class="pillar-grid">
       <article class="pillar">
         <div class="pillar-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
@@ -92,9 +96,11 @@
     </div>
   </div>
 </section>
+</ScrollReveal>
 
-<section class="sandbox-zone" aria-labelledby="sandbox-zone-title">
-  <div class="container">
+<ScrollReveal>
+  <section class="sandbox-zone" aria-labelledby="sandbox-zone-title">
+    <div class="container">
     <h2 id="sandbox-zone-title">VeeskerDB Sandbox — encryption details.</h2>
     <p class="zone-lead">
       When the optional Cloud Sandbox is used, the data flow is engineered so Veesker servers never see plaintext.
@@ -119,8 +125,10 @@
     </div>
   </div>
 </section>
+</ScrollReveal>
 
-<section class="audits">
+<ScrollReveal>
+  <section class="audits">
   <div class="container">
     <h2>Audit history</h2>
     <div class="audit-list">
@@ -151,8 +159,10 @@
     </div>
   </div>
 </section>
+</ScrollReveal>
 
-<section class="disclosure">
+<ScrollReveal>
+  <section class="disclosure">
   <div class="container disclosure-inner">
     <h2>Responsible disclosure</h2>
     <p class="disclosure-lead">
@@ -183,6 +193,7 @@
     </div>
   </div>
 </section>
+</ScrollReveal>
 
 <style>
   .hero {
