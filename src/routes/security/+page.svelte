@@ -238,9 +238,9 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: rgba(245, 160, 138, 0.12);
-    border: 1px solid rgba(245, 160, 138, 0.32);
-    color: #f5b3a0;
+    background: rgba(249, 115, 22, 0.12);
+    border: 1px solid rgba(249, 115, 22, 0.32);
+    color: #fdba74;
     margin-bottom: 16px;
   }
   .pillar-icon svg {

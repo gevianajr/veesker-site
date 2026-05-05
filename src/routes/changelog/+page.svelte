@@ -135,9 +135,9 @@
     font-size: 11px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #f7b49f;
-    background: rgba(245, 160, 138, 0.12);
-    border: 1px solid rgba(245, 160, 138, 0.32);
+    color: #fdba74;
+    background: rgba(249, 115, 22, 0.12);
+    border: 1px solid rgba(249, 115, 22, 0.32);
     border-radius: 100px;
     padding: 5px 14px;
     margin-bottom: 18px;
@@ -188,7 +188,7 @@
     border-left-color: #ff9f7a;
   }
   .release.milestone {
-    border-left-color: #f7b49f;
+    border-left-color: #fdba74;
   }
   .release-meta {
     display: flex;
@@ -237,9 +237,9 @@
     border: 1px solid rgba(255, 159, 122, 0.4);
   }
   .tag-milestone {
-    background: rgba(247, 180, 159, 0.18);
-    color: #f7b49f;
-    border: 1px solid rgba(245, 160, 138, 0.4);
+    background: rgba(251, 186, 116, 0.18);
+    color: #fdba74;
+    border: 1px solid rgba(249, 115, 22, 0.4);
   }
   .release-title {
     font-size: 19px;
