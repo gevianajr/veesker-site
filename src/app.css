@@ -111,3 +111,31 @@ code, pre, .mono {
 #cloud {
   scroll-margin-top: 92px;
 }
+
+/* Spotlight cursor glow — used via use:spotlight action */
+.spotlight-target {
+  position: relative;
+  /* Do NOT use isolation:isolate — conflicts with transform-style:preserve-3d in TiltCard */
+}
+.spotlight-target::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    var(--spotlight-radius) circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%),
+    var(--spotlight-color, rgba(249, 115, 22, 0.12)),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+.spotlight-target:hover::before {
+  opacity: 1;
+}
+.spotlight-target > * {
+  position: relative;
+  z-index: 1;
+}
