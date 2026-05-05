@@ -7,12 +7,14 @@
     shimmerColor = "#fdba74",
     class: className = "",
     children,
+    ...restProps
   }: {
     as?: string;
     duration?: string;
     shimmerColor?: string;
     class?: string;
     children: Snippet;
+    [key: string]: unknown;
   } = $props();
 </script>
 
@@ -20,6 +22,7 @@
   this={as}
   class="shimmer-text {className}"
   style="--shimmer-color:{shimmerColor};--shimmer-dur:{duration};"
+  {...restProps}
 >
   {@render children()}
 </svelte:element>

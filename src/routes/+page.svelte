@@ -2,6 +2,13 @@
   import { browser } from "$app/environment";
   import Seo from "$lib/seo.svelte";
   import { onMount } from "svelte";
+  import AuroraBackground from "$lib/components/AuroraBackground.svelte";
+  import MeteorShower from "$lib/components/MeteorShower.svelte";
+  import ShimmerText from "$lib/components/ShimmerText.svelte";
+  import ScrollReveal from "$lib/components/ScrollReveal.svelte";
+  import TiltCard from "$lib/components/TiltCard.svelte";
+  import AnimatedBorder from "$lib/components/AnimatedBorder.svelte";
+  import { spotlight } from "$lib/actions/spotlight";
 
   let activeLayer = $state<"community" | "cloud" | null>(null);
 
@@ -58,48 +65,53 @@
 />
 
 <section class="hero">
-  <div class="container hero-inner">
+  <AuroraBackground speed={0.9} intensity={0.26} />
+  <MeteorShower count={8} />
+  <div class="container hero-inner" style="position:relative;z-index:2;">
     <picture class="hero-logo-wrap">
       <source
         type="image/avif"
-        srcset="/veesker-master-logo-480.avif 480w, /veesker-master-logo-960.avif 960w"
+        srcset="/veesker-mascot-480.avif 480w, /veesker-mascot-960.avif 960w"
         sizes="(max-width: 600px) 220px, 300px"
       />
       <source
         type="image/webp"
-        srcset="/veesker-master-logo-480.webp 480w, /veesker-master-logo-960.webp 960w"
+        srcset="/veesker-mascot-480.webp 480w, /veesker-mascot-960.webp 960w"
         sizes="(max-width: 600px) 220px, 300px"
       />
-      <img src="/veesker-master-logo.png" alt="Veesker Platform" class="hero-logo" width="1536" height="1024" />
+      <img src="/veesker-mascot.png" alt="Veesker Platform" class="hero-logo" width="1080" height="1080" />
     </picture>
     <div class="badge">Built for Oracle 9i → 26ai</div>
-    <h1>The Oracle development<br />platform for the AI era.</h1>
-    <p class="lead">
-      Free local-first IDE today. Optional Veesker Cloud (Coming Soon — H2 2026) when your team needs managed intelligence.
-    </p>
-
-    <div class="hero-signals" aria-label="Primary value claims">
-      <span class="hero-signal">Free and open source</span>
-      <span class="hero-signal">Database stays local</span>
-      <span class="hero-signal">Apache 2.0</span>
-      <span class="hero-signal">Cloud is optional</span>
-    </div>
-
-    <div class="cta">
-      <a href="/download" class="btn primary cta-btn">
-        <span class="cta-icon-wrap">
-          <img src="/veesker-community-logo.png" alt="" aria-hidden="true" class="cta-icon ce-icon" width="1024" height="1024" />
-        </span>
-        <span>Download Community</span>
-      </a>
-      <a href="/pricing#cloud" class="btn cloud cta-btn">
-        <span class="cta-icon-wrap cloud">
-          <img src="/veesker-cloud-logo.png" alt="" aria-hidden="true" class="cta-icon cloud-icon" width="1536" height="1024" />
-        </span>
-        <span>Learn about Cloud →</span>
-      </a>
-    </div>
-
+    <ShimmerText as="h1">The Oracle development<br />platform for the AI era.</ShimmerText>
+    <ScrollReveal delay={0.15}>
+      <p class="lead">
+        Free local-first IDE today. Optional Veesker Cloud (Coming Soon — H2 2026) when your team needs managed intelligence.
+      </p>
+    </ScrollReveal>
+    <ScrollReveal delay={0.25}>
+      <div class="hero-signals" aria-label="Primary value claims">
+        <span class="hero-signal">Free and open source</span>
+        <span class="hero-signal">Database stays local</span>
+        <span class="hero-signal">Apache 2.0</span>
+        <span class="hero-signal">Cloud is optional</span>
+      </div>
+    </ScrollReveal>
+    <ScrollReveal delay={0.35}>
+      <div class="cta">
+        <a href="/download" class="btn primary cta-btn">
+          <span class="cta-icon-wrap">
+            <img src="/veesker-community-logo.png" alt="" aria-hidden="true" class="cta-icon ce-icon" width="1024" height="1024" />
+          </span>
+          <span>Download Community</span>
+        </a>
+        <a href="/pricing#cloud" class="btn cloud cta-btn">
+          <span class="cta-icon-wrap cloud">
+            <img src="/veesker-cloud-logo.png" alt="" aria-hidden="true" class="cta-icon cloud-icon" width="1536" height="1024" />
+          </span>
+          <span>Learn about Cloud →</span>
+        </a>
+      </div>
+    </ScrollReveal>
     <div class="social-proof" aria-label="Open-source signals">
       <a href="https://github.com/veesker-cloud/veesker-community-edition" target="_blank" rel="noopener" class="proof-badge">
         <img alt="GitHub stars" src="https://img.shields.io/github/stars/veesker-cloud/veesker-community-edition?style=flat-square&color=fdba74&labelColor=14110e" />
@@ -117,176 +129,224 @@
   </div>
 </section>
 
-<section class="screenshot-showcase" aria-labelledby="screenshot-title">
-  <div class="container">
-    <h2 id="screenshot-title" class="visually-hidden">Veesker workspace overview</h2>
-    <figure class="screenshot-wrap">
-      <img
-        src="/workspace-overview.png"
-        alt="Veesker Community Edition workspace — SQL editor with PL/SQL highlighting, schema browser on the left, results grid below, and the AI assistant panel on the right"
-        loading="lazy"
-        class="screenshot"
-      />
-      <figcaption>The full Veesker workspace — editor, schema browser, results grid, and AI assistant in a single window.</figcaption>
-    </figure>
-  </div>
-</section>
+<ScrollReveal>
+  <section class="screenshot-showcase" aria-labelledby="screenshot-title">
+    <div class="container">
+      <h2 id="screenshot-title" class="visually-hidden">Veesker workspace overview</h2>
+      <figure class="screenshot-wrap">
+        <img
+          src="/workspace-overview.png"
+          alt="Veesker Community Edition workspace — SQL editor with PL/SQL highlighting, schema browser on the left, results grid below, and the AI assistant panel on the right"
+          loading="lazy"
+          class="screenshot"
+        />
+        <figcaption>The full Veesker workspace — editor, schema browser, results grid, and AI assistant in a single window.</figcaption>
+      </figure>
+    </div>
+  </section>
+</ScrollReveal>
 
 <section class="vdb-showcase" aria-labelledby="vdb-title">
   <div class="container">
     <div class="vdb-eyebrow">VeeskerDB Sandbox · Cloud feature</div>
-    <h2 id="vdb-title">Production data, safely shared.</h2>
-    <p class="vdb-lead">
-      Send a live slice of your Oracle database to your team — encrypted end-to-end, PII auto-masked, queryable locally as DuckDB.
-    </p>
+    <ScrollReveal clipReveal={true}>
+      <ShimmerText as="h2" shimmerColor="#8ad8fb" id="vdb-title">Production data, safely shared.</ShimmerText>
+    </ScrollReveal>
+    <ScrollReveal delay={0.1}>
+      <p class="vdb-lead">
+        Send a live slice of your Oracle database to your team — encrypted end-to-end, PII auto-masked, queryable locally as DuckDB.
+      </p>
+    </ScrollReveal>
 
-    <figure class="vdb-diagram-wrap">
-      <img
-        src="/datamap-hero.png"
-        alt="Veesker system datamap — Desktop Client with SQL editor and AI Sheep talking to Veesker Cloud API (Auth, Sandbox, Audit Log) which connects to Oracle Database 9i to 26ai, with Postgres and Cloudflare R2 alongside"
-        width="2752"
-        height="1536"
-        loading="lazy"
-        class="vdb-diagram"
-      />
-      <figcaption class="vdb-diagram-caption">
-        Desktop Client → Veesker Cloud API → Oracle. The Sandbox flow rides this same path — encrypted blobs uploaded to R2, sealed envelopes brokered through the API, never plaintext on our servers.
-      </figcaption>
-    </figure>
+    <ScrollReveal>
+      <figure class="vdb-diagram-wrap">
+        <img
+          src="/datamap-hero.png"
+          alt="Veesker system datamap — Desktop Client with SQL editor and AI Sheep talking to Veesker Cloud API (Auth, Sandbox, Audit Log) which connects to Oracle Database 9i to 26ai, with Postgres and Cloudflare R2 alongside"
+          width="2752"
+          height="1536"
+          loading="lazy"
+          class="vdb-diagram"
+        />
+        <figcaption class="vdb-diagram-caption">
+          Desktop Client → Veesker Cloud API → Oracle. The Sandbox flow rides this same path — encrypted blobs uploaded to R2, sealed envelopes brokered through the API, never plaintext on our servers.
+        </figcaption>
+      </figure>
+    </ScrollReveal>
 
-    <div class="vdb-flow">
-      <div class="vdb-step">
-        <div class="vdb-step-num">01</div>
-        <h3>Slice</h3>
-        <p>Owner picks tables, FK depth, and TTL. Veesker walks the schema graph and stages a coherent extract.</p>
+    <ScrollReveal stagger={0.12}>
+      <div class="vdb-flow">
+        <AnimatedBorder speed="5s" borderRadius="12px" innerBg="linear-gradient(170deg, rgba(28,38,48,0.94), rgba(18,26,34,0.95))">
+          <div class="vdb-step">
+            <div class="vdb-step-num">01</div>
+            <h3>Slice</h3>
+            <p>Owner picks tables, FK depth, and TTL. Veesker walks the schema graph and stages a coherent extract.</p>
+          </div>
+        </AnimatedBorder>
+        <div class="vdb-arrow" aria-hidden="true">→</div>
+        <AnimatedBorder speed="5s" borderRadius="12px" innerBg="linear-gradient(170deg, rgba(28,38,48,0.94), rgba(18,26,34,0.95))">
+          <div class="vdb-step">
+            <div class="vdb-step-num">02</div>
+            <h3>Mask</h3>
+            <p>Emails, phone numbers, and identifier columns are auto-detected and masked — hash, redact, static, or partial.</p>
+          </div>
+        </AnimatedBorder>
+        <div class="vdb-arrow" aria-hidden="true">→</div>
+        <AnimatedBorder speed="5s" borderRadius="12px" innerBg="linear-gradient(170deg, rgba(28,38,48,0.94), rgba(18,26,34,0.95))">
+          <div class="vdb-step">
+            <div class="vdb-step-num">03</div>
+            <h3>Encrypt</h3>
+            <p>Per-recipient X25519 envelopes, ChaCha20-Poly1305 content. Veesker servers never see plaintext.</p>
+          </div>
+        </AnimatedBorder>
+        <div class="vdb-arrow" aria-hidden="true">→</div>
+        <AnimatedBorder speed="5s" borderRadius="12px" innerBg="linear-gradient(170deg, rgba(28,38,48,0.94), rgba(18,26,34,0.95))">
+          <div class="vdb-step">
+            <div class="vdb-step-num">04</div>
+            <h3>Open</h3>
+            <p>Member pulls, decrypts locally, and runs full SQL on an in-memory DuckDB. Milliseconds, no network.</p>
+          </div>
+        </AnimatedBorder>
       </div>
-      <div class="vdb-arrow" aria-hidden="true">→</div>
-      <div class="vdb-step">
-        <div class="vdb-step-num">02</div>
-        <h3>Mask</h3>
-        <p>Emails, phone numbers, and identifier columns are auto-detected and masked — hash, redact, static, or partial.</p>
-      </div>
-      <div class="vdb-arrow" aria-hidden="true">→</div>
-      <div class="vdb-step">
-        <div class="vdb-step-num">03</div>
-        <h3>Encrypt</h3>
-        <p>Per-recipient X25519 envelopes, ChaCha20-Poly1305 content. Veesker servers never see plaintext.</p>
-      </div>
-      <div class="vdb-arrow" aria-hidden="true">→</div>
-      <div class="vdb-step">
-        <div class="vdb-step-num">04</div>
-        <h3>Open</h3>
-        <p>Member pulls, decrypts locally, and runs full SQL on an in-memory DuckDB. Milliseconds, no network.</p>
-      </div>
-    </div>
+    </ScrollReveal>
 
-    <div class="vdb-meta">
-      <span class="vdb-pill">Available with Veesker Cloud · Coming Soon — H2 2026</span>
-      <span class="vdb-format">
-        Open <code>.vsk</code> format · engine source on
-        <a href="https://github.com/veesker-cloud/veesker-community-edition" target="_blank" rel="noopener">GitHub</a>
-      </span>
-    </div>
+    <ScrollReveal>
+      <div class="vdb-meta">
+        <span class="vdb-pill">Available with Veesker Cloud · Coming Soon — H2 2026</span>
+        <span class="vdb-format">
+          Open <code>.vsk</code> format · engine source on
+          <a href="https://github.com/veesker-cloud/veesker-community-edition" target="_blank" rel="noopener">GitHub</a>
+        </span>
+      </div>
+    </ScrollReveal>
   </div>
 </section>
 
 <section class="features">
   <div class="container">
-    <h2>Community Edition is complete, local-first, and built for Oracle developers.</h2>
-    <div class="feat-grid">
-      <div class="feat">
-        <div class="feat-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-            <ellipse cx="12" cy="5" rx="8" ry="3"/>
-            <path d="M4 5v6c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/>
-            <path d="M4 11v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/>
-          </svg>
-        </div>
-        <h3>Full SQL and PL/SQL IDE</h3>
-        <p>Run multi-statement SQL, inspect large result sets, and debug production-grade PL/SQL workflows.</p>
+    <ScrollReveal clipReveal={true}>
+      <h2>Community Edition is complete, local-first, and built for Oracle developers.</h2>
+    </ScrollReveal>
+    <ScrollReveal stagger={0.08}>
+      <div class="feat-grid">
+        <TiltCard class="feat" maxTilt={6}>
+          <div use:spotlight class="feat-inner">
+            <div class="feat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <ellipse cx="12" cy="5" rx="8" ry="3"/>
+                <path d="M4 5v6c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/>
+                <path d="M4 11v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/>
+              </svg>
+            </div>
+            <h3>Full SQL and PL/SQL IDE</h3>
+            <p>Run multi-statement SQL, inspect large result sets, and debug production-grade PL/SQL workflows.</p>
+          </div>
+        </TiltCard>
+        <TiltCard class="feat" maxTilt={6}>
+          <div use:spotlight class="feat-inner">
+            <div class="feat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="6" width="18" height="14" rx="2"/>
+                <path d="M8 2v4M16 2v4M3 10h18"/>
+                <circle cx="8" cy="14" r="1.4" fill="currentColor"/>
+              </svg>
+            </div>
+            <h3>PL/SQL debugger</h3>
+            <p>Breakpoints, step controls, watches, call stack, DBMS_OUTPUT capture, and cursor extraction.</p>
+          </div>
+        </TiltCard>
+        <TiltCard class="feat" maxTilt={6}>
+          <div use:spotlight class="feat-inner">
+            <div class="feat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 6h7l2 2h9v11a2 2 0 0 1-2 2H3z"/>
+                <path d="M3 6V4a1 1 0 0 1 1-1h4l2 2"/>
+              </svg>
+            </div>
+            <h3>Schema browser</h3>
+            <p>Explore object graphs, inspect dependencies, and navigate large Oracle schemas with less friction.</p>
+          </div>
+        </TiltCard>
+        <TiltCard class="feat" maxTilt={6}>
+          <div use:spotlight class="feat-inner">
+            <div class="feat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>
+              </svg>
+            </div>
+            <h3>VRAS — Veesker REST API Studio</h3>
+            <p>Build ORDS endpoints faster with API studio workflows integrated into your Oracle workspace.</p>
+          </div>
+        </TiltCard>
+        <TiltCard class="feat" maxTilt={6}>
+          <div use:spotlight class="feat-inner">
+            <div class="feat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2 4 6v6c0 4.4 3.4 8.5 8 10 4.6-1.5 8-5.6 8-10V6z"/>
+                <path d="m9 12 2 2 4-4"/>
+              </svg>
+            </div>
+            <h3>Vector tools</h3>
+            <p>Create embeddings, tune indexes, and run similarity workflows with local or managed providers.</p>
+          </div>
+        </TiltCard>
+        <TiltCard class="feat" maxTilt={6}>
+          <div use:spotlight class="feat-inner">
+            <div class="feat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/>
+                <circle cx="12" cy="12" r="3.5"/>
+              </svg>
+            </div>
+            <h3>BYOK AI — Bring Your Own Key</h3>
+            <p>Plug your OpenAI / Anthropic / local key for explain-and-generate without forcing your workflow into a paywall.</p>
+          </div>
+        </TiltCard>
       </div>
-      <div class="feat">
-        <div class="feat-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="6" width="18" height="14" rx="2"/>
-            <path d="M8 2v4M16 2v4M3 10h18"/>
-            <circle cx="8" cy="14" r="1.4" fill="currentColor"/>
-          </svg>
-        </div>
-        <h3>PL/SQL debugger</h3>
-        <p>Breakpoints, step controls, watches, call stack, DBMS_OUTPUT capture, and cursor extraction.</p>
-      </div>
-      <div class="feat">
-        <div class="feat-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 6h7l2 2h9v11a2 2 0 0 1-2 2H3z"/>
-            <path d="M3 6V4a1 1 0 0 1 1-1h4l2 2"/>
-          </svg>
-        </div>
-        <h3>Schema browser</h3>
-        <p>Explore object graphs, inspect dependencies, and navigate large Oracle schemas with less friction.</p>
-      </div>
-      <div class="feat">
-        <div class="feat-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="9"/>
-            <path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>
-          </svg>
-        </div>
-        <h3>VRAS — Veesker REST API Studio</h3>
-        <p>Build ORDS endpoints faster with API studio workflows integrated into your Oracle workspace.</p>
-      </div>
-      <div class="feat">
-        <div class="feat-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2 4 6v6c0 4.4 3.4 8.5 8 10 4.6-1.5 8-5.6 8-10V6z"/>
-            <path d="m9 12 2 2 4-4"/>
-          </svg>
-        </div>
-        <h3>Vector tools</h3>
-        <p>Create embeddings, tune indexes, and run similarity workflows with local or managed providers.</p>
-      </div>
-      <div class="feat">
-        <div class="feat-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/>
-            <circle cx="12" cy="12" r="3.5"/>
-          </svg>
-        </div>
-        <h3>BYOK AI — Bring Your Own Key</h3>
-        <p>Plug your OpenAI / Anthropic / local key for explain-and-generate without forcing your workflow into a paywall.</p>
-      </div>
-    </div>
+    </ScrollReveal>
   </div>
 </section>
 
 <section class="personas" aria-labelledby="personas-title">
   <div class="container">
-    <h2 id="personas-title">Built for Oracle teams that ship.</h2>
-    <p class="personas-lead">Three patterns we hear weekly from teams adopting Veesker.</p>
-    <div class="persona-grid">
-      <article class="persona">
-        <h3>The financial DBA</h3>
-        <p>
-          Running Oracle 11g/19c on EBS with strict change windows. Wants a modern editor that won't crash on
-          1M-row result grids and won't ship credentials to anyone's cloud.
-        </p>
-      </article>
-      <article class="persona">
-        <h3>The PL/SQL → APEX migrator</h3>
-        <p>
-          Refactoring legacy packages into APEX 24.x apps. Needs schema-aware navigation, a real debugger, and
-          AI that understands Oracle dialects (not generic SQL).
-        </p>
-      </article>
-      <article class="persona">
-        <h3>The data engineer wiring AI</h3>
-        <p>
-          Building vector indexes on Oracle 23ai for RAG pipelines. Needs first-class embedding tools, ORDS
-          endpoint scaffolding, and shareable extracts without exposing prod.
-        </p>
-      </article>
-    </div>
+    <ScrollReveal clipReveal={true}>
+      <h2 id="personas-title">Built for Oracle teams that ship.</h2>
+    </ScrollReveal>
+    <ScrollReveal delay={0.1}>
+      <p class="personas-lead">Three patterns we hear weekly from teams adopting Veesker.</p>
+    </ScrollReveal>
+    <ScrollReveal stagger={0.1}>
+      <div class="persona-grid">
+        <TiltCard maxTilt={5}>
+          <article class="persona" use:spotlight>
+            <h3>The financial DBA</h3>
+            <p>
+              Running Oracle 11g/19c on EBS with strict change windows. Wants a modern editor that won't crash on
+              1M-row result grids and won't ship credentials to anyone's cloud.
+            </p>
+          </article>
+        </TiltCard>
+        <TiltCard maxTilt={5}>
+          <article class="persona" use:spotlight>
+            <h3>The PL/SQL → APEX migrator</h3>
+            <p>
+              Refactoring legacy packages into APEX 24.x apps. Needs schema-aware navigation, a real debugger, and
+              AI that understands Oracle dialects (not generic SQL).
+            </p>
+          </article>
+        </TiltCard>
+        <TiltCard maxTilt={5}>
+          <article class="persona" use:spotlight>
+            <h3>The data engineer wiring AI</h3>
+            <p>
+              Building vector indexes on Oracle 23ai for RAG pipelines. Needs first-class embedding tools, ORDS
+              endpoint scaffolding, and shareable extracts without exposing prod.
+            </p>
+          </article>
+        </TiltCard>
+      </div>
+    </ScrollReveal>
   </div>
 </section>
 
@@ -306,173 +366,191 @@
       {/if}
     </p>
 
-    <div class="layer-grid">
-      <article
-        class="layer-card community"
-        id="community"
-        class:focused={activeLayer === "community"}
-        class:unfocused={activeLayer === "cloud"}
-      >
-        <div class="layer-head">
-          <picture class="layer-art-wrap">
-            <source
-              type="image/avif"
-              srcset="/veesker-community-logo-320.avif 320w, /veesker-community-logo-640.avif 640w"
-              sizes="(max-width: 980px) 90px, 112px"
-            />
-            <source
-              type="image/webp"
-              srcset="/veesker-community-logo-320.webp 320w, /veesker-community-logo-640.webp 640w"
-              sizes="(max-width: 980px) 90px, 112px"
-            />
-            <img
-              src="/veesker-community-logo.png"
-              alt="Veesker Community Edition"
-              width="1024"
-              height="1024"
-              loading="lazy"
-              class="layer-art"
-            />
-          </picture>
-          <div>
-            <h3>Community Edition</h3>
-            <p>Local-first Oracle IDE</p>
-            <span class="best-for">Best for: solo developers and local-first teams</span>
-          </div>
-        </div>
-        <ul>
-          <li>Full SQL / PL/SQL IDE</li>
-          <li>Schema browser and debugger</li>
-          <li>VRAS — Veesker REST API Studio</li>
-          <li>Vector tools</li>
-          <li>BYOK AI (your key, your control)</li>
-          <li>Apache 2.0 open source</li>
-        </ul>
-        <a href="/download" class="btn primary layer-btn">Download Free</a>
-      </article>
-
-      <article
-        class="layer-card cloud"
-        id="cloud"
-        class:focused={activeLayer === "cloud"}
-        class:unfocused={activeLayer === "community"}
-      >
-        <div class="layer-head">
-          <picture class="layer-art-wrap">
-            <source
-              type="image/avif"
-              srcset="/veesker-cloud-logo-320.avif 320w, /veesker-cloud-logo-640.avif 640w"
-              sizes="(max-width: 980px) 90px, 112px"
-            />
-            <source
-              type="image/webp"
-              srcset="/veesker-cloud-logo-320.webp 320w, /veesker-cloud-logo-640.webp 640w"
-              sizes="(max-width: 980px) 90px, 112px"
-            />
-            <img
-              src="/veesker-cloud-logo.png"
-              alt="Veesker Cloud"
-              width="1536"
-              height="1024"
-              loading="lazy"
-              class="layer-art"
-            />
-          </picture>
-          <div>
-            <h3>Veesker Cloud</h3>
-            <p>AI intelligence layer for Oracle teams</p>
-            <span class="status">Coming Soon — H2 2026</span>
-            <span class="best-for">Best for: managed AI, automation, and multi-dev workflows</span>
-          </div>
-        </div>
-        <ul>
-          <li>Schema-aware AI grounded in your Oracle DDL</li>
-          <li>Managed AI — no API keys to provision per developer</li>
-          <li>Auto-tune queries with EXPLAIN PLAN feedback</li>
-          <li>Auto-document packages and procedures overnight</li>
-          <li>VeeskerDB Sandbox — share masked extracts safely</li>
-          <li>Team workflows with usage and billing</li>
-        </ul>
-        <a href="#waitlist" class="btn cloud layer-btn">Join Cloud waitlist →</a>
-      </article>
-    </div>
+    <ScrollReveal stagger={0.12}>
+      <div class="layer-grid">
+        <TiltCard maxTilt={5}>
+          <article
+            class="layer-card community"
+            id="community"
+            class:focused={activeLayer === "community"}
+            class:unfocused={activeLayer === "cloud"}
+          >
+            <div class="layer-head">
+              <picture class="layer-art-wrap">
+                <source
+                  type="image/avif"
+                  srcset="/veesker-community-logo-320.avif 320w, /veesker-community-logo-640.avif 640w"
+                  sizes="(max-width: 980px) 90px, 112px"
+                />
+                <source
+                  type="image/webp"
+                  srcset="/veesker-community-logo-320.webp 320w, /veesker-community-logo-640.webp 640w"
+                  sizes="(max-width: 980px) 90px, 112px"
+                />
+                <img
+                  src="/veesker-community-logo.png"
+                  alt="Veesker Community Edition"
+                  width="1024"
+                  height="1024"
+                  loading="lazy"
+                  class="layer-art"
+                />
+              </picture>
+              <div>
+                <h3>Community Edition</h3>
+                <p>Local-first Oracle IDE</p>
+                <span class="best-for">Best for: solo developers and local-first teams</span>
+              </div>
+            </div>
+            <ul>
+              <li>Full SQL / PL/SQL IDE</li>
+              <li>Schema browser and debugger</li>
+              <li>VRAS — Veesker REST API Studio</li>
+              <li>Vector tools</li>
+              <li>BYOK AI (your key, your control)</li>
+              <li>Apache 2.0 open source</li>
+            </ul>
+            <a href="/download" class="btn primary layer-btn">Download Free</a>
+          </article>
+        </TiltCard>
+        <AnimatedBorder speed="4s" borderRadius="14px" innerBg="transparent" class="layer-cloud-border">
+          <TiltCard maxTilt={5}>
+            <article
+              class="layer-card cloud"
+              id="cloud"
+              class:focused={activeLayer === "cloud"}
+              class:unfocused={activeLayer === "community"}
+            >
+              <div class="layer-head">
+                <picture class="layer-art-wrap">
+                  <source
+                    type="image/avif"
+                    srcset="/veesker-cloud-logo-320.avif 320w, /veesker-cloud-logo-640.avif 640w"
+                    sizes="(max-width: 980px) 90px, 112px"
+                  />
+                  <source
+                    type="image/webp"
+                    srcset="/veesker-cloud-logo-320.webp 320w, /veesker-cloud-logo-640.webp 640w"
+                    sizes="(max-width: 980px) 90px, 112px"
+                  />
+                  <img
+                    src="/veesker-cloud-logo.png"
+                    alt="Veesker Cloud"
+                    width="1536"
+                    height="1024"
+                    loading="lazy"
+                    class="layer-art"
+                  />
+                </picture>
+                <div>
+                  <h3>Veesker Cloud</h3>
+                  <p>AI intelligence layer for Oracle teams</p>
+                  <span class="status">Coming Soon — H2 2026</span>
+                  <span class="best-for">Best for: managed AI, automation, and multi-dev workflows</span>
+                </div>
+              </div>
+              <ul>
+                <li>Schema-aware AI grounded in your Oracle DDL</li>
+                <li>Managed AI — no API keys to provision per developer</li>
+                <li>Auto-tune queries with EXPLAIN PLAN feedback</li>
+                <li>Auto-document packages and procedures overnight</li>
+                <li>VeeskerDB Sandbox — share masked extracts safely</li>
+                <li>Team workflows with usage and billing</li>
+              </ul>
+              <a href="#waitlist" class="btn cloud layer-btn">Join Cloud waitlist →</a>
+            </article>
+          </TiltCard>
+        </AnimatedBorder>
+      </div>
+    </ScrollReveal>
   </div>
 </section>
 
 <section class="comparison" aria-labelledby="comparison-title">
   <div class="container">
-    <h2 id="comparison-title">How Veesker compares.</h2>
-    <p class="comparison-lead">
+    <ScrollReveal clipReveal={true}><h2 id="comparison-title">How Veesker compares.</h2></ScrollReveal>
+    <ScrollReveal delay={0.1}><p class="comparison-lead">
       Side-by-side with the tools Oracle developers already know.
-    </p>
-    <div class="comparison-table-wrap">
-      <table class="comparison-table">
-        <thead>
-          <tr>
-            <th scope="col">Capability</th>
-            <th scope="col" class="us">Veesker</th>
-            <th scope="col">SQL Developer</th>
-            <th scope="col">PL/SQL Developer</th>
-            <th scope="col">DBeaver</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">Cross-platform (Win / macOS / Linux)</th>
-            <td class="us">✓</td>
-            <td>✓</td>
-            <td>—</td>
-            <td>✓</td>
-          </tr>
-          <tr>
-            <th scope="row">Modern UI (built post-2020)</th>
-            <td class="us">✓</td>
-            <td>—</td>
-            <td>—</td>
-            <td>partial</td>
-          </tr>
-          <tr>
-            <th scope="row">Oracle 9i → 26ai support</th>
-            <td class="us">✓</td>
-            <td>partial</td>
-            <td>✓</td>
-            <td>generic</td>
-          </tr>
-          <tr>
-            <th scope="row">PL/SQL debugger</th>
-            <td class="us">✓</td>
-            <td>✓</td>
-            <td>✓</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <th scope="row">Built-in AI (BYOK)</th>
-            <td class="us">✓</td>
-            <td>—</td>
-            <td>—</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <th scope="row">Open source</th>
-            <td class="us">Apache 2.0</td>
-            <td>—</td>
-            <td>—</td>
-            <td>Apache 2.0</td>
-          </tr>
-          <tr>
-            <th scope="row">Free for commercial use</th>
-            <td class="us">✓</td>
-            <td>✓</td>
-            <td>—</td>
-            <td>✓ (CE)</td>
-          </tr>
-        </tbody>
-      </table>
-      <p class="comparison-foot">Comparison reflects publicly documented features as of 2026. Accurate at time of publication; we update on release cadence.</p>
-    </div>
+    </p></ScrollReveal>
+    <ScrollReveal>
+      <div class="comparison-table-wrap">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th scope="col">Capability</th>
+              <th scope="col" class="us">Veesker</th>
+              <th scope="col">SQL Developer</th>
+              <th scope="col">PL/SQL Developer</th>
+              <th scope="col">DBeaver</th>
+            </tr>
+          </thead>
+          <tbody
+            onmousemove={(e: MouseEvent) => {
+              const tr = (e.target as HTMLElement).closest('tr');
+              if (!tr) return;
+              const rect = tr.getBoundingClientRect();
+              (tr as HTMLElement).style.setProperty('--sx', `${e.clientX - rect.left}px`);
+              (tr as HTMLElement).style.setProperty('--sy', `${e.clientY - rect.top}px`);
+            }}
+          >
+            <tr class="table-row-spotlight">
+              <th scope="row">Cross-platform (Win / macOS / Linux)</th>
+              <td class="us">✓</td>
+              <td>✓</td>
+              <td>—</td>
+              <td>✓</td>
+            </tr>
+            <tr class="table-row-spotlight">
+              <th scope="row">Modern UI (built post-2020)</th>
+              <td class="us">✓</td>
+              <td>—</td>
+              <td>—</td>
+              <td>partial</td>
+            </tr>
+            <tr class="table-row-spotlight">
+              <th scope="row">Oracle 9i → 26ai support</th>
+              <td class="us">✓</td>
+              <td>partial</td>
+              <td>✓</td>
+              <td>generic</td>
+            </tr>
+            <tr class="table-row-spotlight">
+              <th scope="row">PL/SQL debugger</th>
+              <td class="us">✓</td>
+              <td>✓</td>
+              <td>✓</td>
+              <td>—</td>
+            </tr>
+            <tr class="table-row-spotlight">
+              <th scope="row">Built-in AI (BYOK)</th>
+              <td class="us">✓</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+            </tr>
+            <tr class="table-row-spotlight">
+              <th scope="row">Open source</th>
+              <td class="us">Apache 2.0</td>
+              <td>—</td>
+              <td>—</td>
+              <td>Apache 2.0</td>
+            </tr>
+            <tr class="table-row-spotlight">
+              <th scope="row">Free for commercial use</th>
+              <td class="us">✓</td>
+              <td>✓</td>
+              <td>—</td>
+              <td>✓ (CE)</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="comparison-foot">Comparison reflects publicly documented features as of 2026. Accurate at time of publication; we update on release cadence.</p>
+      </div>
+    </ScrollReveal>
   </div>
 </section>
 
+<ScrollReveal>
 <section class="security" aria-labelledby="security-title">
   <div class="container security-inner">
     <h2 id="security-title">Your database stays local.</h2>
@@ -510,54 +588,60 @@
     </div>
   </div>
 </section>
+</ScrollReveal>
 
 <section class="waitlist" id="waitlist" aria-labelledby="waitlist-title">
   <div class="container">
-    <div class="waitlist-card">
-      <div class="waitlist-copy">
-        <span class="waitlist-eyebrow">Veesker Cloud · Coming Soon — H2 2026</span>
-        <h2 id="waitlist-title">Join the Cloud waitlist.</h2>
-        <p>
-          Tell us your use case. Early waitlist members shape the feature roadmap and get founder pricing at launch.
-        </p>
-      </div>
-      {#if waitlistStatus === "success"}
-        <div class="waitlist-success" role="status">
-          <div class="success-icon" aria-hidden="true">✓</div>
-          <h3>You're on the list.</h3>
-          <p>We'll email you when Veesker Cloud is ready. Founder pricing locked.</p>
-        </div>
-      {:else}
-        <form class="waitlist-form" onsubmit={submitWaitlist}>
-          <label class="visually-hidden" for="waitlist-email">Work email</label>
-          <input
-            id="waitlist-email"
-            type="email"
-            required
-            placeholder="you@company.com"
-            bind:value={waitlistEmail}
-            autocomplete="email"
-            disabled={waitlistStatus === "submitting"}
-          />
-          <button type="submit" class="btn primary waitlist-btn" disabled={waitlistStatus === "submitting"}>
-            {waitlistStatus === "submitting" ? "Joining…" : "Join the waitlist →"}
-          </button>
-          {#if waitlistStatus === "rate_limited"}
-            <p class="waitlist-error" role="alert">Too many requests. Wait a minute and try again.</p>
-          {:else if waitlistStatus === "error"}
-            <p class="waitlist-error" role="alert">{waitlistError}</p>
-          {:else}
-            <p class="waitlist-fineprint">
-              No spam, no third-party tracking. We email once when Cloud goes live. By submitting,
-              you agree to our <a href="/privacy">Privacy Policy</a>.
+    <ScrollReveal>
+      <AnimatedBorder speed="3s" borderRadius="16px" innerBg="radial-gradient(120% 100% at 0% 0%, rgba(43,180,238,0.18), transparent 46%), linear-gradient(165deg, rgba(22,29,36,0.96), rgba(16,22,29,0.97))">
+        <div class="waitlist-card-inner">
+          <div class="waitlist-copy">
+            <span class="waitlist-eyebrow">Veesker Cloud · Coming Soon — H2 2026</span>
+            <h2 id="waitlist-title">Join the Cloud waitlist.</h2>
+            <p>
+              Tell us your use case. Early waitlist members shape the feature roadmap and get founder pricing at launch.
             </p>
+          </div>
+          {#if waitlistStatus === "success"}
+            <div class="waitlist-success" role="status">
+              <div class="success-icon" aria-hidden="true">✓</div>
+              <h3>You're on the list.</h3>
+              <p>We'll email you when Veesker Cloud is ready. Founder pricing locked.</p>
+            </div>
+          {:else}
+            <form class="waitlist-form" onsubmit={submitWaitlist}>
+              <label class="visually-hidden" for="waitlist-email">Work email</label>
+              <input
+                id="waitlist-email"
+                type="email"
+                required
+                placeholder="you@company.com"
+                bind:value={waitlistEmail}
+                autocomplete="email"
+                disabled={waitlistStatus === "submitting"}
+              />
+              <button type="submit" class="btn primary waitlist-btn" disabled={waitlistStatus === "submitting"}>
+                {waitlistStatus === "submitting" ? "Joining…" : "Join the waitlist →"}
+              </button>
+              {#if waitlistStatus === "rate_limited"}
+                <p class="waitlist-error" role="alert">Too many requests. Wait a minute and try again.</p>
+              {:else if waitlistStatus === "error"}
+                <p class="waitlist-error" role="alert">{waitlistError}</p>
+              {:else}
+                <p class="waitlist-fineprint">
+                  No spam, no third-party tracking. We email once when Cloud goes live. By submitting,
+                  you agree to our <a href="/privacy">Privacy Policy</a>.
+                </p>
+              {/if}
+            </form>
           {/if}
-        </form>
-      {/if}
-    </div>
+        </div>
+      </AnimatedBorder>
+    </ScrollReveal>
   </div>
 </section>
 
+<ScrollReveal stagger={0.06}>
 <section class="faq-home" aria-labelledby="faq-title">
   <div class="container">
     <h2 id="faq-title">Common questions.</h2>
@@ -589,7 +673,9 @@
     </div>
   </div>
 </section>
+</ScrollReveal>
 
+<ScrollReveal>
 <section class="proof">
   <div class="container proof-inner">
     <h2>Open-source core. Optional managed intelligence.</h2>
@@ -604,6 +690,7 @@
     </div>
   </div>
 </section>
+</ScrollReveal>
 
 <style>
   .visually-hidden {
@@ -622,9 +709,8 @@
     padding: 96px 0 64px;
     text-align: center;
     position: relative;
-    background:
-      linear-gradient(rgba(10, 8, 6, 0.84), rgba(10, 8, 6, 0.95)),
-      url("/workspace-overview.png") center top / cover no-repeat;
+    overflow: hidden;
+    background: rgba(10, 8, 6, 0.95);
   }
   .hero-logo-wrap {
     display: block;
@@ -813,7 +899,11 @@
     background: linear-gradient(170deg, rgba(33, 28, 22, 0.95), rgba(24, 20, 16, 0.95));
     border: 1px solid var(--border);
     border-radius: 12px;
+  }
+  .feat-inner {
+    height: 100%;
     padding: 24px;
+    border-radius: 12px;
   }
   .feat-icon {
     width: 36px;
@@ -943,6 +1033,29 @@
   .layer-card.unfocused {
     opacity: 0.58;
     filter: saturate(0.75);
+  }
+  :global(.layer-cloud-border) {
+    display: flex;
+    flex-direction: column;
+  }
+  :global(.layer-cloud-border .anim-border-inner) {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  :global(.layer-cloud-border .anim-border-inner .tilt-card) {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .vdb-flow :global(.anim-border-wrap) {
+    display: flex;
+    flex-direction: column;
+  }
+  .vdb-flow :global(.anim-border-inner) {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
   }
   .layer-head {
     display: grid;
@@ -1096,6 +1209,26 @@
     text-align: center;
   }
 
+  .table-row-spotlight {
+    position: relative;
+  }
+  .table-row-spotlight::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      180px circle at var(--sx, 50%) var(--sy, 50%),
+      rgba(249, 115, 22, 0.07),
+      transparent
+    );
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+  }
+  .table-row-spotlight:hover::after {
+    opacity: 1;
+  }
+
   .security {
     padding: 78px 0;
     border-top: 1px solid var(--border);
@@ -1195,20 +1328,17 @@
     padding: 80px 0;
     background: linear-gradient(180deg, rgba(14, 12, 10, 0.95), rgba(20, 27, 34, 0.95));
   }
-  .waitlist-card {
+  .waitlist :global(.anim-border-wrap) {
     max-width: 880px;
     margin: 0 auto;
-    background:
-      radial-gradient(120% 100% at 0% 0%, rgba(43, 180, 238, 0.18), transparent 46%),
-      linear-gradient(165deg, rgba(22, 29, 36, 0.96), rgba(16, 22, 29, 0.97));
-    border: 1px solid rgba(138, 216, 251, 0.4);
-    border-radius: 16px;
+    box-shadow: 0 14px 38px rgba(11, 76, 104, 0.3);
+  }
+  .waitlist-card-inner {
     padding: 36px;
     display: grid;
     grid-template-columns: 1.2fr 1fr;
     gap: 32px;
     align-items: center;
-    box-shadow: 0 14px 38px rgba(11, 76, 104, 0.3);
   }
   .waitlist-eyebrow {
     display: inline-block;
@@ -1451,14 +1581,14 @@
     text-align: left;
   }
   .vdb-step {
-    background: linear-gradient(170deg, rgba(28, 38, 48, 0.94), rgba(18, 26, 34, 0.95));
-    border: 1px solid rgba(138, 216, 251, 0.28);
-    border-radius: 12px;
+    border-radius: 11px;
     padding: 22px;
     display: flex;
     flex-direction: column;
     gap: 8px;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    height: 100%;
+    box-sizing: border-box;
   }
   .vdb-step-num {
     font-family: "JetBrains Mono", monospace;
@@ -1565,7 +1695,7 @@
     .vdb-showcase h2 {
       font-size: 30px;
     }
-    .waitlist-card {
+    .waitlist-card-inner {
       grid-template-columns: 1fr;
       padding: 28px;
       gap: 24px;
